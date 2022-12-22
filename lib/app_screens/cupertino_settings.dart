@@ -67,7 +67,9 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
               const CustomCupertinoButton(
                   buttonText: "Chat Wallpaper", isModal: true, isFilled: true),
               const CustomCupertinoButton(
-                  buttonText: "Chat Wallpaper", isModal: false, isFilled: true),
+                  buttonText: "Delete all chat",
+                  isModal: false,
+                  isFilled: true),
               Center(
                 child: CupertinoButton(
                   // Display a CupertinoDatePicker in date picker mode.
