@@ -28,9 +28,6 @@ class PrintValue extends StatelessWidget {
           );
         } else if (index == 1) {
           return CupertinoChat(userList: userList, textLocation: textLocation);
-        } else if (index == 2) {
-          return CupertinoSettingsPage(
-              userList: userList, textLocation: textLocation);
         } else {
           return PageNotFound(userList: userList, textLocation: textLocation);
         }

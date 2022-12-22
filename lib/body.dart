@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/app_screens/cupertino_settings.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_tabview_printvalue.dart';
@@ -44,9 +45,10 @@ class _BodyState extends State<Body> {
             case 1:
               return PrintValue(
                   textLocation: getTitleText[1], userList: userList, index: 1);
+            // case 2:  return PrintValue(textLocation: getTitleText[2], userList: userList, index: 2);
             case 2:
-              return PrintValue(
-                  textLocation: getTitleText[2], userList: userList, index: 2);
+              return CupertinoSettingsPage(
+                  textLocation: Text(getTitleText[2].toString()));
           }
 
           return PrintValue(
