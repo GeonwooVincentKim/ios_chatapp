@@ -52,14 +52,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       //   )
       // )
       body: TabBarView(
-        children: [
+        controller: controller,
+        children: const [
           FirstTabPage(),
           SecondTabPage()
         ],
-        controller: controller,
       ),
       bottomNavigationBar: TabBar(
-        tabs: <Tab>[
+        tabs: const <Tab>[
           Tab(
             icon: Icon(Icons.looks_one, color: Colors.blue),
           ),
