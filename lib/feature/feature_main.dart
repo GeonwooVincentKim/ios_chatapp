@@ -15,7 +15,7 @@ import 'package:overlay_support/overlay_support.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static final String title = "Has Internet?";
+  static const String title = "Has Internet?";
 
   const MyApp({super.key});
 
