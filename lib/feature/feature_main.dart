@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ios_chatapp/feature/feature_mainpage.dart';
@@ -22,10 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OverlaySupport(
-      child: MaterialApp(
+      child: CupertinoApp(
         debugShowCheckedModeBanner: false,
         title: title,
-        theme: ThemeData(primarySwatch: Colors.teal),
+        theme: CupertinoThemeData(brightness: Brightness.light),
         home: MainPage(title: title),
       )
     );
