@@ -9,9 +9,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const OverlaySupport(
+    // ignore: prefer_const_constructors
+    return OverlaySupport(
+      // ignore: prefer_const_constructors
       child: CupertinoApp(
         debugShowCheckedModeBanner: false,
+        // ignore: prefer_const_constructors
         theme: CupertinoThemeData(brightness: Brightness.light),
         home: Body(),
         // initialRoute: "/",
