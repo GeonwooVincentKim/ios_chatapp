@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
+import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_navi_bar.dart';
 
@@ -20,10 +24,13 @@ class CupertinoChat extends StatefulWidget {
 class _CupertinoChatState extends State<CupertinoChat> {
   late List<User> _filteredUsers = widget.userList;
   late TextEditingController _controller;
+  late StreamSubscription subscription; 
 
   @override
   void initState() {
     super.initState();
+    
+    subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
     _controller = TextEditingController();
   }
 
@@ -53,7 +60,7 @@ class _CupertinoChatState extends State<CupertinoChat> {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        CupertinoSliverNaviBar(textLocation: widget.textLocation),
+        // CupertinoSliverNaviBar(textLocation: widget.textLocation),
         SliverToBoxAdapter(
             child: FractionallySizedBox(
                 widthFactor: 0.9,
@@ -69,5 +76,16 @@ class _CupertinoChatState extends State<CupertinoChat> {
         CupertinoSliverGrid(userList: widget.userList),
       ],
     );
+  }
+
+  void showConnectivitySnackBar(ConnectivityResult result) {
+    final hasInternet = result != ConnectivityResult.none;
+    final message = hasInternet
+      ? 'You have again ${result.toString()}'
+      : 'You have no Internet';
+
+    final color = hasInternet ? CupertinoColors.activeGreen : CupertinoColors.systemRed;
+    // Utils.showTopSnackBar(context, message, color);
+    Utils.showTopSliverBar(context, message, message);
   }
 }

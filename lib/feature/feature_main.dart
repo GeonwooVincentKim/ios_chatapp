@@ -3,15 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:ios_chatapp/feature/feature_mainpage.dart';
 import 'package:overlay_support/overlay_support.dart';
 
-Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]);
+// Future main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await SystemChrome.setPreferredOrientations([
+//     DeviceOrientation.portraitUp,
+//     DeviceOrientation.portraitDown
+//   ]);
 
-  runApp(MyApp());
-}
+//   runApp(MyApp());
+// }
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   static final String title = "Has Internet?";

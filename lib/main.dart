@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/body.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,13 +9,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
+    return const OverlaySupport(
+      child: CupertinoApp(
+        debugShowCheckedModeBanner: false,
         theme: CupertinoThemeData(brightness: Brightness.light),
-        // home: BodyPageScaffold(),
         home: Body(),
-        initialRoute: "/",
-        routes: {
-          // '/': (context) => Body(),
-        });
+        // initialRoute: "/",
+        // routes: {
+        //   // '/': (context) => Body(),
+        // }
+      )
+    );
   }
 }
