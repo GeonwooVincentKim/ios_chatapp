@@ -5,6 +5,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
 import 'package:ios_chatapp/feature/app_screens/second_tab_page.dart';
 import 'package:ios_chatapp/feature/utils.dart';
+import 'package:ios_chatapp/model/users.dart';
+import 'package:ios_chatapp/provider/user_provider.dart';
 
 class MainPage extends StatefulWidget {
   final String title;
@@ -18,6 +20,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   late StreamSubscription subscription;
   TabController? controller;
+  List<User> userList = List.empty(growable: true);
+
 
   @override
   void initState() {
@@ -25,6 +29,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
 
     controller = TabController(length: 2, vsync: this);
+    userList = UserProvider().filteredUsers;
   }
 
   @override
