@@ -20,7 +20,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   late StreamSubscription subscription;
   TabController? controller;
-  List<User> userList = List.empty(growable: true);
+  // List<User> userList = List.empty(growable: true);
 
 
   @override
@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
 
     controller = TabController(length: 2, vsync: this);
-    userList = UserProvider().filteredUsers;
+    // userList = UserProvider().filteredUsers;
   }
 
   @override
@@ -42,7 +42,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      // backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(widget.title),
       ),
