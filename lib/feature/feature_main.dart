@@ -16,7 +16,7 @@ import 'package:overlay_support/overlay_support.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static const String title = "Has Internet?";
+  // static const String title = "Has Internet?";
 
   const MyApp({super.key});
 
@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
     return OverlaySupport(
       child: CupertinoApp(
         debugShowCheckedModeBanner: false,
-        title: title,
+        // title: title,
         theme: CupertinoThemeData(brightness: Brightness.light),
-        home: MainPage(title: title),
+        home: MainPage(),
       )
     );
   }

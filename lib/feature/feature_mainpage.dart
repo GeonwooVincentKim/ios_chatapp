@@ -11,9 +11,7 @@ import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 
 class MainPage extends StatefulWidget {
-  final String title;
-
-  const MainPage({super.key, required this.title});
+  const MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();
