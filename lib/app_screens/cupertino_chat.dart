@@ -3,18 +3,14 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
+import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_navi_bar.dart';
 
 class CupertinoChat extends StatefulWidget {
-  final dynamic textLocation;
-  final List<User> userList;
-
   const CupertinoChat(
       {super.key,
-      required this.textLocation,
-      required this.userList,
       required});
 
   @override
@@ -22,13 +18,21 @@ class CupertinoChat extends StatefulWidget {
 }
 
 class _CupertinoChatState extends State<CupertinoChat> {
-  late List<User> _filteredUsers = widget.userList;
+  List<User> userList = List.empty(growable: true);
   late TextEditingController _controller;
 
   @override
   void initState() {
     super.initState();
 
+    /*
+      feature-ios
+      
+      _controller = TextEditingController();
+    */
+    
+    // master Branch
+    userList = UserProvider().filteredUsers;
     _controller = TextEditingController();
   }
 
@@ -42,13 +46,13 @@ class _CupertinoChatState extends State<CupertinoChat> {
     debugPrint(value);
 
     if (value.isNotEmpty) {
-      _filteredUsers = _filteredUsers
+      userList  = userList 
           .where((element) =>
               element.name.toLowerCase().contains(value.toLowerCase()))
           .toList();
     } else {
       _controller.text = '';
-      _filteredUsers = widget.userList;
+      userList = userList ;
     }
 
     setState(() {});
@@ -71,7 +75,7 @@ class _CupertinoChatState extends State<CupertinoChat> {
                           onSubmitted: (value) => _updateUserList(value),
                           onSuffixTap: () => _updateUserList(''),
                         ))))),
-        CupertinoSliverGrid(userList: widget.userList),
+        CupertinoSliverGrid(userList: userList),
       ],
     );
   }
