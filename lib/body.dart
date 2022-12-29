@@ -44,57 +44,20 @@ class _BodyState extends State<Body> {
                   icon: Icon(CupertinoIcons.phone), label: 'Calls'),
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.chat_bubble_2), label: 'Chats'),
-              // BottomNavigationBarItem(
-              //     icon: Icon(CupertinoIcons.settings), label: 'Settings'),
+              BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.settings), label: 'Settings'),
             ]),
         tabBuilder: (context, index) {
           List<String> getTitleText = ['Calls', 'Chats', 'Settings'];
           late final CupertinoTabView returnValue;
 
           switch (index) {
-            case 0:
-              // returnValue = CupertinoTabView(
-              //   builder: (context) {
-              //     return CupertinoPageScaffold(
-              //       navigationBar: CupertinoNavigationBar(middle: Text(getTitleText[0])),
-              //       child: Center(
-              //         child: Text(getTitleText[0]),
-              //       ),
-              //     );
-              //   },
-              // );
-              returnValue = CupertinoTabView(
-                builder: (context) {
-                  return FirstTabPage();
-                },
-              );
-              break;
-              // return PrintValue(
-              //     textLocation: getTitleText[0], index: 0);
-            case 1:
-              returnValue = CupertinoTabView(
-                builder: (context) {
-                  // ignore: prefer_const_constructors
-                  return CupertinoChat();
-                },
-              );
-              
-              break;
-              // return PrintValue(
-              //     textLocation: getTitleText[1], index: 1);
-            // case 2:  return PrintValue(textLocation: getTitleText[2], userList: userList, index: 2);
-            // case 2:
-            //   returnValue = CupertinoTabView(
-            //     builder: (context) {
-            //       return CupertinoSettingsPage();
-            //     }
-            //   );
-            //   break;
-              // return CupertinoSettingsPage(
-              //     textLocation: Text(getTitleText[2].toString()));
+            case 0: return PrintValue(textLocation: getTitleText[0], index: index);
+            case 1: return PrintValue(textLocation: getTitleText[1], index: index);
+            case 2: return PrintValue(textLocation: getTitleText[2], index: index);
           }
 
-          return returnValue;
+          return PrintValue(textLocation: getTitleText[0], index: 0);
           // return PrintValue(
           //     textLocation: getTitleText[0], index: 0);
         });
@@ -107,34 +70,7 @@ class _BodyState extends State<Body> {
       : 'You have no Internet';
 
     final color = hasInternet ? CupertinoColors.activeGreen : CupertinoColors.systemRed;
-    // Utils.showTopSnackBar(context, message, color);
-    Utils.showTopSliverBar(context, "Edit", message);
+    Utils.showTopSnackBar(context, message, color);
+    // Utils.showTopSliverBar(context, "Edit", message);
   }
-
-  // CupertinoTabView printValue (textLocation) {
-  //   return CupertinoTabView(
-  //     builder: (context) {
-  //       return CustomScrollView(
-  //         slivers: [
-  //           CupertinoSliverNavigationBar(
-  //             largeTitle: Text(textLocation),
-  //             leading: const Text(
-  //               'Edit',
-  //               style: TextStyle(color: CupertinoColors.link),
-  //             ),
-  //             middle: Row(
-  //               mainAxisSize: MainAxisSize.min,
-  //               children: const [
-  //                 CupertinoActivityIndicator(),
-  //                 SizedBox(width: 8),
-  //                 Text('Waiting for Network')
-  //               ],
-  //             )
-  //           ),
-  //           CupertinoChatPage(userList: userList),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 }

@@ -25,8 +25,9 @@ class PrintValue extends StatelessWidget {
             ),
           );
         } else if (index == 1) {
-          // return CupertinoChat(textLocation: textLocation);
-          return CupertinoChat();
+          return const CupertinoChat();
+        } else if (index == 2) {
+          return const CupertinoSettingsPage();
         } else {
           return PageNotFound(textLocation: textLocation);
         }
