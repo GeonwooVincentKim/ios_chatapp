@@ -6,6 +6,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
 import 'package:ios_chatapp/feature/app_screens/second_tab_page.dart';
 import 'package:ios_chatapp/feature/utils.dart';
+import 'package:ios_chatapp/feature/widgets/print_title.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 
@@ -29,14 +30,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.initState();
     subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
 
-    controller = TabController(length: 2, vsync: this);
+    // controller = TabController(length: 2, vsync: this);
     // userList = UserProvider().filteredUsers;
   }
 
   @override
   void dispose() {
     subscription.cancel();
-    controller!.dispose();
+    // controller!.dispose();
     super.dispose();
   }
 
@@ -86,26 +87,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         ]
       ),
       tabBuilder: (context, index) {
-        late final CupertinoTabView returnValue;
+        List<String> getTitleText = ['First', 'Second', 'Third'];
 
         switch (index) {
-          case 0: 
-            returnValue = CupertinoTabView(
-              builder: (context) {
-                return FirstTabPage();
-              },
-            );     
-            break;     
-          case 1:
-            returnValue = CupertinoTabView(
-              builder: (context) {
-                return SecondTabPage();
-              },
-            );
-            break;
+          case 0: return PrintTitle(textLocation: getTitleText[0], index: index);
+          case 1: return PrintTitle(textLocation: getTitleText[1], index: index);
+          case 2: return PrintTitle(textLocation: getTitleText[2], index: index);
         }
 
-        return returnValue;
+        return PrintTitle(textLocation: getTitleText[0], index: 0);
       },
     );
   }
