@@ -6,13 +6,11 @@ import 'package:ios_chatapp/model/users.dart';
 
 class PrintValue extends StatelessWidget {
   final dynamic textLocation;
-  final List<User> userList;
   final int index;
 
   const PrintValue(
       {super.key,
       required this.textLocation,
-      required this.userList,
       required this.index});
 
   @override
@@ -27,9 +25,10 @@ class PrintValue extends StatelessWidget {
             ),
           );
         } else if (index == 1) {
-          return CupertinoChat(userList: userList, textLocation: textLocation);
+          // return CupertinoChat(textLocation: textLocation);
+          return CupertinoChat();
         } else {
-          return PageNotFound(userList: userList, textLocation: textLocation);
+          return PageNotFound(textLocation: textLocation);
         }
       },
     );

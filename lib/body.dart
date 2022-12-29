@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/app_screens/cupertino_chat.dart';
 import 'package:ios_chatapp/app_screens/cupertino_settings.dart';
+import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/utils.dart';
@@ -17,7 +19,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List<User> userList = List.empty(growable: true);
   late StreamSubscription subscription; 
 
   @override
@@ -25,7 +26,6 @@ class _BodyState extends State<Body> {
     super.initState();
 
     subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
-    userList = UserProvider().filteredUsers;
   }
 
   @override
@@ -44,27 +44,59 @@ class _BodyState extends State<Body> {
                   icon: Icon(CupertinoIcons.phone), label: 'Calls'),
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.chat_bubble_2), label: 'Chats'),
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.settings), label: 'Settings'),
+              // BottomNavigationBarItem(
+              //     icon: Icon(CupertinoIcons.settings), label: 'Settings'),
             ]),
         tabBuilder: (context, index) {
           List<String> getTitleText = ['Calls', 'Chats', 'Settings'];
+          late final CupertinoTabView returnValue;
 
           switch (index) {
             case 0:
-              return PrintValue(
-                  textLocation: getTitleText[0], userList: userList, index: 0);
+              // returnValue = CupertinoTabView(
+              //   builder: (context) {
+              //     return CupertinoPageScaffold(
+              //       navigationBar: CupertinoNavigationBar(middle: Text(getTitleText[0])),
+              //       child: Center(
+              //         child: Text(getTitleText[0]),
+              //       ),
+              //     );
+              //   },
+              // );
+              returnValue = CupertinoTabView(
+                builder: (context) {
+                  return FirstTabPage();
+                },
+              );
+              break;
+              // return PrintValue(
+              //     textLocation: getTitleText[0], index: 0);
             case 1:
-              return PrintValue(
-                  textLocation: getTitleText[1], userList: userList, index: 1);
+              returnValue = CupertinoTabView(
+                builder: (context) {
+                  // ignore: prefer_const_constructors
+                  return CupertinoChat();
+                },
+              );
+              
+              break;
+              // return PrintValue(
+              //     textLocation: getTitleText[1], index: 1);
             // case 2:  return PrintValue(textLocation: getTitleText[2], userList: userList, index: 2);
-            case 2:
-              return CupertinoSettingsPage(
-                  textLocation: Text(getTitleText[2].toString()));
+            // case 2:
+            //   returnValue = CupertinoTabView(
+            //     builder: (context) {
+            //       return CupertinoSettingsPage();
+            //     }
+            //   );
+            //   break;
+              // return CupertinoSettingsPage(
+              //     textLocation: Text(getTitleText[2].toString()));
           }
 
-          return PrintValue(
-              textLocation: getTitleText[0], userList: userList, index: 0);
+          return returnValue;
+          // return PrintValue(
+          //     textLocation: getTitleText[0], index: 0);
         });
   }
 
