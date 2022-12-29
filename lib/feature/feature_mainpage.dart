@@ -29,7 +29,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
 
     controller = TabController(length: 2, vsync: this);
-    // userList = UserProvider().filteredUsers;
   }
 
   @override
