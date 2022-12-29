@@ -84,6 +84,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         items: const [
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.film, color: Colors.blue), label: 'First'),
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.alarm, color: Colors.blue), label: 'Second'),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.airplane, color: Colors.blue), label: 'Third'),
         ]
       ),
       tabBuilder: (context, index) {
