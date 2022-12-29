@@ -24,7 +24,14 @@ class _CupertinoChatState extends State<CupertinoChat> {
   @override
   void initState() {
     super.initState();
+
+    /*
+      feature-ios
+      
+      _controller = TextEditingController();
+    */
     
+    // master Branch
     userList = UserProvider().filteredUsers;
     _controller = TextEditingController();
   }
