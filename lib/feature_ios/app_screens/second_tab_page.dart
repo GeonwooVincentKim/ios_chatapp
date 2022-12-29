@@ -1,23 +1,25 @@
-import 'dart:async';
-
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
-import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
-import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_navi_bar.dart';
 
-class CupertinoChat extends StatefulWidget {
-  const CupertinoChat(
+class SecondTabPage extends StatefulWidget {
+  // final dynamic textLocation;
+  // final List<User> userList;
+
+  const SecondTabPage(
       {super.key,
+      // required this.textLocation,
+      // required this.userList,
       required});
 
   @override
-  State<CupertinoChat> createState() => _CupertinoChatState();
+  State<SecondTabPage> createState() => _SecondTabPageState();
 }
 
-class _CupertinoChatState extends State<CupertinoChat> {
+class _SecondTabPageState extends State<SecondTabPage> {
+  // late List<User> _filteredUsers = [];
   List<User> userList = List.empty(growable: true);
   late TextEditingController _controller;
 
@@ -25,13 +27,6 @@ class _CupertinoChatState extends State<CupertinoChat> {
   void initState() {
     super.initState();
 
-    /*
-      feature-ios
-      
-      _controller = TextEditingController();
-    */
-    
-    // master Branch
     userList = UserProvider().filteredUsers;
     _controller = TextEditingController();
   }
@@ -46,13 +41,13 @@ class _CupertinoChatState extends State<CupertinoChat> {
     debugPrint(value);
 
     if (value.isNotEmpty) {
-      userList  = userList 
+      userList = userList
           .where((element) =>
               element.name.toLowerCase().contains(value.toLowerCase()))
           .toList();
     } else {
       _controller.text = '';
-      userList = userList ;
+      userList = userList;
     }
 
     setState(() {});
