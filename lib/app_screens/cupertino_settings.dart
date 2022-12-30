@@ -7,7 +7,7 @@ import 'package:ios_chatapp/widgets/custom/custom_cupertino_button.dart';
 class CupertinoSettingsPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
 
-  final dynamic textLocation;
+  final String textLocation;
   const CupertinoSettingsPage({Key? key, required this.textLocation});
 
   @override
@@ -33,7 +33,7 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          middle: widget.textLocation
+          middle: Text(widget.textLocation)
         ),
         child: SingleChildScrollView(
             child: Column(
