@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/app_screens/cupertino_chat.dart';
 import 'package:ios_chatapp/app_screens/cupertino_settings.dart';
+import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/utils.dart';
@@ -17,15 +19,15 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List<User> userList = List.empty(growable: true);
   late StreamSubscription subscription; 
+  // List<User> userList = List.empty(growable: true);
+  List<User> userList = [];
 
   @override
   void initState() {
     super.initState();
 
     subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
-    userList = UserProvider().filteredUsers;
   }
 
   @override
@@ -49,22 +51,17 @@ class _BodyState extends State<Body> {
             ]),
         tabBuilder: (context, index) {
           List<String> getTitleText = ['Calls', 'Chats', 'Settings'];
+          late final CupertinoTabView returnValue;
 
           switch (index) {
-            case 0:
-              return PrintValue(
-                  textLocation: getTitleText[0], userList: userList, index: 0);
-            case 1:
-              return PrintValue(
-                  textLocation: getTitleText[1], userList: userList, index: 1);
-            // case 2:  return PrintValue(textLocation: getTitleText[2], userList: userList, index: 2);
-            case 2:
-              return CupertinoSettingsPage(
-                  textLocation: Text(getTitleText[2].toString()));
+            case 0: return PrintValue(textLocation: getTitleText[0], index: index);
+            case 1: return PrintValue(textLocation: getTitleText[1], index: index);
+            case 2: return PrintValue(textLocation: getTitleText[2], index: index);
           }
 
-          return PrintValue(
-              textLocation: getTitleText[0], userList: userList, index: 0);
+          return PrintValue(textLocation: getTitleText[0], index: 0);
+          // return PrintValue(
+          //     textLocation: getTitleText[0], index: 0);
         });
   }
 
@@ -75,34 +72,7 @@ class _BodyState extends State<Body> {
       : 'You have no Internet';
 
     final color = hasInternet ? CupertinoColors.activeGreen : CupertinoColors.systemRed;
-    // Utils.showTopSnackBar(context, message, color);
-    Utils.showTopSliverBar(context, "Edit", message);
+    Utils.showTopSnackBar(context, message, color);
+    // Utils.showTopSliverBar(context, "Edit", message);
   }
-
-  // CupertinoTabView printValue (textLocation) {
-  //   return CupertinoTabView(
-  //     builder: (context) {
-  //       return CustomScrollView(
-  //         slivers: [
-  //           CupertinoSliverNavigationBar(
-  //             largeTitle: Text(textLocation),
-  //             leading: const Text(
-  //               'Edit',
-  //               style: TextStyle(color: CupertinoColors.link),
-  //             ),
-  //             middle: Row(
-  //               mainAxisSize: MainAxisSize.min,
-  //               children: const [
-  //                 CupertinoActivityIndicator(),
-  //                 SizedBox(width: 8),
-  //                 Text('Waiting for Network')
-  //               ],
-  //             )
-  //           ),
-  //           CupertinoChatPage(userList: userList),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 }
