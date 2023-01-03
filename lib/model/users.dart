@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/shared/style.dart';
 
 class User {
-  int userId;
+  String userId;
   String name;
   Color color;
 
@@ -12,9 +12,17 @@ class User {
     required this.color
   });
 
+  factory User.from(User user) {
+    return User(
+      userId: user.userId,
+      name: user.name,
+      color: user.color
+    );
+  }
+
   factory User.initialData() {
     return User(
-      userId: 0,
+      userId: '',
       name: '',
       color: Color(defaultColor)
     );
