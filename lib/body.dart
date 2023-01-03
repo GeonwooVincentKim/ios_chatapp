@@ -4,7 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/app_screens/cupertino_chat.dart';
 import 'package:ios_chatapp/app_screens/cupertino_settings.dart';
-import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
+import 'package:ios_chatapp/feature_android/app_screens/first_tab_page.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/utils.dart';

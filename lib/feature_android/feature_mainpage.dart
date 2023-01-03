@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
-import 'package:ios_chatapp/feature/app_screens/second_tab_page.dart';
-import 'package:ios_chatapp/feature/utils.dart';
+import 'package:ios_chatapp/feature_android/app_screens/first_tab_page.dart';
+import 'package:ios_chatapp/feature_android/app_screens/second_tab_page.dart';
+import 'package:ios_chatapp/feature_android/utils.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 
