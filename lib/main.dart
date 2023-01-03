@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ios_chatapp/app_screens/cupertino_call.dart';
 import 'package:ios_chatapp/app_screens/cupertino_chat.dart';
 import 'package:ios_chatapp/app_screens/cupertino_settings.dart';
 import 'package:ios_chatapp/body.dart';
