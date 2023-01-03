@@ -16,3 +16,9 @@ const Color cyan = Color.fromARGB(255, 0, 188, 212);
 const Color lightBlue = Color.fromARGB(255, 3, 169, 244);
 const Color deepPurpleAccent = Color.fromARGB(255, 124, 77, 255);
 const Color indigoAccent = Color.fromARGB(255, 83, 109, 254);
+
+// Padding Area
+const double defaultPadding = 20;
+
+// Border Area
+const double generalBorder = 10;

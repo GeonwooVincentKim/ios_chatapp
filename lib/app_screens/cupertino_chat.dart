@@ -101,17 +101,21 @@ class _CupertinoChatState extends State<CupertinoChat> {
           // ),
           // CupertinoSliverNaviBar(textLocation: widget.textLocation),
           SliverToBoxAdapter(
-              child: FractionallySizedBox(
-                  widthFactor: 0.9,
-                  child: ClipRect(
-                      child: Padding(
-                          padding: const EdgeInsets.only(top: 16),
-                          child: CupertinoSearchTextField(
-                            controller: _controller,
-                            onChanged: (value) => _updateUserList(value),
-                            onSubmitted: (value) => _updateUserList(value),
-                            onSuffixTap: () => _updateUserList(''),
-                          ))))),
+            child: FractionallySizedBox(
+              widthFactor: 0.9,
+              child: ClipRect(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: CupertinoSearchTextField(
+                    controller: _controller,
+                    onChanged: (value) => _updateUserList(value),
+                    onSubmitted: (value) => _updateUserList(value),
+                    onSuffixTap: () => _updateUserList(''),
+                  )
+                )
+              )
+            )
+          ),
           CupertinoSliverGrid(userList: userList),
         ],
       )
