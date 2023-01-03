@@ -17,6 +17,9 @@ const Color lightBlue = Color.fromARGB(255, 3, 169, 244);
 const Color deepPurpleAccent = Color.fromARGB(255, 124, 77, 255);
 const Color indigoAccent = Color.fromARGB(255, 83, 109, 254);
 
+// Color with Integer Area
+const int defaultColor = 0x00000000;
+
 // Padding Area
 const double defaultPadding = 20;
 
