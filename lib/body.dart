@@ -7,6 +7,7 @@ import 'package:ios_chatapp/app_screens/cupertino_settings.dart';
 import 'package:ios_chatapp/feature_android/app_screens/first_tab_page.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
+import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_tabview_printvalue.dart';
 // import 'package:flutter_application_1_1/cupertino_button/widgets/cupertino_navigation_widget.dart';
@@ -40,7 +41,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
-            currentIndex: 1,
+            currentIndex: 0,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.phone), label: 'Calls'),
@@ -50,7 +51,6 @@ class _BodyState extends State<Body> {
                   icon: Icon(CupertinoIcons.settings), label: 'Settings'),
             ]),
         tabBuilder: (context, index) {
-          List<String> getTitleText = ['Calls', 'Chats', 'Settings'];
           late final CupertinoTabView returnValue;
 
           switch (index) {

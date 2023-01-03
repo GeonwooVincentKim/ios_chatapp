@@ -4,9 +4,8 @@ import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
 
 class CupertinoChat extends StatefulWidget {
-  const CupertinoChat(
-      {super.key,
-      required});
+  final String textLocation;
+  const CupertinoChat({super.key, required this.textLocation});
 
   @override
   State<CupertinoChat> createState() => _CupertinoChatState();
@@ -75,8 +74,9 @@ class _CupertinoChatState extends State<CupertinoChat> {
       // ),
       child: CustomScrollView(
         slivers: [
-          const CupertinoSliverNavigationBar(
-            largeTitle: Text('Friends')
+          CupertinoSliverNavigationBar(
+            // largeTitle: Text('Friends')
+            largeTitle: Text(widget.textLocation)
           ),
           // CupertinoSliverNavigationBar(
           //   backgroundColor: CupertinoColors.darkBackgroundGray,
