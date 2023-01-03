@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
-import 'package:ios_chatapp/feature/app_screens/second_tab_page.dart';
+import 'package:ios_chatapp/feature_android/app_screens/first_tab_page.dart';
+import 'package:ios_chatapp/feature_android/app_screens/second_tab_page.dart';
 
 class PrintTitle extends StatelessWidget {
   final dynamic textLocation;
