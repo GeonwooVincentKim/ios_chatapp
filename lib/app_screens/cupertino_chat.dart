@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
