@@ -3,12 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:ios_chatapp/feature/app_screens/first_tab_page.dart';
-import 'package:ios_chatapp/feature/app_screens/second_tab_page.dart';
 import 'package:ios_chatapp/feature/utils.dart';
 import 'package:ios_chatapp/feature/widgets/print_title.dart';
-import 'package:ios_chatapp/model/users.dart';
-import 'package:ios_chatapp/provider/user_provider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

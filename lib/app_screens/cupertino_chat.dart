@@ -1,12 +1,7 @@
-import 'dart:async';
-
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
-import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
-import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_navi_bar.dart';
 
 class CupertinoChat extends StatefulWidget {
   const CupertinoChat(
