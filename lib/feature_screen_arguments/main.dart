@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         if (pathElements[0] != '') return null;
 
         // Check pathElements has routeName
-        if (!(pathElements.contains(PassArgumentsScreen.routeName))) {
+        if ((pathElements.contains('passArguments'))) {
           // Cast the arguments to the correct type: ScreenArguments.
           final ScreenArguments? args = settings.arguments as ScreenArguments?;
           
