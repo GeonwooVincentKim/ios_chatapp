@@ -27,4 +27,4 @@ const double defaultPadding = 20;
 const double generalBorder = 10;
 
 // Page Title Area
-const List<String> getTitleText = ['Calls', 'Friends', 'Settings'];
+const List<String> getTitleText = ['Calls', 'Friends', 'Settings', 'Not Found'];

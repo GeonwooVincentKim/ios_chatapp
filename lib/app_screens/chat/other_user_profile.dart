@@ -6,8 +6,6 @@ import 'package:ios_chatapp/shared/style.dart';
 import 'package:provider/provider.dart';
 
 class OtherUserProfile extends StatefulWidget {
-  static const routeName = '/profile';
-
   final String userId;
   // ignore: use_key_in_widget_constructors
   const OtherUserProfile({super.key, required this.userId});
@@ -78,7 +76,7 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.4,
           child: Image.asset(
-            "",
+            "assets/image/user/sample_user.png",
             // userList.backgroundImage,
             fit: BoxFit.fill
           ) 
@@ -93,8 +91,15 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
         crossAxisAlignment: CrossAxisAlignment.center,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
-          const Text(
-            'Test',
+          TextButton(
+            onPressed: () { 
+              Navigator.of(context).pop();
+            },
+            child: const Text('Go back')
+          ),
+          Text(
+            // 'Test',
+            selectedUser!.name,
             // userList.userName,
             style: TextStyle(
               fontWeight: FontWeight.bold,

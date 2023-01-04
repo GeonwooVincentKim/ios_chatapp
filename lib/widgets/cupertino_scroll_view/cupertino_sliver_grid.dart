@@ -8,6 +8,7 @@ class CupertinoSliverGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Click');
     return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 1,

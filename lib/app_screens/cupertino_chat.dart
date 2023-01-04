@@ -54,6 +54,7 @@ class _CupertinoChatState extends State<CupertinoChat> {
 
   @override
   Widget build(BuildContext context) {
+    print('Click');
     return CupertinoPageScaffold(
       // navigationBar: const CupertinoNavigationBar(
       //   middle: Text('Friends', style: TextStyle(color: Colors.black)),
@@ -99,22 +100,22 @@ class _CupertinoChatState extends State<CupertinoChat> {
           //   previousPageTitle: "Back",
           // ),
           // CupertinoSliverNaviBar(textLocation: widget.textLocation),
-          SliverToBoxAdapter(
-            child: FractionallySizedBox(
-              widthFactor: 0.9,
-              child: ClipRect(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: CupertinoSearchTextField(
-                    controller: _controller,
-                    onChanged: (value) => _updateUserList(value),
-                    onSubmitted: (value) => _updateUserList(value),
-                    onSuffixTap: () => _updateUserList(''),
-                  )
-                )
-              )
-            )
-          ),
+          // SliverToBoxAdapter(
+          //   child: FractionallySizedBox(
+          //     widthFactor: 0.9,
+          //     child: ClipRect(
+          //       child: Padding(
+          //         padding: const EdgeInsets.only(top: 16),
+          //         child: CupertinoSearchTextField(
+          //           controller: _controller,
+          //           onChanged: (value) => _updateUserList(value),
+          //           onSubmitted: (value) => _updateUserList(value),
+          //           onSuffixTap: () => _updateUserList(''),
+          //         )
+          //       )
+          //     )
+          //   )
+          // ),
           CupertinoSliverGrid(userList: userList),
         ],
       )
