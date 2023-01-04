@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ios_chatapp/feature_screen_arguments/app_screens/home.dart';
+import 'package:ios_chatapp/feature_screen_arguments/app_screens/pass_arguments.dart';
+import 'package:ios_chatapp/feature_screen_arguments/model/screen_arguments.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,141 +14,26 @@ class MyApp extends StatelessWidget {
       // Screen.
       onGenerateRoute: (settings) {
         // If you push the PassArguments route
-        if (settings.name == PassArgumentsScreen.routeName) {
+        final List<String> pathElements = settings.name!.split("/");
+        print(pathElements); // [, passArguments]
+        print(pathElements.length); // 2
+        print(pathElements[1]); // passArguments
+
+        // if (pathElements[0] != '') return null;
+        if (pathElements[0] != '') return null;
+
+        // Check pathElements has routeName
+        if (!(pathElements.contains(PassArgumentsScreen.routeName))) {
           // Cast the arguments to the correct type: ScreenArguments.
           final ScreenArguments? args = settings.arguments as ScreenArguments?;
-
+          
           // Then, extract the required data from the arguments and
           // pass the data to the correct screen.
-          return MaterialPageRoute(
-            builder: (context) {
-              return PassArgumentsScreen(
-                title: args!.title,
-                message: args.message,
-              );
-            },
-          );
+          return MaterialPageRoute(builder: (context) => PassArgumentsScreen(title: args!.title, message: args.message));
         }
       },
       title: 'Navigation with Arguments',
       home: HomeScreen(),
     );
   }
-}
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Screen'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // A button that navigates to a named route that. The named route
-            // extracts the arguments by itself.
-            ElevatedButton(
-              child: const Text("Navigate to screen that extracts arguments"),
-              onPressed: () {
-                // When the user taps the button, navigate to the specific route
-                // and provide the arguments as part of the RouteSettings.
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ExtractArgumentsScreen(),
-                    // Pass the arguments as part of the RouteSettings. The
-                    // ExtractArgumentScreen reads the arguments from these
-                    // settings.
-                    settings: RouteSettings(
-                      arguments: ScreenArguments(
-                        'Extract Arguments Screen',
-                        'This message is extracted in the build method.',
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-            // A button that navigates to a named route. For this route, extract
-            // the arguments in the onGenerateRoute function and pass them
-            // to the screen.
-            ElevatedButton(
-              child: const Text("Navigate to a named that accepts arguments"),
-              onPressed: () {
-                // When the user taps the button, navigate to a named route
-                // and provide the arguments as an optional parameter.
-                Navigator.pushNamed(
-                  context,
-                  PassArgumentsScreen.routeName,
-                  arguments: ScreenArguments(
-                    'Accept Arguments Screen',
-                    'This message is extracted in the onGenerateRoute function.',
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// A Widget that extracts the necessary arguments from the ModalRoute.
-class ExtractArgumentsScreen extends StatelessWidget {
-  static const routeName = '/extractArguments';
-
-  @override
-  Widget build(BuildContext context) {
-    // Extract the arguments from the current ModalRoute settings and cast
-    // them as ScreenArguments.
-    final ScreenArguments? args = ModalRoute.of(context)?.settings.arguments as ScreenArguments?;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(args!.title),
-      ),
-      body: Center(
-        child: Text(args.message),
-      ),
-    );
-  }
-}
-
-// A Widget that accepts the necessary arguments via the constructor.
-class PassArgumentsScreen extends StatelessWidget {
-  static const routeName = '/passArguments';
-
-  final String title;
-  final String message;
-
-  // This Widget accepts the arguments as constructor parameters. It does not
-  // extract the arguments from the ModalRoute.
-  //
-  // The arguments are extracted by the onGenerateRoute function provided to the
-  // MaterialApp widget.
-  const PassArgumentsScreen({super.key, required this.title, required this.message});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(message),
-      ),
-    );
-  }
-}
-
-// You can pass any object to the arguments parameter. In this example,
-// create a class that contains both a customizable title and message.
-class ScreenArguments {
-  final String title;
-  final String message;
-
-  ScreenArguments(this.title, this.message);
 }
