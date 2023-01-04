@@ -16,6 +16,7 @@ class PassArgumentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Current RouteName (PassArguments)) -> ${routeName}");
     return Scaffold(
       appBar: AppBar(
         title: Text(title),

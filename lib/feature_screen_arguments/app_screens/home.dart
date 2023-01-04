@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 // When the user taps the button, navigate to the specific route
                 // and provide the arguments as part of the RouteSettings.
+                print('Home -> ExtractArguments');
                 Navigator.push(
                   context,
                   MaterialPageRoute(
