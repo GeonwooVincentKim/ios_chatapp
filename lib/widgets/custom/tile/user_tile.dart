@@ -1,31 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_chatapp/model/users.dart';
+import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:provider/provider.dart';
 
-class UserTile extends StatefulWidget {
+class UserTile extends StatelessWidget {
   final User user;
 
   const UserTile({super.key, required this.user});
 
   @override
-  State<UserTile> createState() => _UserTileState();
-}
-
-class _UserTileState extends State<UserTile> {
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: GestureDetector(
         onTap:() {
-          Navigator.pushNamed(context, "/profile/${widget.user.userId}");
+          Provider.of<UserProvider>(context, listen: false).selectUser(user);
+          Navigator.pushNamed(context, "/profile/${user.userId}");
         },
         child: Container(
           margin: const EdgeInsets.all(defaultPadding - 10),
           child: Row(
             children: [
               CircleAvatar(
-                backgroundColor: widget.user.color, 
+                backgroundColor: user.color, 
                 radius: 30,
                 child: ClipOval(
                   child: Image.asset(
@@ -39,7 +37,7 @@ class _UserTileState extends State<UserTile> {
                 crossAxisAlignment: CrossAxisAlignment.start, 
                 children: [
                   Text(
-                    widget.user.name,
+                    user.name,
                     style: const TextStyle(color: CupertinoColors.black, fontSize: 25)
                   )
                 ]
