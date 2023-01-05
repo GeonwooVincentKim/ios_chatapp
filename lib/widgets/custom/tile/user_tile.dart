@@ -18,9 +18,7 @@ class UserTile extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap:() {
         Provider.of<UserProvider>(context, listen: false).selectUser(user);
-        Navigator.of(context).push(
-          CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: user.userId))
-        );
+        Navigator.of(context).push(CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: user.userId)));
         print("Context -> ${user.userId}");
         // Navigator.pushNamed(context, "/${user.userId}");
         // Navigator.pushNamed(context, "/profile/${user.userId}");
