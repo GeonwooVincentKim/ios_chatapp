@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
             "/chat": (context) => CupertinoChat(textLocation: getTitleText[1]),
             "/settings": (context) => CupertinoSettingsPage(textLocation: getTitleText[2]),
             // '/profile': (context) => OtherUserProfile(userId: '1')
+            // Better to delete OtherUserProfile.routeName Code not to duplicate the code
             OtherUserProfile.routeName: (context) => OtherUserProfile(userId: '1')
           },
           onGenerateRoute: (settings) {
