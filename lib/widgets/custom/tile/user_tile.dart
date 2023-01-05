@@ -14,16 +14,11 @@ class UserTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('CheckCheck');
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap:() {
-        Provider.of<UserProvider>(context, listen: false).selectUser(user);
-        Navigator.of(context).push(
-          CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: user.userId))
-        );
-        print("Context -> ${user.userId}");
-        // Navigator.pushNamed(context, "/${user.userId}");
-        // Navigator.pushNamed(context, "/profile/${user.userId}");
+    return ElevatedButton(
+      onPressed: () {
+        print("Before go");
+        Navigator.of(context).pushNamed("/profile");
+        print("After : ${context}");
       },
       child: Container(
         margin: const EdgeInsets.all(defaultPadding - 10),
@@ -52,7 +47,48 @@ class UserTile extends StatelessWidget {
             )
           ]
         )
-      )
+      ),
     );
+    // return GestureDetector(
+    //   behavior: HitTestBehavior.opaque,
+    //   onTap:() {
+    //     Provider.of<UserProvider>(context, listen: false).selectUser(user);
+    //     // Navigator.of(context).push(
+    //     //   CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: user.userId))
+    //     // );
+    //     Navigator.pushNamed(context, "/profile");
+    //     print("Context -> ${user.userId}");
+    //     // Navigator.pushNamed(context, "/${user.userId}");
+    //     // Navigator.pushNamed(context, "/profile");
+    //   },
+    //   child: Container(
+    //     margin: const EdgeInsets.all(defaultPadding - 10),
+    //     width: MediaQuery.of(context).size.width,
+    //     child: Row(
+    //       children: [
+    //         CircleAvatar(
+    //           backgroundColor: user.color, 
+    //           radius: 30,
+    //           child: ClipOval(
+    //             child: Image.asset(
+    //               "assets/image/user/sample_user.png",
+    //               fit: BoxFit.cover
+    //             )
+    //           )
+    //         ),
+    //         const SizedBox(width: 20),
+    //         Column(
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: [
+    //             Text(
+    //               user.name,
+    //               style: const TextStyle(color: CupertinoColors.black, fontSize: 25)
+    //             )
+    //           ]
+    //         )
+    //       ]
+    //     )
+    //   )
+    // );
   }
 }

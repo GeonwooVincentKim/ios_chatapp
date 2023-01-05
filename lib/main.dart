@@ -6,6 +6,7 @@ import 'package:ios_chatapp/app_screens/page_not_found.dart';
 import 'package:ios_chatapp/body.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
+import 'package:ios_chatapp/shared/arguments/other_user_profile_arguments.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/widgets/custom/tile/user_tile.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -29,42 +30,33 @@ class MyApp extends StatelessWidget {
           // ignore: prefer_const_constructors
           theme: CupertinoThemeData(brightness: Brightness.light),
           // home: Body(),
-          initialRoute: '/',
+          initialRoute: "/",
           routes: {
-            '/': (context) => const Body(),
-            '/chat': (context) => CupertinoChat(textLocation: getTitleText[1]),
-            '/settings': (context) => CupertinoSettingsPage(textLocation: getTitleText[2]),
+            "/": (context) => const Body(),
+            "/chat": (context) => CupertinoChat(textLocation: getTitleText[1]),
+            "/settings": (context) => CupertinoSettingsPage(textLocation: getTitleText[2]),
+            // '/profile': (context) => OtherUserProfile(userId: '1')
+            OtherUserProfile.routeName: (context) => OtherUserProfile(userId: '1')
           },
-          onGenerateRoute: (RouteSettings settings) {
+          onGenerateRoute: (settings) {
             print(settings.name);
             
             final List<String> pathElements = settings.name!.split("/");
             print(pathElements);
-            // print(pathElements);
             // print(pathElements.length);
             // print(pathElements[1]);
 
             if (pathElements[0] != '') return null;
-            if (pathElements[1] == '') {
-              final User? args = settings.arguments as User?;
-              // String userId = pathElements[2];
+            if ((pathElements.contains('profile'))) {
+              final OtherUserProfileArguments? args = settings.arguments as OtherUserProfileArguments?;
+              print(args!.userId);
+              String userId = pathElements[2];
 
-              return CupertinoPageRoute(builder: ((context) => OtherUserProfile(userId: args!.userId)));
+              return CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: args.userId));
+              // return CupertinoPageRoute(builder: ((context) => OtherUserProfile(userId: args!.userId)));
             }
-            // if (!(pathElements.contains('profile'))) {
-            //   final User? args = settings.arguments as User?;
-            //   return CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: args!.userId));
-            // }
-            // final List<String> pathElements = settings.name!.split("/");
-            // if (pathElements[0] != '') return null;
-            // if (pathElements.contains('profile')) {
-            //   final User? args = settings.arguments as User?;
 
-            //   String profileId = pathElements[2];
-            //   print('Profile Id -> ${args!.userId}');
-            //   return CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: profileId));
-            //   // return CupertinoPageRoute(builder: (context) => UserTile(user: args));
-            // }
+            return null;
           },
           onUnknownRoute: (settings) {
             return CupertinoPageRoute(builder: (context) => PageNotFound(textLocation: getTitleText[3],));

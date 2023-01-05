@@ -1,16 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_chatapp/feature_screen_arguments/app_screens/extract_arguments.dart';
 import 'package:ios_chatapp/feature_screen_arguments/app_screens/pass_arguments.dart';
 import 'package:ios_chatapp/feature_screen_arguments/model/screen_arguments.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Screen'),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Home Screen'),
       ),
-      body: Center(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -49,11 +52,12 @@ class HomeScreen extends StatelessWidget {
                 // and provide the arguments as an optional parameter.
                 Navigator.pushNamed(
                   context,
-                  PassArgumentsScreen.routeName,
-                  arguments: ScreenArguments(
-                    'Accept Arguments Screen',
-                    'This message is extracted in the onGenerateRoute function.',
-                  ),
+                  "/passArguments"
+                  // PassArgumentsScreen.routeName,
+                  // arguments: ScreenArguments(
+                  //   'Accept Arguments Screen',
+                  //   'This message is extracted in the onGenerateRoute function.',
+                  // ),
                 );
               },
             ),

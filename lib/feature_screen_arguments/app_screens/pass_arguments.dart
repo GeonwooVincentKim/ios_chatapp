@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // A Widget that accepts the necessary arguments via the constructor.
@@ -17,13 +18,19 @@ class PassArgumentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("Current RouteName (PassArguments)) -> ${routeName}");
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
+    return CupertinoPageScaffold(
+      // appBar: AppBar(
+      //   title: Text(title),
+      // ),
+      // body: Center(
+      //   child: Text(message),
+      // ),
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(title)
       ),
-      body: Center(
-        child: Text(message),
-      ),
+      child: Center(
+        child: Text(message)
+      )
     );
   }
 }
