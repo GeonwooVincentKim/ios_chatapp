@@ -51,9 +51,6 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
       // )
     return Consumer<UserProvider>(
       builder: (context, userProfile, _) => CupertinoPageScaffold(
-        navigationBar: const CupertinoNavigationBar(
-          middle: Text('UserProfile')
-        ),
         child: Card(
           margin: const EdgeInsets.only(bottom: defaultPadding),
           color: deepPurpleAccent,

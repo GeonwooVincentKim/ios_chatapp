@@ -15,9 +15,10 @@ class UserTile extends StatelessWidget {
   Widget build(BuildContext context) {
     print('CheckCheck');
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap:() {
         Provider.of<UserProvider>(context, listen: false).selectUser(findUser);
-        Navigator.pushNamed(context, "/user/${findUser.userId}");
+        Navigator.pushNamed(context, "/profile/${findUser.userId}");
       },
       child: Container(
         margin: const EdgeInsets.all(defaultPadding - 10),

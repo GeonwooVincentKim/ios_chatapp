@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             print("Name -> ${settings.name}");
 
             if (pathElements[0] != '') return null;
-            if (pathElements[1] == 'user') {
+            if (pathElements[1] == 'profile') {
               String userId = pathElements[2];
               return CupertinoPageRoute(builder: ((context) => OtherUserProfile(userId: userId)), settings: settings);
             }

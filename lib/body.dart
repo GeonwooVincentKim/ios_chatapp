@@ -51,15 +51,11 @@ class _BodyState extends State<Body> {
         tabBuilder: (context, index) {
           switch (index) {
             case 0: return PrintValue(textLocation: getTitleText[0], index: index);
-            // ignore: prefer_const_constructors
             case 1: return PrintValue(textLocation: getTitleText[1], index: index);
-            // case 1: return PrintValue(textLocation: getTitleText[1], index: index);
             case 2: return PrintValue(textLocation: getTitleText[2], index: index);
           }
 
           return PrintValue(textLocation: getTitleText[0], index: 0);
-          // return PrintValue(
-          //     textLocation: getTitleText[0], index: 0);
         });
   }
 
