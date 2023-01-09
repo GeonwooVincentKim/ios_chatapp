@@ -43,20 +43,6 @@ class MyApp extends StatelessWidget {
               String userId = pathElements[2];
               return CupertinoPageRoute(builder: ((context) => OtherUserProfile(userId: userId)), settings: settings);
             }
-            // if (!(pathElements.contains('profile'))) {
-            //   final User? args = settings.arguments as User?;
-            //   return CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: args!.userId));
-            // }
-            // final List<String> pathElements = settings.name!.split("/");
-            // if (pathElements[0] != '') return null;
-            // if (pathElements.contains('profile')) {
-            //   final User? args = settings.arguments as User?;
-
-            //   String profileId = pathElements[2];
-            //   print('Profile Id -> ${args!.userId}');
-            //   return CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: profileId));
-            //   // return CupertinoPageRoute(builder: (context) => UserTile(user: args));
-            // }
 
             return null;
           },
