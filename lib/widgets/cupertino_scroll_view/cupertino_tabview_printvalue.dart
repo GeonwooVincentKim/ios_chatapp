@@ -15,23 +15,19 @@ class PrintValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabView(
-      builder: (context) {
-        if (index == 0) {
-          return CupertinoPageScaffold(
-            navigationBar: CupertinoNavigationBar(middle: Text(textLocation)),
-            child: Center(
-              child: Text(textLocation),
-            ),
-          );
-        } else if (index == 1) {
-          return CupertinoChat(textLocation: textLocation);
-        } else if (index == 2) {
-          return CupertinoSettingsPage(textLocation: textLocation);
-        } else {
-          return PageNotFound(textLocation: textLocation);
-        }
-      },
-    );
+    if (index == 0) {
+      return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(middle: Text(textLocation)),
+        child: Center(
+          child: Text(textLocation),
+        ),
+      );
+    } else if (index == 1) {
+      return CupertinoChat(textLocation: textLocation);
+    } else if (index == 2) {
+      return CupertinoSettingsPage(textLocation: textLocation);
+    } else {
+      return PageNotFound(textLocation: textLocation);
+    }
   }
 }

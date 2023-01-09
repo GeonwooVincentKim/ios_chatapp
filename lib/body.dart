@@ -22,12 +22,10 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   late StreamSubscription subscription; 
   // List<User> userList = List.empty(growable: true);
-  List<User> userList = [];
 
   @override
   void initState() {
     super.initState();
-
     subscription = Connectivity().onConnectivityChanged.listen(showConnectivitySnackBar);
   }
 
@@ -51,11 +49,11 @@ class _BodyState extends State<Body> {
                   icon: Icon(CupertinoIcons.settings), label: 'Settings'),
             ]),
         tabBuilder: (context, index) {
-          late final CupertinoTabView returnValue;
-
           switch (index) {
             case 0: return PrintValue(textLocation: getTitleText[0], index: index);
+            // ignore: prefer_const_constructors
             case 1: return PrintValue(textLocation: getTitleText[1], index: index);
+            // case 1: return PrintValue(textLocation: getTitleText[1], index: index);
             case 2: return PrintValue(textLocation: getTitleText[2], index: index);
           }
 

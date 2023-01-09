@@ -32,7 +32,7 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
   
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    // return CupertinoPageScaffold(
       // child: GestureDetector(
       //   onTap: () {
       //     // Navigator.pushNamed(context, "/chat/${userList.userId}");
@@ -49,21 +49,27 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
       //     )
       //   )
       // )
-      child: Card(
-        margin: const EdgeInsets.only(bottom: defaultPadding),
-        color: deepPurpleAccent,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            // Show Other User Background Image
-            _buildUserBackgroundImage(),
+    return Consumer<UserProvider>(
+      builder: (context, userProfile, _) => CupertinoPageScaffold(
+        navigationBar: const CupertinoNavigationBar(
+          middle: Text('UserProfile')
+        ),
+        child: Card(
+          margin: const EdgeInsets.only(bottom: defaultPadding),
+          color: deepPurpleAccent,
+          child: Column(
+            // clipBehavior: Clip.none,
+            children: [
+              // Show Other User Background Image
+              _buildUserBackgroundImage(),
 
-            // Show Other User Profile Image and Name
-            _buildUserCardText()
+              // Show Other User Profile Image and Name
+              _buildUserCardText()
 
-            // Show Chat Button
-          ],
-        )
+              // Show Chat Button
+            ],
+          )
+        )  
       )
     );
   }
@@ -86,28 +92,26 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
   }
 
   Widget _buildUserCardText() {
-    return Positioned(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          TextButton(
-            onPressed: () { 
-              Navigator.of(context).pop();
-            },
-            child: const Text('Go back')
-          ),
-          Text(
-            // 'Test',
-            selectedUser!.name,
-            // userList.userName,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white
-            )
-          ),
-        ],
-      )
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      // ignore: prefer_const_literals_to_create_immutables
+      children: [
+        TextButton(
+          onPressed: () { 
+            Navigator.of(context).pop();
+          },
+          child: const Text('Go back')
+        ),
+        Text(
+          // 'Test',
+          selectedUser!.name,
+          // userList.userName,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white
+          )
+        ),
+      ],
     );
   }
 }

@@ -7,21 +7,17 @@ import 'package:ios_chatapp/shared/style.dart';
 import 'package:provider/provider.dart';
 
 class UserTile extends StatelessWidget {
-  final User user;
+  final User findUser;
 
-  const UserTile({super.key, required this.user});
+  const UserTile({super.key, required this.findUser});
 
   @override
   Widget build(BuildContext context) {
     print('CheckCheck');
     return GestureDetector(
-      behavior: HitTestBehavior.opaque,
       onTap:() {
-        Provider.of<UserProvider>(context, listen: false).selectUser(user);
-        Navigator.of(context).push(CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: user.userId)));
-        print("Context -> ${user.userId}");
-        // Navigator.pushNamed(context, "/${user.userId}");
-        // Navigator.pushNamed(context, "/profile/${user.userId}");
+        Provider.of<UserProvider>(context, listen: false).selectUser(findUser);
+        Navigator.pushNamed(context, "/user/${findUser.userId}");
       },
       child: Container(
         margin: const EdgeInsets.all(defaultPadding - 10),
@@ -29,7 +25,7 @@ class UserTile extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              backgroundColor: user.color, 
+              backgroundColor: findUser.color, 
               radius: 30,
               child: ClipOval(
                 child: Image.asset(
@@ -43,7 +39,7 @@ class UserTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  user.name,
+                  findUser.name,
                   style: const TextStyle(color: CupertinoColors.black, fontSize: 25)
                 )
               ]

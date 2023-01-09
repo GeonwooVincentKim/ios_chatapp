@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
-import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
+// import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_grid.dart';
+import 'package:ios_chatapp/widgets/custom/tile/user_tile.dart';
 
 class CupertinoChat extends StatefulWidget {
   final String textLocation;
@@ -116,7 +117,14 @@ class _CupertinoChatState extends State<CupertinoChat> {
           //     )
           //   )
           // ),
-          CupertinoSliverGrid(userList: userList),
+          SliverGrid(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              childAspectRatio: 5,
+            ),
+            delegate: SliverChildBuilderDelegate((context, index) => UserTile(findUser: userList[index])),
+          )
+          // CupertinoSliverGrid(userList: userList),
         ],
       )
     );

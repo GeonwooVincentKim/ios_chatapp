@@ -22,34 +22,26 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => UserProvider())
       ],
-      child: OverlaySupport(
+      child: OverlaySupport.global(
         // ignore: prefer_const_constructors
         child: CupertinoApp(
           debugShowCheckedModeBanner: false,
           // ignore: prefer_const_constructors
           theme: CupertinoThemeData(brightness: Brightness.light),
           // home: Body(),
-          initialRoute: '/',
+          initialRoute: "/",
           routes: {
-            '/': (context) => const Body(),
-            '/chat': (context) => CupertinoChat(textLocation: getTitleText[1]),
-            '/settings': (context) => CupertinoSettingsPage(textLocation: getTitleText[2]),
+            "/": (context) => Body(),
           },
-          onGenerateRoute: (RouteSettings settings) {
-            print(settings.name);
-            
+          onGenerateRoute: (settings) {
             final List<String> pathElements = settings.name!.split("/");
-            print(pathElements);
-            // print(pathElements);
-            // print(pathElements.length);
-            // print(pathElements[1]);
+            print("Name -> ${settings.name}");
 
             if (pathElements[0] != '') return null;
-            if (pathElements[1] == '') {
-              final User? args = settings.arguments as User?;
-              // String userId = pathElements[2];
-
-              return CupertinoPageRoute(builder: ((context) => OtherUserProfile(userId: args!.userId)));
+            if (pathElements[1] == 'user') {
+              // final User? args = settings.arguments as User?;
+              String userId = pathElements[2];
+              return CupertinoPageRoute(builder: ((context) => OtherUserProfile(userId: userId)), settings: settings);
             }
             // if (!(pathElements.contains('profile'))) {
             //   final User? args = settings.arguments as User?;
@@ -65,9 +57,8 @@ class MyApp extends StatelessWidget {
             //   return CupertinoPageRoute(builder: (context) => OtherUserProfile(userId: profileId));
             //   // return CupertinoPageRoute(builder: (context) => UserTile(user: args));
             // }
-          },
-          onUnknownRoute: (settings) {
-            return CupertinoPageRoute(builder: (context) => PageNotFound(textLocation: getTitleText[3],));
+
+            return null;
           },
         )
       )

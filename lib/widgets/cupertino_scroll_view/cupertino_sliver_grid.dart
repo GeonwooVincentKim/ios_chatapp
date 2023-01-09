@@ -16,7 +16,7 @@ class CupertinoSliverGrid extends StatelessWidget {
       ),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          return UserTile(user: userList[index]);
+          return UserTile(findUser: userList[index]);
         },
         childCount: userList.length,
       ),
