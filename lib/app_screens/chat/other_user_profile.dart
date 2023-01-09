@@ -20,8 +20,7 @@ class OtherUserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final OtherUserProfileArguments? args = ModalRoute.of(context)?.settings.arguments as OtherUserProfileArguments?;
-    return CupertinoPageScaffold(
-      
+    // return CupertinoPageScaffold(
       // child: GestureDetector(
       //   onTap: () {
       //     // Navigator.pushNamed(context, "/chat/${userList.userId}");
@@ -38,103 +37,69 @@ class OtherUserProfile extends StatelessWidget {
       //     )
       //   )
       // )
-      child: Card(
-        margin: const EdgeInsets.only(bottom: defaultPadding),
-        color: deepPurpleAccent,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            // Show Other User Background Image
-            // _buildUserBackgroundImage(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(generalBorder),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: Image.asset(
-                    "assets/image/user/sample_user.png",
-                    // userList.backgroundImage,
-                    fit: BoxFit.fill
-                  ) 
-                )
-              ),
-            ),
+    return Consumer<UserProvider>(
+      builder: (context, userProfile, _) => CupertinoPageScaffold(
+        navigationBar: const CupertinoNavigationBar(
+          middle: Text('UserProfile')
+        ),
+        child: Card(
+          margin: const EdgeInsets.only(bottom: defaultPadding),
+          color: deepPurpleAccent,
+          child: Column(
+            // clipBehavior: Clip.none,
+            children: [
+              // Show Other User Background Image
+              _buildUserBackgroundImage(),
 
-            // Show Other User Profile Image and Name
-            // _buildUserCardText()
-            Positioned(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  TextButton(
-                    onPressed: () { 
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Go back')
-                  ),
-                  Text(
-                    // 'Test',
-                    userId,
-                    // selectedUser!.name,
-                    // userList.userName,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white
-                    )
-                  ),
-                ],
-              )
-            )
+              // Show Other User Profile Image and Name
+              _buildUserCardText()
 
-            // Show Chat Button
-          ],
-        )
+              // Show Chat Button
+            ],
+          )
+        )  
       )
     );
   }
 
-  // Widget _buildUserBackgroundImage() {
-  //   return SizedBox(
-  //     width: MediaQuery.of(context).size.width,
-  //     child: ClipRRect(
-  //       borderRadius: BorderRadius.circular(generalBorder),
-  //       child: SizedBox(
-  //         height: MediaQuery.of(context).size.height * 0.4,
-  //         child: Image.asset(
-  //           "assets/image/user/sample_user.png",
-  //           // userList.backgroundImage,
-  //           fit: BoxFit.fill
-  //         ) 
-  //       )
-  //     ),
-  //   );
-  // }
+  Widget _buildUserBackgroundImage() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(generalBorder),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.4,
+          child: Image.asset(
+            "assets/image/user/sample_user.png",
+            // userList.backgroundImage,
+            fit: BoxFit.fill
+          ) 
+        )
+      ),
+    );
+  }
 
-  // Widget _buildUserCardText() {
-  //   return Positioned(
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.center,
-  //       // ignore: prefer_const_literals_to_create_immutables
-  //       children: [
-  //         TextButton(
-  //           onPressed: () { 
-  //             Navigator.of(context).pop();
-  //           },
-  //           child: const Text('Go back')
-  //         ),
-  //         Text(
-  //           // 'Test',
-  //           selectedUser!.name,
-  //           // userList.userName,
-  //           style: TextStyle(
-  //             fontWeight: FontWeight.bold,
-  //             color: Colors.white
-  //           )
-  //         ),
-  //       ],
-  //     )
-  //   );
-  // }
+  Widget _buildUserCardText() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      // ignore: prefer_const_literals_to_create_immutables
+      children: [
+        TextButton(
+          onPressed: () { 
+            Navigator.of(context).pop();
+          },
+          child: const Text('Go back')
+        ),
+        Text(
+          // 'Test',
+          selectedUser!.name,
+          // userList.userName,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white
+          )
+        ),
+      ],
+    );
+  }
 }
