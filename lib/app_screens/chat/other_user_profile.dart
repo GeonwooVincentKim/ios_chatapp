@@ -2,36 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
+import 'package:ios_chatapp/shared/arguments/other_user_profile_arguments.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:provider/provider.dart';
 
-class OtherUserProfile extends StatefulWidget {
+class OtherUserProfile extends StatelessWidget {
+  static const routeName = "/profile";
+
   final String userId;
   // ignore: use_key_in_widget_constructors
-  const OtherUserProfile({super.key, required this.userId});
+  OtherUserProfile({super.key, required this.userId});
+  // OtherUserProfile({super.key});
 
-  @override
-  State<OtherUserProfile> createState() => _OtherUserProfileState();
-}
-
-class _OtherUserProfileState extends State<OtherUserProfile> {
   late User? selectedUser;
 
-  @override
-  void initState() {
-    setState(() {
-      selectedUser = Provider.of<UserProvider>(context, listen: false).getSingleUser;
-    });
-
-    if (selectedUser == null) {
-      final List<User> userList = Provider.of<UserProvider>(context, listen: false).filteredUsers.toList();
-      selectedUser = userList.firstWhere((user) => user.userId == widget.userId);
-    }
-    super.initState();
-  }
-  
+  // @override
   @override
   Widget build(BuildContext context) {
+    // final OtherUserProfileArguments? args = ModalRoute.of(context)?.settings.arguments as OtherUserProfileArguments?;
     // return CupertinoPageScaffold(
       // child: GestureDetector(
       //   onTap: () {

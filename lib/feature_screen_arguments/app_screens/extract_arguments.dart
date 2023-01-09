@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_chatapp/feature_screen_arguments/model/screen_arguments.dart';
 
@@ -12,13 +13,19 @@ class ExtractArgumentsScreen extends StatelessWidget {
     final ScreenArguments? args = ModalRoute.of(context)?.settings.arguments as ScreenArguments?;
     print("Current Args (ExtractArguments) -> ${args}");
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(args!.title),
+    return CupertinoPageScaffold(
+      // appBar: AppBar(
+      //   title: Text(args!.title),
+      // ),
+      // body: Center(
+      //   child: Text(args.message),
+      // ),
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(args!.title)
       ),
-      body: Center(
-        child: Text(args.message),
-      ),
+      child: Center(
+        child: Text(args.message)
+      )
     );
   }
 }

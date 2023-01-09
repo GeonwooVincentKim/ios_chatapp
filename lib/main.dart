@@ -3,6 +3,7 @@ import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
 import 'package:ios_chatapp/body.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
+import 'package:ios_chatapp/shared/arguments/other_user_profile_arguments.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
