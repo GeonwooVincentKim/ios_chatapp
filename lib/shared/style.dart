@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 // Color Area
 const Color greenAccent = Color.fromARGB(255, 105, 240, 174);
@@ -17,8 +17,13 @@ const Color lightBlue = Color.fromARGB(255, 3, 169, 244);
 const Color deepPurpleAccent = Color.fromARGB(255, 124, 77, 255);
 const Color indigoAccent = Color.fromARGB(255, 83, 109, 254);
 
+List<Color?> boxColumnFontColor = [Colors.grey[800], Colors.grey[500]];
+
 // Color with Integer Area
 const int defaultColor = 0x00000000;
+
+// Font Weight Area
+List<FontWeight?> boxColumnFontWeight = [FontWeight.w700, FontWeight.w400];
 
 // Padding Area
 const double defaultPadding = 20;
@@ -28,3 +33,12 @@ const double generalBorder = 10;
 
 // Page Title Area
 const List<String> getTitleText = ['Calls', 'Friends', 'Settings', 'Not Found'];
+
+// ScrollableBar Child Size
+const double scrollableBarChild = 0.3;
+
+// CircleAvatar radius
+const double profileCircleAvatar = 30;
+
+// Font Size
+const List<double> boxColumnFontSize = [36, 16];

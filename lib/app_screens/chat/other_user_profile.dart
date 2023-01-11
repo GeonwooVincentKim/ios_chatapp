@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:ios_chatapp/widgets/column/box_column_text.dart';
 import 'package:provider/provider.dart';
 
 class OtherUserProfile extends StatefulWidget {
@@ -102,43 +103,34 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
         //   // ),
         // )  
         child: Stack(
+          alignment: Alignment.center,
           children: [
-            SizedBox(
-              child: Image.asset("assets/image/background/bg01.jpg", fit: BoxFit.cover),
-            ),
+            _buildProfileBackground(context),
             DraggableScrollableSheet(
-              minChildSize: 0.1,
-              initialChildSize: 0.22,
+              minChildSize: scrollableBarChild,
+              initialChildSize: scrollableBarChild,
               builder:(context, scrollController) {
                 return SingleChildScrollView(
                   physics: const NeverScrollableScrollPhysics(),
+                  // controller: scrollController,
                   child: Container(
-                    constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height),
+                    constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
                     color: Colors.amber,
+                    // padding: const EdgeInsets.only(top: profileCircleAvatar),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          padding: const EdgeInsets.only(left: 32, right: 32, top: 32),
+                          padding: const EdgeInsets.only(top: profileCircleAvatar),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(
-                                height: 100,
-                                width: 100,
-                                child: ClipOval(
-                                  child: Image.asset("assets/image/user/sample_user.png", fit: BoxFit.cover)
-                                )
-                              ),
-                              SizedBox(width: 16,),
                               Expanded(
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Vincent Geonwoo", style: GoogleFonts.roboto(color: Colors.grey[800], fontSize: 36, fontWeight: FontWeight.w700)),
-                                    Text("Vincent Geonwoo", style: GoogleFonts.roboto(color: Colors.grey[500], fontSize: 16, fontWeight: FontWeight.w400))
-                                    // Text("John Doe", style: TextStyle(color: Colors.grey[800], fontFamily: "Roboto"))
+                                    BoxColumnText(innerText: selectedUser!.name, checkTextIsTitle: true),
+                                    BoxColumnText(innerText: "Oh Happy Day~", checkTextIsTitle: false),
                                   ],
                                 ),
                               )
@@ -150,8 +142,29 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
                   )
                 );
               },
-            )
+            ),
+            _buildProfileImage(context)
           ],
+        )
+      )
+    );
+  }
+
+  SizedBox _buildProfileBackground(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: Image.asset("assets/image/background/bg01.jpg", fit: BoxFit.cover),
+    );
+  }
+
+  Positioned _buildProfileImage(BuildContext context) {
+    return Positioned(
+      top: MediaQuery.of(context).size.height * 0.5,
+      bottom: MediaQuery.of(context).size.height * 0.12,
+      child: CircleAvatar(
+        radius: profileCircleAvatar,
+        child: ClipOval(
+          child: Image.asset("assets/image/user/sample_user.png", fit: BoxFit.cover)
         )
       )
     );
