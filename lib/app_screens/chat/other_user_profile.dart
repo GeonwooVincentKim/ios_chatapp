@@ -116,27 +116,13 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
                   child: Container(
                     constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
                     color: Colors.amber,
-                    // padding: const EdgeInsets.only(top: profileCircleAvatar),
+                    padding: const EdgeInsets.only(top: profileCircleAvatar),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.only(top: profileCircleAvatar),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    BoxColumnText(innerText: selectedUser!.name, checkTextIsTitle: true),
-                                    BoxColumnText(innerText: "Oh Happy Day~", checkTextIsTitle: false),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        )
+                        BoxColumnText(innerText: selectedUser!.name, checkTextIsTitle: true),
+                        BoxColumnText(innerText: "Oh Happy Day~", checkTextIsTitle: false),
                       ],
                     ),
                   )
