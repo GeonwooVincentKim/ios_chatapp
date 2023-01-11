@@ -54,62 +54,13 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
       // )
     return Consumer<UserProvider>(
       builder: (context, userProfile, _) => CupertinoPageScaffold(
-        // child: Card(
-        //   margin: const EdgeInsets.only(bottom: defaultPadding),
-        //   color: deepPurpleAccent,
-        //   // child: Column(
-        //   //   // clipBehavior: Clip.none,
-        //   //   children: [
-        //   //     // Show Other User Background Image
-        //   //     _buildUserBackgroundImage(),
-
-        //   //     // Show Other User Profile Image and Name
-        //   //     _buildUserCardText()
-
-        //   //     // Show Chat Button
-        //   //   ],
-        //   // )
-        //   // child: Container(
-        //   //   decoration: BoxDecoration(
-        //   //     image: DecorationImage(
-        //   //       image: AssetImage("assets/image/user/sample_user.png"),
-        //   //       fit: BoxFit.fitWidth,
-        //   //       alignment: Alignment.topCenter,
-        //   //     )
-        //   //   ),
-        //   //   child: Container(
-        //   //     child: Column(
-        //   //       crossAxisAlignment: CrossAxisAlignment.center,
-        //   //       // ignore: prefer_const_literals_to_create_immutables
-        //   //       children: [
-        //   //         TextButton(
-        //   //           onPressed: () { 
-        //   //             Navigator.of(context).pop();
-        //   //           },
-        //   //           child: const Text('Go back')
-        //   //         ),
-        //   //         Text(
-        //   //           // 'Test',
-        //   //           selectedUser!.name,
-        //   //           // userList.userName,
-        //   //           style: TextStyle(
-        //   //             fontWeight: FontWeight.bold,
-        //   //             color: Colors.white
-        //   //           )
-        //   //         ),
-        //   //       ],
-        //   //     )
-        //   //   )
-            
-        //   // ),
-        // )  
         child: Stack(
           alignment: Alignment.center,
           children: [
             // Show other User Background Image
             _buildProfileBackground(context),
 
-            // Show other User name and status
+            // Show other User name and status and ChatButton
             CustomDraggableScrollableSheet(selectedUser: selectedUser),
 
             // Show other User Profile picture
