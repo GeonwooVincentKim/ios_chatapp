@@ -5,6 +5,7 @@ import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/widgets/column/box_column_text.dart';
+import 'package:ios_chatapp/widgets/custom/draggable/custom_draggable_scrollable_sheet.dart';
 import 'package:provider/provider.dart';
 
 class OtherUserProfile extends StatefulWidget {
@@ -105,30 +106,13 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
         child: Stack(
           alignment: Alignment.center,
           children: [
+            // Show other User Background Image
             _buildProfileBackground(context),
-            DraggableScrollableSheet(
-              minChildSize: scrollableBarChild,
-              initialChildSize: scrollableBarChild,
-              builder:(context, scrollController) {
-                return SingleChildScrollView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  // controller: scrollController,
-                  child: Container(
-                    constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-                    color: Colors.amber,
-                    padding: const EdgeInsets.only(top: profileCircleAvatar),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        BoxColumnText(innerText: selectedUser!.name, checkTextIsTitle: true),
-                        BoxColumnText(innerText: "Oh Happy Day~", checkTextIsTitle: false),
-                      ],
-                    ),
-                  )
-                );
-              },
-            ),
+
+            // Show other User name and status
+            CustomDraggableScrollableSheet(selectedUser: selectedUser),
+
+            // Show other User Profile picture
             _buildProfileImage(context)
           ],
         )
