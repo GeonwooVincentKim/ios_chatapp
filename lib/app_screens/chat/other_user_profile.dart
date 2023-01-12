@@ -78,24 +78,7 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
     return Positioned(
       top: MediaQuery.of(context).size.height / defaultPadding,
       left: MediaQuery.of(context).size.width / defaultPadding,
-      // child: const CircleAvatar(
-      //   radius: backButtonCircleAvatar,
-      //   backgroundColor: transparentColor,
-      //   foregroundColor: Colors.white70,
-      //   child: ClipOval(
-      //     child: Icon(Icons.arrow_back)
-      //   )
-      // )
       child: ElevatedButton(
-        // style: ElevatedButton.styleFrom(
-        //   shape: const CircleBorder(),
-        //   backgroundColor: transparentColor,
-        //   disabledForegroundColor: transparentColor,
-        //   disabledBackgroundColor: transparentColor,
-        //   elevation: 0,
-        //   shadowColor: transparentColor,
-        //   splashFactory: NoSplash.splashFactory
-        // ),
         style: ButtonStyle(
           elevation: MaterialStateProperty.all(0),
           backgroundColor: MaterialStateProperty.all(transparentColor),
