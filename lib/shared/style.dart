@@ -17,6 +17,10 @@ const Color lightBlue = Color.fromARGB(255, 3, 169, 244);
 const Color deepPurpleAccent = Color.fromARGB(255, 124, 77, 255);
 const Color indigoAccent = Color.fromARGB(255, 83, 109, 254);
 
+const Color transparentColor = Colors.transparent;
+const Color black87 = Color.fromARGB(221, 0, 0, 0);
+const Color white70 = Color.fromARGB(179, 255, 255, 255);
+
 List<Color?> boxColumnFontColor = [Colors.grey[800], Colors.grey[500]];
 
 // Color with Integer Area
@@ -39,6 +43,7 @@ const double scrollableBarChild = 0.3;
 
 // CircleAvatar radius
 const double profileCircleAvatar = 30;
+const double backButtonCircleAvatar = 20;
 
 // Font Size
 const List<double> boxColumnFontSize = [36, 16];

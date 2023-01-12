@@ -40,7 +40,7 @@ class CustomSingleChildScrollView extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
                     foregroundColor: Colors.black87,
-                    backgroundColor: Colors.white70
+                    backgroundColor: white70
                   ),
                   child: const Icon(CupertinoIcons.pencil, color: black26),
                   onPressed: () {

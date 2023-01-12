@@ -60,6 +60,9 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
             // Show other User Background Image
             _buildProfileBackground(context),
 
+            // Backbutton
+            _buildProfileBackButton(context),
+
             // Show other User name and status and ChatButton
             CustomDraggableScrollableSheet(selectedUser: selectedUser),
 
@@ -67,6 +70,43 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
             _buildProfileImage(context)
           ],
         )
+      )
+    );
+  }
+
+  Positioned _buildProfileBackButton(BuildContext context) {
+    return Positioned(
+      top: MediaQuery.of(context).size.height / defaultPadding,
+      left: MediaQuery.of(context).size.width / defaultPadding,
+      // child: const CircleAvatar(
+      //   radius: backButtonCircleAvatar,
+      //   backgroundColor: transparentColor,
+      //   foregroundColor: Colors.white70,
+      //   child: ClipOval(
+      //     child: Icon(Icons.arrow_back)
+      //   )
+      // )
+      child: ElevatedButton(
+        // style: ElevatedButton.styleFrom(
+        //   shape: const CircleBorder(),
+        //   backgroundColor: transparentColor,
+        //   disabledForegroundColor: transparentColor,
+        //   disabledBackgroundColor: transparentColor,
+        //   elevation: 0,
+        //   shadowColor: transparentColor,
+        //   splashFactory: NoSplash.splashFactory
+        // ),
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all(0),
+          backgroundColor: MaterialStateProperty.all(transparentColor),
+          overlayColor: MaterialStateProperty.all(transparentColor),
+          shadowColor: MaterialStateProperty.all(transparentColor)
+        ),
+        child: const Icon(Icons.arrow_back),
+        // child: const Icon(CupertinoIcons.arrow_left, color: white70),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
       )
     );
   }
