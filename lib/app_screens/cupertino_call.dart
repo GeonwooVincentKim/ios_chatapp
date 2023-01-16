@@ -54,8 +54,8 @@ class _CupertinoCallState extends State<CupertinoCall> {
                   ),
                   trailing: TextButton(
                     style: TextButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                      shape: RoundedRectangleBorder(
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                      shape: const RoundedRectangleBorder(
                         side: BorderSide(color: blue)
                       )
                     ),
@@ -67,15 +67,6 @@ class _CupertinoCallState extends State<CupertinoCall> {
                     },
                   ),
                 );
-                // return CupertinoListTile(
-                //   title: Text(item.name),
-                //   onTap: () async {
-                //     // ignore: deprecated_member_use
-                //     launch('tel://${item.phoneNumber}');
-                //     await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
-                //   }
-                // );
-                
               },
             );
           }),
