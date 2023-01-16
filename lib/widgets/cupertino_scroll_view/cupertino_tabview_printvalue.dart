@@ -3,7 +3,6 @@ import 'package:ios_chatapp/app_screens/cupertino_call.dart';
 import 'package:ios_chatapp/app_screens/cupertino_chat.dart';
 import 'package:ios_chatapp/app_screens/cupertino_settings.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
-import 'package:ios_chatapp/model/users.dart';
 
 class PrintValue extends StatelessWidget {
   final dynamic textLocation;

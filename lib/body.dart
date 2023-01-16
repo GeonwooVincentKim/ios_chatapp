@@ -38,25 +38,23 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-            currentIndex: 0,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.phone), label: 'Calls'),
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.chat_bubble_2), label: 'Chats'),
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.settings), label: 'Settings'),
-            ]),
-        tabBuilder: (context, index) {
-          switch (index) {
-            case 0: return PrintValue(textLocation: getTitleText[0], index: index);
-            case 1: return PrintValue(textLocation: getTitleText[1], index: index);
-            case 2: return PrintValue(textLocation: getTitleText[2], index: index);
-          }
-
-          return PrintValue(textLocation: getTitleText[0], index: 0);
-        });
+      tabBar: CupertinoTabBar(
+        currentIndex: 0,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.phone), label: 'Calls'),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.chat_bubble_2), label: 'Chats'),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.settings), label: 'Settings'),
+        ]
+      ),
+      tabBuilder: (context, index) {
+        switch (index) {
+          case 0: return PrintValue(textLocation: getTitleText[0], index: index);
+          case 1: return PrintValue(textLocation: getTitleText[1], index: index);
+          case 2: return PrintValue(textLocation: getTitleText[2], index: index);
+        }
+        return PrintValue(textLocation: getTitleText[0], index: 0);
+      }
+    );
   }
 
   void showConnectivitySnackBar(ConnectivityResult result) {
@@ -67,6 +65,5 @@ class _BodyState extends State<Body> {
 
     final color = hasInternet ? CupertinoColors.activeGreen : CupertinoColors.systemRed;
     Utils.showTopSnackBar(context, message, color);
-    // Utils.showTopSliverBar(context, "Edit", message);
   }
 }
