@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
           theme: const CupertinoThemeData(brightness: Brightness.light),
           initialRoute: "/",
           routes: {
-            "/": (context) => Body(),
-            // "/call": (context) => const CupertinoCall(textLocation: '',),
+            "/": (context) => const Body(),
+            "/call": (context) => const CupertinoCall(textLocation: '',),
             "/profile": (context) => const OtherUserProfile(userId: ''),
             "/chat": (context) => const ChatPage(userInfo: '')
           },

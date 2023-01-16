@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
+import 'package:ios_chatapp/shared/style.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -36,14 +38,44 @@ class _CupertinoCallState extends State<CupertinoCall> {
               itemCount: getUserList.length,
               itemBuilder: (context, index) {
                 final item = getUserList[index];
+
                 return CupertinoListTile(
                   title: Text(item.name),
-                  onTap: () async {
-                    // ignore: deprecated_member_use
-                    launch('tel://${item.phoneNumber}');
-                    await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
-                  }
+                  subtitle: Text(item.phoneNumber),
+                  leading: CircleAvatar(
+                    backgroundColor: item.color,
+                    radius: 30,
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/image/user/sample_user.png",
+                        fit: BoxFit.cover
+                      ),
+                    )
+                  ),
+                  trailing: TextButton(
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: blue)
+                      )
+                    ),
+                    child: const Text('Call'),
+                    onPressed: () async {
+                      // ignore: deprecated_member_use
+                      launch('tel://${item.phoneNumber}');
+                      await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
+                    },
+                  ),
                 );
+                // return CupertinoListTile(
+                //   title: Text(item.name),
+                //   onTap: () async {
+                //     // ignore: deprecated_member_use
+                //     launch('tel://${item.phoneNumber}');
+                //     await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
+                //   }
+                // );
+                
               },
             );
           }),
