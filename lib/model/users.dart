@@ -2,21 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/shared/style.dart';
 
 class User {
-  String userId;
-  String name;
-  Color color;
+  final String userId;
+  final String name;
+  final Color color;
+  final String phoneNumber;
 
   User({
     required this.userId,
     required this.name,
-    required this.color
+    required this.color,
+    required this.phoneNumber
   });
 
   factory User.from(User user) {
     return User(
       userId: user.userId,
       name: user.name,
-      color: user.color
+      color: user.color,
+      phoneNumber: user.phoneNumber
+    );
+  }
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      userId: json['userId'] as String,
+      name: json['name'] as String,
+      color: json['color'] as Color,
+      phoneNumber: json['phoneNumber'] as String
     );
   }
 
@@ -24,7 +36,8 @@ class User {
     return User(
       userId: '',
       name: '',
-      color: Color(defaultColor)
+      color: const Color(defaultColor),
+      phoneNumber: ''
     );
   }
 }

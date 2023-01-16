@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/app_screens/chat/chat_page.dart';
 import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
+import 'package:ios_chatapp/app_screens/cupertino_call.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
 import 'package:ios_chatapp/body.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
@@ -25,7 +26,10 @@ class MyApp extends StatelessWidget {
           theme: const CupertinoThemeData(brightness: Brightness.light),
           initialRoute: "/",
           routes: {
-            "/": (context) => Body(),
+            "/": (context) => const Body(),
+            "/call": (context) => const CupertinoCall(textLocation: '',),
+            "/profile": (context) => const OtherUserProfile(userId: ''),
+            "/chat": (context) => const ChatPage(userInfo: '')
           },
           onGenerateRoute: (settings) {
             final List<String> pathElements = settings.name!.split("/");
