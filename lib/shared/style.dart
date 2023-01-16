@@ -31,6 +31,7 @@ List<FontWeight?> boxColumnFontWeight = [FontWeight.w700, FontWeight.w400];
 
 // Padding Area
 const double defaultPadding = 20;
+const double positionedPadding = 30;
 
 // Border Area
 const double generalBorder = 10;

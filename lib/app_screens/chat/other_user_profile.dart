@@ -76,17 +76,21 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
 
   Positioned _buildProfileBackButton(BuildContext context) {
     return Positioned(
-      top: MediaQuery.of(context).size.height / defaultPadding,
-      left: MediaQuery.of(context).size.width / defaultPadding,
+      top: MediaQuery.of(context).size.height / positionedPadding,
+      left: MediaQuery.of(context).size.width / positionedPadding,
       child: ElevatedButton(
-        style: ButtonStyle(
-          elevation: MaterialStateProperty.all(0),
-          backgroundColor: MaterialStateProperty.all(transparentColor),
-          overlayColor: MaterialStateProperty.all(transparentColor),
-          shadowColor: MaterialStateProperty.all(transparentColor)
+        style: ElevatedButton.styleFrom(
+          fixedSize: const Size(30, 30),
+          shape: const CircleBorder(),
+          elevation: 0,
+          backgroundColor: transparentColor,
+          shadowColor: transparentColor,
+        ).copyWith(
+          overlayColor: MaterialStateProperty.resolveWith((states) => states.contains(MaterialState.pressed) ? null : transparentColor),
+          elevation: const MaterialStatePropertyAll(0),
+          backgroundColor: const MaterialStatePropertyAll(transparentColor),
         ),
-        child: const Icon(Icons.arrow_back),
-        // child: const Icon(CupertinoIcons.arrow_left, color: white70),
+        child: const Icon(CupertinoIcons.arrow_left, color: white70),
         onPressed: () {
           Navigator.of(context).pop();
         },
@@ -111,47 +115,6 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
           child: Image.asset("assets/image/user/sample_user.png", fit: BoxFit.cover)
         )
       )
-    );
-  }
-
-  Widget _buildUserBackgroundImage() {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(generalBorder),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.4,
-          child: Image.asset(
-            "assets/image/user/sample_user.png",
-            // userList.backgroundImage,
-            fit: BoxFit.fill
-          ) 
-        )
-      ),
-    );
-  }
-
-  Widget _buildUserCardText() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      // ignore: prefer_const_literals_to_create_immutables
-      children: [
-        TextButton(
-          onPressed: () { 
-            Navigator.of(context).pop();
-          },
-          child: const Text('Go back')
-        ),
-        Text(
-          // 'Test',
-          selectedUser!.name,
-          // userList.userName,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white
-          )
-        ),
-      ],
     );
   }
 }
