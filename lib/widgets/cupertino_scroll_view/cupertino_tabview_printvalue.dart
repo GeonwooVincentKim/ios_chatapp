@@ -17,12 +17,6 @@ class PrintValue extends StatelessWidget {
   Widget build(BuildContext context) {
     if (index == 0) {
       return CupertinoCall(textLocation: textLocation);
-      // return CupertinoPageScaffold(
-      //   navigationBar: CupertinoNavigationBar(middle: Text(textLocation)),
-      //   child: Center(
-      //     child: Text(textLocation),
-      //   ),
-      // );
     } else if (index == 1) {
       return CupertinoChat(textLocation: textLocation);
     } else if (index == 2) {
