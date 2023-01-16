@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
           initialRoute: "/",
           routes: {
             "/": (context) => Body(),
-            // "/chat": (context) => Body()
           },
           onGenerateRoute: (settings) {
             final List<String> pathElements = settings.name!.split("/");
