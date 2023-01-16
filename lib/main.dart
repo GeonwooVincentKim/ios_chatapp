@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/app_screens/chat/chat_page.dart';
 import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
 import 'package:ios_chatapp/body.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
           initialRoute: "/",
           routes: {
             "/": (context) => Body(),
+            // "/chat": (context) => Body()
           },
           onGenerateRoute: (settings) {
             final List<String> pathElements = settings.name!.split("/");
@@ -34,6 +36,11 @@ class MyApp extends StatelessWidget {
             if (pathElements[1] == 'profile') {
               String userId = pathElements[2];
               return CupertinoPageRoute(builder: ((context) => OtherUserProfile(userId: userId)), settings: settings);
+            }
+
+            if (pathElements[1] == 'chat') {
+              String userId = pathElements[2];
+              return CupertinoPageRoute(builder: ((context) => ChatPage(userInfo: userId)));
             }
 
             return null;

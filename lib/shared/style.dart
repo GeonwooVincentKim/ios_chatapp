@@ -45,6 +45,8 @@ const double scrollableBarChild = 0.3;
 // CircleAvatar radius
 const double profileCircleAvatar = 30;
 const double backButtonCircleAvatar = 20;
+const Size backButtonImage = Size(profileCircleAvatar, profileCircleAvatar);
+const double goButtonCircleAvatar = 30;
 
 // Font Size
 const List<double> boxColumnFontSize = [36, 16];

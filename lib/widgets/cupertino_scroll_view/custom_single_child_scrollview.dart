@@ -11,46 +11,48 @@ class CustomSingleChildScrollView extends StatelessWidget {
     required this.selectedUser,
   });
 
-  final User? selectedUser;
+  final User selectedUser;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       // controller: scrollController,
-      child: Container(
-        constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-        color: Colors.amber,
-        padding: const EdgeInsets.only(top: profileCircleAvatar),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Column(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                BoxColumnText(innerText: selectedUser!.name, checkTextIsTitle: true),
-                BoxColumnText(innerText: "Oh Happy Day~", checkTextIsTitle: false),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.05, 
-                    // bottom: MediaQuery.of(context).size.height * 0.2
-                  )
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    foregroundColor: Colors.black87,
-                    backgroundColor: white70
+      child: GestureDetector(
+        child: Container(
+          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+          color: Colors.amber,
+          padding: const EdgeInsets.only(top: profileCircleAvatar),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  BoxColumnText(innerText: selectedUser.name, checkTextIsTitle: true),
+                  BoxColumnText(innerText: "Oh Happy Day~", checkTextIsTitle: false),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.05, 
+                      // bottom: MediaQuery.of(context).size.height * 0.2
+                    )
                   ),
-                  child: const Icon(CupertinoIcons.pencil, color: black26),
-                  onPressed: () {
-                    // Navigator.pushNamed(context, "/")
-                  },
-                )
-              ],
-            )
-          ],
-        ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      foregroundColor: Colors.black87,
+                      backgroundColor: white70
+                    ),
+                    child: const Icon(CupertinoIcons.pencil, color: black26),
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/chat/${selectedUser.userId}");
+                    },
+                  )
+                ],
+              )
+            ],
+          ),
+        )
       )
     );
   }

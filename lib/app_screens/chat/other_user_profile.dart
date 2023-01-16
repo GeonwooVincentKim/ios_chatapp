@@ -18,12 +18,12 @@ class OtherUserProfile extends StatefulWidget {
 }
 
 class _OtherUserProfileState extends State<OtherUserProfile> {
-  late User? selectedUser;
+  late User selectedUser;
 
   @override
   void initState() {
     setState(() {
-      selectedUser = Provider.of<UserProvider>(context, listen: false).getSingleUser;
+      selectedUser = Provider.of<UserProvider>(context, listen: false).getSingleUser!;
     });
 
     if (selectedUser == null) {
@@ -80,7 +80,7 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
       left: MediaQuery.of(context).size.width / positionedPadding,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          fixedSize: const Size(30, 30),
+          fixedSize: backButtonImage,
           shape: const CircleBorder(),
           elevation: 0,
           backgroundColor: transparentColor,

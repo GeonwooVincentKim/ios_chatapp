@@ -10,7 +10,7 @@ class CustomDraggableScrollableSheet extends StatelessWidget {
     required this.selectedUser,
   });
 
-  final User? selectedUser;
+  final User selectedUser;
 
   @override
   Widget build(BuildContext context) {
