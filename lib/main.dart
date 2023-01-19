@@ -45,7 +45,6 @@ class MyApp extends StatelessWidget {
               String userId = pathElements[2];
               return CupertinoPageRoute(builder: ((context) => ChatPage(userInfo: userId)));
             }
-
             return null;
           },
           onUnknownRoute: (settings) => CupertinoPageRoute(builder: (context) => PageNotFound(textLocation: getTitleText[3],))
