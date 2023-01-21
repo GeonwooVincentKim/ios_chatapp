@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
           },
           onGenerateRoute: (settings) {
             final List<String> pathElements = settings.name!.split("/");
-            print("Name -> ${settings.name}");
 
             if (pathElements[0] != '') return null;
             if (pathElements[1] == 'profile') {
