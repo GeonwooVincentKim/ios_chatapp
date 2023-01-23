@@ -8,10 +8,7 @@ class PrintValue extends StatelessWidget {
   final dynamic textLocation;
   final int index;
 
-  const PrintValue(
-      {super.key,
-      required this.textLocation,
-      required this.index});
+  const PrintValue({super.key, required this.textLocation, required this.index});
 
   @override
   Widget build(BuildContext context) {
