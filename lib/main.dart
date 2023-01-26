@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/app_screens/call/add_call_page.dart';
 import 'package:ios_chatapp/app_screens/chat/chat_page.dart';
 import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
 import 'package:ios_chatapp/app_screens/cupertino_call.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           initialRoute: "/",
           routes: {
             "/": (context) => const Body(),
-            "/call": (context) => const CupertinoCall(textLocation: '',),
+            "/call": (context) => const CupertinoCall(textLocation: ''),
             "/profile": (context) => const OtherUserProfile(userId: ''),
             "/chat": (context) => const ChatPage(userInfo: '')
           },
@@ -43,6 +44,10 @@ class MyApp extends StatelessWidget {
             if (pathElements[1] == 'chat') {
               String userId = pathElements[2];
               return CupertinoPageRoute(builder: ((context) => ChatPage(userInfo: userId)));
+            }
+
+            if (pathElements[1] == 'call') {
+              return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "addCall")));
             }
             return null;
           },

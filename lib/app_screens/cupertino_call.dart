@@ -26,7 +26,17 @@ class _CupertinoCallState extends State<CupertinoCall> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(middle: Text(widget.textLocation)),
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(widget.textLocation),
+        trailing: CupertinoButton(
+          padding: EdgeInsets.zero,
+          child: const Icon(CupertinoIcons.add),
+          onPressed: () {
+            Navigator.of(context).pushNamed("/call/callInfo");
+          },
+          // onPressed: () => Navigator.pop(context),
+        ),
+      ),
       child: Center(
         child: Consumer<UserProvider>(
           builder: ((context, userElement, child) {

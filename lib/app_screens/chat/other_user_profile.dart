@@ -35,23 +35,6 @@ class _OtherUserProfileState extends State<OtherUserProfile> {
   
   @override
   Widget build(BuildContext context) {
-    // return CupertinoPageScaffold(
-      // child: GestureDetector(
-      //   onTap: () {
-      //     // Navigator.pushNamed(context, "/chat/${userList.userId}");
-      //   },
-      //   child: Card(
-      //     margin: const EdgeInsets.only(bottom: defaultPadding),
-      //     color: deepPurpleAccent,
-      //     child: Stack(
-      //       clipBehavior: Clip.none,
-      //       children: [
-      //         _buildUserBackgroundImage(),
-      //         _buildUserCardText()
-      //       ],
-      //     )
-      //   )
-      // )
     return Consumer<UserProvider>(
       builder: (context, userProfile, _) => CupertinoPageScaffold(
         child: Stack(
