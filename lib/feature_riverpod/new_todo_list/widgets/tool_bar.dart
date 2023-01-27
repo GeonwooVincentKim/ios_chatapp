@@ -39,7 +39,7 @@ class Toolbar extends HookConsumerWidget {
               child: const Text('All'),
             ),
           ),
-          CustomToolTip(ref: ref, textColor: textColorFor(TodoListFilter.active), textContents: "Active"),
+          CustomToolTip(getKey: activeFilterKey, ref: ref, textColor: textColorFor(filterButtonState("Active")), textContents: "Active"),
           Tooltip(
             key: completedFilterKey,
             message: 'Only completed todos',
@@ -61,39 +61,50 @@ class Toolbar extends HookConsumerWidget {
   }
 }
 
-class CustomToolTip extends StatelessWidget {
+TodoListFilter filterButtonState(textContents) {
+  if (textContents == "Active") {
+    return TodoListFilter.active;
+  } else if (textContents == "All") {
+    return TodoListFilter.all;
+  } else if (textContents == "Completed") {
+    return TodoListFilter.completed;
+  } else {
+    return TodoListFilter.active; 
+  }
+}
 
+class CustomToolTip extends StatelessWidget {
+  final UniqueKey getKey;
   final WidgetRef ref;
   final Color? textColor;
   final String textContents;
 
   const CustomToolTip({
     super.key,
+    required this.getKey,
     required this.ref,
     required this.textColor,
-    required this.textContents
+    required this.textContents,
   });
 
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      key: activeFilterKey,
+      key: getKey,
       message: 'Only uncompleted todos',
       child: TextButton(
         onPressed: () => ref.read(todoListFilter.notifier).state =
-            newMethod,
+            filterButtonState(textContents),
         style: ButtonStyle(
           visualDensity: VisualDensity.compact,
           foregroundColor: MaterialStateProperty.all(
             // textColorFor(TodoListFilter.active),
             textColor
+            // filterButtonState(textContents) as Color?
           ),
         ),
         child: Text(textContents),
       ),
     );
   }
-
-
-  TodoListFilter get newMethod => TodoListFilter.active;
 }
