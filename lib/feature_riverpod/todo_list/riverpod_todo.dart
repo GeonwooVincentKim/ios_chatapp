@@ -22,7 +22,7 @@ class TodoList extends StateNotifier<List<Todo>> {
   TodoList([List<Todo>? initialTodos]) : super(initialTodos ?? []);
 
   void add(String description) => state = [...state, Todo(id: _uuid.v4(), description: description)];
-  void edit({required String id, required String descripton}) => state = [
+  void edit({required String id, required String description}) => state = [
     for (final todo in state)
       if (todo.id == id)
         Todo(id: todo.id, completed: todo.completed, description: todo.description)
