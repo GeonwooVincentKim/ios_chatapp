@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
             "/": (context) => const Body(),
             "/call": (context) => const CupertinoCall(textLocation: ''),
             "/profile": (context) => const OtherUserProfile(userId: ''),
-            "/chat": (context) => const ChatPage(userInfo: '')
+            "/chat": (context) => const ChatPage(userInfo: ''),
+            // "/call/callInfo": (context) => const AddCallPage(callInfo: '')
           },
           onGenerateRoute: (settings) {
             final List<String> pathElements = settings.name!.split("/");
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
             }
 
             if (pathElements[1] == 'call') {
-              return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "addCall")));
+              return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "Add Calls")));
             }
             return null;
           },

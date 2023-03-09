@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/feature_ios/feature_mainpage.dart';
+import 'package:ios_chatapp/feature_ios/widgets/text_form_field_row.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 // Future main() async {
@@ -25,7 +26,14 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         // title: title,
         theme: CupertinoThemeData(brightness: Brightness.light),
-        home: MainPage(),
+        // home: MainPage(),
+        home: Column(
+          children: [
+            MyForm(),
+            MyForm(),
+            MyForm(),
+          ]
+        )
       )
     );
   }
