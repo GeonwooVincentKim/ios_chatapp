@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
-import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_navi_bar.dart';
+import 'package:intl/intl.dart';
+
 import 'package:overlay_support/overlay_support.dart';
 
 class Utils {
@@ -33,4 +36,9 @@ class Utils {
     subtitle: Text(message),
     background: color
   );
+
+  static String _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  static Random _rnd = Random();
+  static String getRandomString(int length) => String.fromCharCodes(Iterable.generate(length, (_)
+    => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 }
