@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
+import 'package:ios_chatapp/widgets/custom/form/button/custom_cupertino_button.dart';
 
 class AddCallPage extends StatefulWidget {
   final String callInfo;
@@ -44,31 +45,25 @@ class _AddCallPageState extends State<AddCallPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CupertinoFormSection.insetGrouped(
-                header: Text('Enter your name:'),
-                children: [
-                  CupertinoTextFormFieldRow(
-                    prefix: Icon(
-                      CupertinoIcons.person,
-                      color: CupertinoColors.systemGrey,
-                    ),
-                    placeholder: 'Name',
-                    controller: _controller,
-                  ),
-                ],
+              CustomCupertinoFormSection(
+                isNameInput: true, 
+                controller: nameController,
+                onSaved: (value) {
+                  newUser['name'] = value;
+                },
+                validator: (value) {
+                  return null;
+                },
               ),
-              CupertinoFormSection.insetGrouped(
-                header: Text('Enter your Phone Number:'),
-                children: [
-                  CupertinoTextFormFieldRow(
-                    prefix: Icon(
-                      CupertinoIcons.person,
-                      color: CupertinoColors.systemGrey,
-                    ),
-                    placeholder: 'Name',
-                    controller: _controller,
-                  ),
-                ],
+              CustomCupertinoFormSection(
+                isNameInput: false, 
+                controller: phoneController,
+                onSaved: (value) {
+                  newUser['phone'] = value;
+                },
+                validator: (value) {
+                  return null;
+                }
               ),
             ],
           ),
