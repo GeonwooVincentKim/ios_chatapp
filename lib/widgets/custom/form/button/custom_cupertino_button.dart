@@ -16,21 +16,26 @@ class CustomCupertinoButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isFilled == true
-        ? Center(
-            child: CupertinoButton(
-                onPressed: () {
-                  isModal == true
-                      ? showCupertinoModalPopup(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              const CupertinoModalPopup())
-                      : showCupertinoDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              const CupertinoDialog());
-                },
-                child: Text(buttonText)))
-        : Center(
-            child: CupertinoButton(onPressed: () {}, child: Text(buttonText)));
+      ? Center(
+          child: CupertinoButton(
+              onPressed: () {
+                isModal == true
+                    ? showCupertinoModalPopup(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            const CupertinoModalPopup())
+                    : showCupertinoDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            const CupertinoDialog());
+              },
+              child: Text(buttonText)
+          )
+        ) : Center(
+      child: CupertinoButton(
+        onPressed: () {}, 
+        child: Text(buttonText)
+      )
+    );
   }
 }

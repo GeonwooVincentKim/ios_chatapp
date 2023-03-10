@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
-import 'package:ios_chatapp/widgets/custom/custom_cupertino_form_section.dart';
+import 'package:ios_chatapp/widgets/custom/form/custom_cupertino_form_section.dart';
 import 'package:provider/provider.dart';
 
 class AddCallPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _AddCallPageState extends State<AddCallPage> {
     'name': '',
     'phoneNumber': '',
   };
-
+  
   @override
   void initState() {
     super.initState();
@@ -35,12 +35,12 @@ class _AddCallPageState extends State<AddCallPage> {
   Widget build(BuildContext context) {
     final value = MediaQuery.of(context).size.height / 2;
 
-    return SingleChildScrollView(
-      child: CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(middle: Text(widget.callInfo)),
-        child: Container(
-          alignment: Alignment.center,
-          color: CupertinoColors.systemGroupedBackground,
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(middle: Text(widget.callInfo)),
+      child: Container(
+        alignment: Alignment.center,
+        color: CupertinoColors.systemGroupedBackground,
+        child: SingleChildScrollView(
           child: Form(
             key: _formKey,
             child: Column(
@@ -66,7 +66,7 @@ class _AddCallPageState extends State<AddCallPage> {
                     return null;
                   }
                 ),
-    
+                
                 CupertinoActionSheet(
                   actions: [
                     CupertinoActionSheetAction(
@@ -74,9 +74,8 @@ class _AddCallPageState extends State<AddCallPage> {
                       onPressed: () {
                         if (!_formKey.currentState!.validate()) return;
                         _formKey.currentState!.save();
-    
+
                         Provider.of<UserProvider>(context, listen: false).addUser(newUser);
-    
                         Navigator.pop(context);
                       },
                     )
