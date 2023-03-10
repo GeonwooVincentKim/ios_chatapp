@@ -14,7 +14,6 @@ class AddCallPage extends StatefulWidget {
 
 class _AddCallPageState extends State<AddCallPage> {
   late User callUser;
-
   Color _randomColor = CupertinoColors.black;
 
   final nameController = TextEditingController();
@@ -67,7 +66,7 @@ class _AddCallPageState extends State<AddCallPage> {
                     return null;
                   }
                 ),
-        
+                
                 CupertinoActionSheet(
                   actions: [
                     CupertinoActionSheetAction(
@@ -75,9 +74,8 @@ class _AddCallPageState extends State<AddCallPage> {
                       onPressed: () {
                         if (!_formKey.currentState!.validate()) return;
                         _formKey.currentState!.save();
-          
+
                         Provider.of<UserProvider>(context, listen: false).addUser(newUser);
-          
                         Navigator.pop(context);
                       },
                     )
@@ -90,11 +88,26 @@ class _AddCallPageState extends State<AddCallPage> {
                     }
                   ),
                 )
+                // CupertinoTabScaffold(
+                //   tabBar: CupertinoTabBar(
+                //     items: [
+                //       BottomNavigationBarItem(icon: Icon(CupertinoIcons.nosign), label: 'Cancel'),
+                //       BottomNavigationBarItem(icon: Icon(CupertinoIcons.add), label: 'Save'),
+                //     ]
+                //   ),
+                //   tabBuilder: (BuildContext context, index) {
+    
+                //   },
+                // )
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void submit() {
+    
   }
 }
