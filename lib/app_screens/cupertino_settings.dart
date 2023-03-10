@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_sliver_navi_bar.dart';
 import 'package:ios_chatapp/widgets/custom/custom_cupertino.dart';
-import 'package:ios_chatapp/widgets/custom/custom_cupertino_button.dart';
+import 'package:ios_chatapp/widgets/custom/form/button/custom_cupertino_button.dart';
 
 class CupertinoSettingsPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
