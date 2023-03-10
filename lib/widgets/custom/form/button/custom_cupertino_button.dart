@@ -1,35 +1,41 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ios_chatapp/widgets/custom/form/form_icon/cupertino_icon.dart';
+import 'package:ios_chatapp/widgets/custom/modal_popup/cupertino_dialog.dart';
+import 'package:ios_chatapp/widgets/custom/modal_popup/cupertino_modal_popup.dart';
 
-class CustomCupertinoFormSection extends StatelessWidget {
-  final bool isNameInput;
-  final TextEditingController controller;
-  final Function(String?) onSaved;
-  final String? Function(String?) validator;
+class CustomCupertinoButton extends StatelessWidget {
+  final String buttonText;
+  final bool isModal;
+  final bool isFilled;
 
-  const CustomCupertinoFormSection({
-    super.key,
-    required this.isNameInput,
-    required this.controller,
-    required this.onSaved,
-    required this.validator
-  });
+  const CustomCupertinoButton(
+      {super.key,
+      required this.buttonText,
+      required this.isModal,
+      required this.isFilled});
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoFormSection.insetGrouped(
-      header: isNameInput ? 
-        const Text("Enter your name : ") : 
-        const Text("Enter your Phone Number : "),
-      children: [
-        CupertinoTextFormFieldRow(
-          prefix: CupertinoIcon(iconData: isNameInput ? CupertinoIcons.person : CupertinoIcons.phone),
-          placeholder: isNameInput ? 'Name' : 'Phone',
-          controller: controller,
-          onSaved: onSaved,
-          validator: validator,
-        ),
-      ],
+    return isFilled == true
+      ? Center(
+          child: CupertinoButton(
+              onPressed: () {
+                isModal == true
+                    ? showCupertinoModalPopup(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            const CupertinoModalPopup())
+                    : showCupertinoDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            const CupertinoDialog());
+              },
+              child: Text(buttonText)
+          )
+        ) : Center(
+      child: CupertinoButton(
+        onPressed: () {}, 
+        child: Text(buttonText)
+      )
     );
   }
 }
