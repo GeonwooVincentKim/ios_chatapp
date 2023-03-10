@@ -41,55 +41,57 @@ class _AddCallPageState extends State<AddCallPage> {
       child: Container(
         alignment: Alignment.center,
         color: CupertinoColors.systemGroupedBackground,
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomCupertinoFormSection(
-                isNameInput: true, 
-                controller: nameController,
-                onSaved: (value) {
-                  newUser['name'] = value;
-                },
-                validator: (value) {
-                  return null;
-                },
-              ),
-              CustomCupertinoFormSection(
-                isNameInput: false, 
-                controller: phoneController,
-                onSaved: (value) {
-                  newUser['phone'] = value;
-                },
-                validator: (value) {
-                  return null;
-                }
-              ),
-
-              CupertinoActionSheet(
-                actions: [
-                  CupertinoActionSheetAction(
-                    child: const Text("OK"),
-                    onPressed: () {
-                      if (!_formKey.currentState!.validate()) return;
-                      _formKey.currentState!.save();
-  
-                      Provider.of<UserProvider>(context, listen: false).addUser(newUser);
-  
-                      Navigator.pop(context);
-                    },
-                  )
-                ],
-                cancelButton: CupertinoActionSheetAction(
-                  child: const Text("Cancel"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    // Navigator.pop(context);
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomCupertinoFormSection(
+                  isNameInput: true, 
+                  controller: nameController,
+                  onSaved: (value) {
+                    newUser['name'] = value;
+                  },
+                  validator: (value) {
+                    return null;
+                  },
+                ),
+                CustomCupertinoFormSection(
+                  isNameInput: false, 
+                  controller: phoneController,
+                  onSaved: (value) {
+                    newUser['phone'] = value;
+                  },
+                  validator: (value) {
+                    return null;
                   }
                 ),
-              )
-            ],
+        
+                CupertinoActionSheet(
+                  actions: [
+                    CupertinoActionSheetAction(
+                      child: const Text("OK"),
+                      onPressed: () {
+                        if (!_formKey.currentState!.validate()) return;
+                        _formKey.currentState!.save();
+          
+                        Provider.of<UserProvider>(context, listen: false).addUser(newUser);
+          
+                        Navigator.pop(context);
+                      },
+                    )
+                  ],
+                  cancelButton: CupertinoActionSheetAction(
+                    child: const Text("Cancel"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      // Navigator.pop(context);
+                    }
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
