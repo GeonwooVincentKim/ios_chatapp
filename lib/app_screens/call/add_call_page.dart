@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
+import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/widgets/custom/form/button/custom_cupertino_button.dart';
+import 'package:provider/provider.dart';
 
 class AddCallPage extends StatefulWidget {
   final String callInfo;
@@ -33,7 +35,6 @@ class _AddCallPageState extends State<AddCallPage> {
   @override
   Widget build(BuildContext context) {
     final value = MediaQuery.of(context).size.height / 2;
-    final _controller = TextEditingController();
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(middle: Text(widget.callInfo)),
@@ -65,6 +66,29 @@ class _AddCallPageState extends State<AddCallPage> {
                   return null;
                 }
               ),
+
+              CupertinoActionSheet(
+                actions: [
+                  CupertinoActionSheetAction(
+                    child: const Text("OK"),
+                    onPressed: () {
+                      if (!_formKey.currentState!.validate()) return;
+                      _formKey.currentState!.save();
+  
+                      Provider.of<UserProvider>(context, listen: false).addUser(newUser);
+  
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+                cancelButton: CupertinoActionSheetAction(
+                  child: const Text("Cancel"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    // Navigator.pop(context);
+                  }
+                ),
+              )
             ],
           ),
         ),
