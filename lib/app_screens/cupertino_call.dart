@@ -40,7 +40,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
       child: Center(
         child: Consumer<UserProvider>(
           builder: ((context, userElement, child) {
-            final List<User> listUser = userElement.filteredUsers;
+            final List<User> listUser = userElement.userList;
             getUserList = listUser.toList();
 
             return ListView.builder(
@@ -53,6 +53,8 @@ class _CupertinoCallState extends State<CupertinoCall> {
                   title: Text(item.name),
                   subtitle: Text(item.phoneNumber),
                   leading: CircleAvatar(
+                    // backgroundColor: Provider.of<UserProvider>(context).backgroundColor,
+                    // backgroundColor: item.color as Color,
                     backgroundColor: item.color,
                     radius: 30,
                     child: ClipOval(

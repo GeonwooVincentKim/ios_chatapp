@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
+import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/custom/form/custom_cupertino_form_section.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +17,10 @@ class AddCallPage extends StatefulWidget {
 
 class _AddCallPageState extends State<AddCallPage> {
   late User callUser;
-  Color _randomColor = CupertinoColors.black;
+  // Color _randomColor = CupertinoColors.black;
+  final random = Random();
+  int randomValue = 0;
+  late Color color;
 
   final nameController = TextEditingController();
   final colorController = TextEditingController();
@@ -23,11 +29,15 @@ class _AddCallPageState extends State<AddCallPage> {
   final _formKey = GlobalKey<FormState>();
   Map<String, dynamic> newUser = {
     'name': '',
+    'color': '',
     'phoneNumber': '',
   };
   
   @override
   void initState() {
+    randomValue = random.nextInt(256);
+    color = Color.fromARGB(255, randomValue, randomValue, randomValue);
+
     super.initState();
   }
 
@@ -66,6 +76,7 @@ class _AddCallPageState extends State<AddCallPage> {
                     return null;
                   }
                 ),
+                // newUser['color'] = Utils.getRandomColor as Widget,
                 CupertinoActionSheet(
                   actions: [
                     CupertinoActionSheetAction(
@@ -73,7 +84,10 @@ class _AddCallPageState extends State<AddCallPage> {
                       onPressed: () {
                         if (!_formKey.currentState!.validate()) return;
                         _formKey.currentState!.save();
-
+                        
+                        newUser['color'] = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
+                        // Provider.of<UserProvider>(context, listen: false).changeColor();
+                        // Provider.of<UserProvider>(context, listen: false).setColor(color);
                         Provider.of<UserProvider>(context, listen: false).addUser(newUser);
                         Navigator.pop(context);
                       },

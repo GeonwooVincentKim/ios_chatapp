@@ -4,7 +4,7 @@ import 'package:ios_chatapp/shared/style.dart';
 class User {
   final String userId;
   final String name;
-  final Color color;
+  final dynamic color;
   final String phoneNumber;
 
   User({
@@ -23,11 +23,11 @@ class User {
     );
   }
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  factory User.fromJson(Map<dynamic, dynamic> json) {
     return User(
       userId: json['userId'] as String,
       name: json['name'] as String,
-      color: json['color'] as Color,
+      color: json['color'] as dynamic,
       phoneNumber: json['phoneNumber'] as String
     );
   }

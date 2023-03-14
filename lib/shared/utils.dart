@@ -41,4 +41,6 @@ class Utils {
   static Random _rnd = Random();
   static String getRandomString(int length) => String.fromCharCodes(Iterable.generate(length, (_)
     => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
+  // Color getRandomColor = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
 }
