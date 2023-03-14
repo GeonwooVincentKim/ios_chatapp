@@ -7,6 +7,7 @@ import 'package:ios_chatapp/app_screens/page_not_found.dart';
 import 'package:ios_chatapp/body.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:ios_chatapp/widgets/custom/tile/user_detail.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +49,17 @@ class MyApp extends StatelessWidget {
             }
 
             if (pathElements[1] == 'call') {
-              return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "Add Calls")));
+              String pathId = pathElements[2];
+              
+              if (pathId == 'add') {
+                print("Here!!");
+                return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "Add")));
+              }
+
+              if (pathId == 'detail') {
+                print("Modify!!!");
+                return CupertinoPageRoute(builder: ((context) => const UserDetail(pageId: "Modify")));
+              }
             }
             return null;
           },

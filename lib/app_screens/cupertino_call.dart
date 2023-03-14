@@ -4,6 +4,7 @@ import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:ios_chatapp/widgets/custom/tile/user_detail.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,7 +33,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
           padding: EdgeInsets.zero,
           child: const Icon(CupertinoIcons.add),
           onPressed: () {
-            Navigator.of(context).pushNamed("/call/callInfo");
+            Navigator.of(context).pushNamed("/call/add");
           },
           // onPressed: () => Navigator.pop(context),
         ),
@@ -63,7 +64,10 @@ class _CupertinoCallState extends State<CupertinoCall> {
                     )
                   ),
                   onTap: () {
-                    
+                    print("Here?");
+                    Provider.of<UserProvider>(context, listen: false).selectUser(item);
+                    Navigator.pushNamed(context, "/call/detail/${item.userId}");
+                    // UserDetail(user: item);
                   },
                   trailing: TextButton(
                     style: TextButton.styleFrom(

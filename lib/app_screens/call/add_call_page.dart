@@ -70,7 +70,7 @@ class _AddCallPageState extends State<AddCallPage> {
                   isNameInput: false, 
                   controller: phoneController,
                   onSaved: (value) {
-                    newUser['phone'] = value;
+                    newUser['phoneNumber'] = value;
                   },
                   validator: (value) {
                     return null;
