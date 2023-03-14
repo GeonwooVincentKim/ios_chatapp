@@ -6,10 +6,10 @@ import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:provider/provider.dart';
 
-class UserTile extends StatelessWidget {
+class ChatTile extends StatelessWidget {
   final User findUser;
 
-  const UserTile({super.key, required this.findUser});
+  const ChatTile({super.key, required this.findUser});
 
   @override
   Widget build(BuildContext context) {

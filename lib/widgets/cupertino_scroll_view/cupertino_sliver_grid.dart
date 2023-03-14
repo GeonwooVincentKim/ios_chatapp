@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/model/users.dart';
-import 'package:ios_chatapp/widgets/custom/tile/user_tile.dart';
+import 'package:ios_chatapp/widgets/custom/tile/chat_tile.dart';
 
 class CupertinoSliverGrid extends StatelessWidget {
   final List<User> userList;
@@ -16,7 +16,7 @@ class CupertinoSliverGrid extends StatelessWidget {
       ),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          return UserTile(findUser: userList[index]);
+          return ChatTile(findUser: userList[index]);
         },
         childCount: userList.length,
       ),

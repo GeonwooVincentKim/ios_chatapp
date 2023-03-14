@@ -53,8 +53,6 @@ class _CupertinoCallState extends State<CupertinoCall> {
                   title: Text(item.name),
                   subtitle: Text(item.phoneNumber),
                   leading: CircleAvatar(
-                    // backgroundColor: Provider.of<UserProvider>(context).backgroundColor,
-                    // backgroundColor: item.color as Color,
                     backgroundColor: item.color,
                     radius: 30,
                     child: ClipOval(
@@ -64,6 +62,9 @@ class _CupertinoCallState extends State<CupertinoCall> {
                       ),
                     )
                   ),
+                  onTap: () {
+                    
+                  },
                   trailing: TextButton(
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
