@@ -46,7 +46,7 @@ class Utils {
     print(value);
 
     String pattern = r'/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/';
-    String pattern2 = r'/^\d{2,3}-\d{3,4}-\d{4}$/';
+    // String pattern2 = r'/^\d{2,3}-\d{3,4}-\d{4}$/';
     // pattern = value.replaceAllMapped(RegExp(r'(\d{3})(\d{3,4})(\d{4})'),(m) => '${m[1]}-${m[2]}-${m[3]}');
 
     RegExp regExp = RegExp(pattern);
@@ -59,14 +59,4 @@ class Utils {
 
     return '';
   }
-
-  // bool isValidPhoneNumber() {
-  //   return RegExp(r'^010-?([0-9]{4})-?([0-9]{4})$').hasMatch(this);
-  // }
-  // Color getRandomColor = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
-  // const regexAdvertisement = /^(\d{4})-(\d{4})$/;
-  // const regexMobilePhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-  // const regexPhone = /^\d{2,3}-\d{3,4}-\d{4}$/;
-
-  // const registerNumberRegex = /^(\d{0,3})-(\d{0,2})-(\d{0,5})$/g;
 }
