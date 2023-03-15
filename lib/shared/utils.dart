@@ -42,12 +42,14 @@ class Utils {
   static String getRandomString(int length) => String.fromCharCodes(Iterable.generate(length, (_)
     => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 
-  String validateMobile(String value) {
+  static String validateMobile(String value) {
+    print(value);
+
     String pattern = r'/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/';
     String pattern2 = r'/^\d{2,3}-\d{3,4}-\d{4}$/';
-    value = pattern.replaceAllMapped(RegExp(r'(\d{3})(\d{3,4})(\d{4})'),(m) => '${m[1]}-${m[2]}-${m[3]}');
+    // pattern = value.replaceAllMapped(RegExp(r'(\d{3})(\d{3,4})(\d{4})'),(m) => '${m[1]}-${m[2]}-${m[3]}');
 
-    RegExp regExp = new RegExp(pattern);
+    RegExp regExp = RegExp(pattern);
 
     if (value.isEmpty) {
       return 'Please enter mobile number';

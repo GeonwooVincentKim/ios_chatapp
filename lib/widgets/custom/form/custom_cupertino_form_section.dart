@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/custom/form/form_icon/cupertino_icon.dart';
 
 class CustomCupertinoFormSection extends StatelessWidget {
@@ -50,22 +51,83 @@ class NumberFormatter extends TextInputFormatter {
       return newValue;
     }
 
+    print("text -> $text");
+    // var buffer = StringBuffer();
+
+    // text = text.replaceAll(r'/\s/gi', '');
+    // text = text.replaceAll(r'/[^0-9]/g', '');
+
+    // if (text.length == 11) {
+    //   text = text.replaceAll(r'/(\d{2,3})(\d{4})(\d{4})/', '${1}-${2}-${3}');
+    //   buffer.write(text);
+    //   print(text);
+    // } else if (text.length == 8) {
+    //   text = text.replaceAll(r'/(\d{4})(\d{4})/', '${1}-${2}');
+    //   buffer.write(text);
+    // } else {
+    //   if (text.indexOf('02') == 0) {
+    //     if (text.length == 9) {
+    //       text = text.replaceAll(r'/(\d{2})(\d{3})(\d{4})$/g', '${1}-${2}-${3}').replaceAll(r'/(\-{1,2})$/g', '');
+    //       buffer.write(text);
+    //     } else {
+    //       text = text.replaceAll(r'/(\d{2})(\d{3})(\d{4})', '${1}-${2}-${3}');
+    //       buffer.write(text);
+    //     }
+    //   } else {
+    //     text = text.replaceAll(r'/(\d{2})(\d{3})(\d{4})', '${1}-${2}-${3}');
+    //     buffer.write(text);
+    //   }
+    // }
+
     var buffer = StringBuffer();
     for (int i = 0; i < text.length; i++) {
+      
+
       buffer.write(text[i]);
       
       var nonZeroIndex = i + 1;
+      print("Non Index -> $nonZeroIndex");
 
       if (nonZeroIndex <= 3) {
         if (nonZeroIndex % 3 == 0 && nonZeroIndex != text.length) {
           buffer.write('-');
         }
       } else {
-        if (nonZeroIndex % 7 == 0 && nonZeroIndex != text.length &&  nonZeroIndex > 4) {
-          buffer.write('-');
+        if (text.length == 11) {
+          if (nonZeroIndex % 7 == 0 && nonZeroIndex != text.length && nonZeroIndex > 4) {
+            buffer.write("-");
+          }
+        } else {
+          if (nonZeroIndex % 6 == 0 && nonZeroIndex != text.length && nonZeroIndex > 4) {
+            buffer.write("-");
+          }
         }
       }
+
+      // if (nonZeroIndex <= 3) {
+      //   if (nonZeroIndex % 3 == 0 && nonZeroIndex != text.length) {
+      //     buffer.write('-');
+      //   }
+      // } else {
+      //   if (nonZeroIndex != text.length && nonZeroIndex > 4) {
+      //     if (text.length == 11 && nonZeroIndex & 7 == 0) {
+      //       buffer.write("-");
+      //     } else if (text.length == 10 && nonZeroIndex & 6 == 0) {
+      //       buffer.write("-");
+      //     }
+      //   }
+      // }
     }
+    
+    // if (text.length == 10) {
+    //   for (int i = 0; i < text.length; i++) {
+    //     buffer.write(text[i]);
+
+    //     var nonZeroSpecialIndex = i + 1;
+
+
+    //   }
+    // }
 
     var string = buffer.toString();
     return newValue.copyWith(
