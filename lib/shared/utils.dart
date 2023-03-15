@@ -29,7 +29,7 @@ class Utils {
 
   static void showTopSnackBar(
     BuildContext context,
-    String message,
+    String message, 
     Color color,
   ) => showSimpleNotification(
     const Text('Internet Connectivity Update'),
@@ -44,6 +44,7 @@ class Utils {
 
   String validateMobile(String value) {
     String pattern = r'/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/';
+    String pattern2 = r'/^\d{2,3}-\d{3,4}-\d{4}$/';
     value = pattern.replaceAllMapped(RegExp(r'(\d{3})(\d{3,4})(\d{4})'),(m) => '${m[1]}-${m[2]}-${m[3]}');
 
     RegExp regExp = new RegExp(pattern);
