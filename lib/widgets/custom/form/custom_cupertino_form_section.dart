@@ -22,8 +22,8 @@ class CustomCupertinoFormSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoFormSection.insetGrouped(
       header: isNameInput ? 
-        const Text("Enter your name : ") : 
-        const Text("Enter your Phone Number : "),
+        const Text("Enter the name : ") : 
+        const Text("Enter the Phone Number : "),
       children: [
         CupertinoTextFormFieldRow(
           inputFormatters: isNameInput ? [] : [

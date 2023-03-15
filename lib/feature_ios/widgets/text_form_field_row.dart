@@ -18,7 +18,7 @@ class _MyFormState extends State<MyForm> {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormSection.insetGrouped(
-      header: Text('Enter your name:'),
+      header: const Text('Enter the name:'),
       children: [
         CupertinoTextFormFieldRow(
           prefix: Icon(
