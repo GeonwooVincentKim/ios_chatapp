@@ -40,8 +40,33 @@ class _UserDetailState extends State<UserDetail> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(user.name),
-            Text(user.phoneNumber)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                height: 100,
+                width: MediaQuery.of(context).size.width,
+                alignment: Alignment.center,
+                color: Colors.deepPurple,
+                child: Text(user.name, style: const TextStyle(fontSize: 30),)
+              )
+            ),
+            const Divider(
+              color: Colors.white,
+              height: 10,
+              thickness: 5,
+              indent: 20,
+              endIndent: 40,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                height: 250,
+                width: MediaQuery.of(context).size.width,
+                alignment: Alignment.center,
+                color: Colors.deepPurple,
+                child: Text(user.phoneNumber, style: const TextStyle(fontSize: 30),)
+              )
+            ),
           ],
         )
       ),
