@@ -57,8 +57,13 @@ class MyApp extends StatelessWidget {
               }
 
               if (pathId == 'detail') {
-                print("Modify!!!");
-                return CupertinoPageRoute(builder: ((context) => const UserDetail(pageId: "Modify")));
+                print("Detail!!!");
+                return CupertinoPageRoute(builder: ((context) => const UserDetail(pageId: "Detail")));
+              }
+
+              if (pathId == "update") {
+                print("Update!!!");
+                return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "Update")));
               }
             }
             return null;
