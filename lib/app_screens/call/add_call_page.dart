@@ -19,8 +19,14 @@ class _AddCallPageState extends State<AddCallPage> {
   late User callUser;
   // Color _randomColor = CupertinoColors.black;
   final random = Random();
+  
   int randomValue = 0;
+  int red = 0;
+  int green = 0;
+  int blue = 0;
+
   late Color color;
+  late Color oppositeColor;
 
   final nameController = TextEditingController();
   final colorController = TextEditingController();
@@ -30,6 +36,7 @@ class _AddCallPageState extends State<AddCallPage> {
   Map<String, dynamic> newUser = {
     'name': '',
     'color': '',
+    'oppositeColor': '',
     'phoneNumber': '',
   };
   
@@ -37,6 +44,12 @@ class _AddCallPageState extends State<AddCallPage> {
   void initState() {
     randomValue = random.nextInt(256);
     color = Color.fromARGB(255, randomValue, randomValue, randomValue);
+    
+    red = 255 - color.red;
+    green = 255 - color.green;
+    blue = 255 - color.blue;
+
+    oppositeColor = Color.fromRGBO(red, green, blue, 1.0);
 
     super.initState();
   }
@@ -86,6 +99,7 @@ class _AddCallPageState extends State<AddCallPage> {
                         _formKey.currentState!.save();
                         
                         newUser['color'] = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
+                        newUser['oppositeColor'] = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
                         // Provider.of<UserProvider>(context, listen: false).changeColor();
                         // Provider.of<UserProvider>(context, listen: false).setColor(color);
                         Provider.of<UserProvider>(context, listen: false).addUser(newUser);

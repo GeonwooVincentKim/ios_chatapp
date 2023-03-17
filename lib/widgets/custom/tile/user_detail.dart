@@ -130,13 +130,13 @@ class _UserDetailState extends State<UserDetail> {
 
   Widget _buildProfileBackground(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            blue,
-            purple
+            user.oppositeColor,
+            user.color
           ]
         )
       ),

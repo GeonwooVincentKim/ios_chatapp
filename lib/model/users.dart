@@ -5,12 +5,14 @@ class User {
   final String userId;
   final String name;
   final dynamic color;
+  final dynamic oppositeColor;
   final String phoneNumber;
 
   User({
     required this.userId,
     required this.name,
     required this.color,
+    required this.oppositeColor,
     required this.phoneNumber
   });
 
@@ -19,6 +21,7 @@ class User {
       userId: user.userId,
       name: user.name,
       color: user.color,
+      oppositeColor: user.oppositeColor,
       phoneNumber: user.phoneNumber
     );
   }
@@ -28,6 +31,7 @@ class User {
       userId: json['userId'] as String,
       name: json['name'] as String,
       color: json['color'] as dynamic,
+      oppositeColor: json['oppositeColor'] as dynamic,
       phoneNumber: json['phoneNumber'] as String
     );
   }
@@ -37,6 +41,7 @@ class User {
       userId: '',
       name: '',
       color: const Color(defaultColor),
+      oppositeColor: const Color(defaultColor),
       phoneNumber: ''
     );
   }
