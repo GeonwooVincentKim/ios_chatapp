@@ -36,7 +36,7 @@ class _UserDetailState extends State<UserDetail> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(widget.pageId),
-        backgroundColor: deepPurpleAccent,
+        backgroundColor: user.color,
         trailing: CupertinoButton(
           padding: EdgeInsets.zero,
           child: const Icon(CupertinoIcons.create, color: white70),
