@@ -91,41 +91,6 @@ class _UserDetailState extends State<UserDetail> {
         )
       ),
     );
-  //  return GestureDetector(
-  //     behavior: HitTestBehavior.opaque,
-  //     onTap:() {
-  //       // Provider.of<UserProvider>(context, listen: false).selectUser(user);
-  //       // Navigator.pushNamed(context, "/profile/${user.userId}");
-  //     },
-  //     child: Container(
-  //       margin: EdgeInsets.all(defaultPadding + (MediaQuery.of(context).size.height * 0.2)),
-  //       height: MediaQuery.of(context).size.height,
-  //       child: Column(
-  //         children: [
-  //           CircleAvatar(
-  //             backgroundColor: user.color, 
-  //             radius: 30,
-  //             child: ClipOval(
-  //               child: Image.asset(
-  //                 "assets/image/user/sample_user.png",
-  //                 fit: BoxFit.cover
-  //               )
-  //             )
-  //           ),
-  //           const SizedBox(width: 20),
-  //           Column(
-  //             crossAxisAlignment: CrossAxisAlignment.start,
-  //             children: [
-  //               Text(
-  //                 user.name,
-  //                 style: const TextStyle(color: CupertinoColors.black, fontSize: 25)
-  //               )
-  //             ]
-  //           )
-  //         ]
-  //       )
-  //     ),
-  //   );
   }
 
   Widget _buildProfileBackground(BuildContext context) {
