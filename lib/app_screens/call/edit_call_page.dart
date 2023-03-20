@@ -128,8 +128,8 @@ class _EditCallPageState extends State<EditCallPage> {
                         // Provider.of<UserProvider>(context, listen: false).changeColor();
                         // Provider.of<UserProvider>(context, listen: false).setColor(color);
                         Provider.of<UserProvider>(context, listen: false).updateUser(modifyUser);
-                        // Navigator.pop(context);
-                        Navigator.of(context).pop();
+                        Navigator.pop(context);
+                        // Navigator.of(context).pop();
                       },
                     )
                   ],

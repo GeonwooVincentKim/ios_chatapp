@@ -78,30 +78,6 @@ class _UserDetailState extends State<UserDetail> {
                         indent: 20,
                         endIndent: 40,
                       ),
-
-                      // ClipRRect(
-                      //   borderRadius: BorderRadius.circular(10.0),
-                      //   child: Container(
-                      //     height: MediaQuery.of(context).size.height * 0.05,
-                      //     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * 0.1),
-                      //     alignment: Alignment.center,
-                      //     color: deepPurpleAccent,
-                      //     child: const Text("Testing", style: TextStyle(fontSize: 25, color: CupertinoColors.systemGrey5))
-                      //     // child: Column(
-                      //     //   mainAxisAlignment: MainAxisAlignment.center,
-                      //     //   crossAxisAlignment: CrossAxisAlignment.stretch,
-                      //     //   children: [
-                      //     //     Text(user.name, style: const TextStyle(fontSize: 25, color: CupertinoColors.systemGrey5))
-                      //     //   ],
-                      //     // )
-
-                      //   ),
-                      // )
-                      // Container(
-                      //   height: MediaQuery.of(context).size.height * 0.13,
-                      //   padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.05),
-                      //   child: Text("Delete Button"),
-                      // )
                     ],
                   ),
                 ),
