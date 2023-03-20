@@ -35,7 +35,34 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteUser(int index) {
+  void updateUser(Map<String, dynamic> userData) {
+    final User userUpdates = User.fromJson(userData);
+    print("Get updates -> $userUpdates");
+    print("Get ID (F) -> ${userUpdates.userId}");
+
+    // final User userUpdates = User.from(_getSingleUser);
+    // User userUpdates = User(userId: _getSingleUser.userId, );
+    // final int index = _userList.indexWhere((element) => element.userId == userUpdates.userId);
+    final int index = _userList.indexWhere((element) => element.userId == userUpdates.userId);
+
+    print("Get ID (B) -> ${userUpdates.userId}");
+    print("Get Index -> $index");
+
+    _userList[index] = userUpdates;
+
+    notifyListeners();
+  }
+
+  void deleteUser(User user) {
+    final User getUser = User.from(user);
+    print("Get User~! -> $getUser");
+    print("Get User~! -> ${getUser.userId}");
+
+    final int index = _userList.indexWhere((element) => element.userId == getUser.userId);
+
+    print("Get ID (B, gg) -> ${getUser.userId}");
+    print("Get Index -> $index");
+
     _userList.removeAt(index);
     notifyListeners();
   }

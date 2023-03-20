@@ -21,6 +21,8 @@ class _UserDetailState extends State<UserDetail> {
   void initState() {
     setState(() {
       user = Provider.of<UserProvider>(context, listen: false).getSingleUser!;  
+    
+      print("Get UserID -> ${user.userId}");
     });
 
     if (user == null) {
@@ -41,7 +43,7 @@ class _UserDetailState extends State<UserDetail> {
           padding: EdgeInsets.zero,
           child: const Icon(CupertinoIcons.create, color: white70),
           onPressed: () {
-            Navigator.of(context).pushNamed("/call/update");
+            Navigator.of(context).pushReplacementNamed("/call/update/${user.userId}");
           },
           // onPressed: () => Navigator.pop(context),
         ),
@@ -69,9 +71,56 @@ class _UserDetailState extends State<UserDetail> {
                         endIndent: 40,
                       ),
                       CustomClipRRect(user: user, description: "Phone Number", customHeight: 0.15),
+                      const Divider(
+                        color: Colors.transparent,
+                        height: 35,
+                        thickness: 5,
+                        indent: 20,
+                        endIndent: 40,
+                      ),
+
+                      // ClipRRect(
+                      //   borderRadius: BorderRadius.circular(10.0),
+                      //   child: Container(
+                      //     height: MediaQuery.of(context).size.height * 0.05,
+                      //     padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * 0.1),
+                      //     alignment: Alignment.center,
+                      //     color: deepPurpleAccent,
+                      //     child: const Text("Testing", style: TextStyle(fontSize: 25, color: CupertinoColors.systemGrey5))
+                      //     // child: Column(
+                      //     //   mainAxisAlignment: MainAxisAlignment.center,
+                      //     //   crossAxisAlignment: CrossAxisAlignment.stretch,
+                      //     //   children: [
+                      //     //     Text(user.name, style: const TextStyle(fontSize: 25, color: CupertinoColors.systemGrey5))
+                      //     //   ],
+                      //     // )
+
+                      //   ),
+                      // )
+                      // Container(
+                      //   height: MediaQuery.of(context).size.height * 0.13,
+                      //   padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.05),
+                      //   child: Text("Delete Button"),
+                      // )
                     ],
                   ),
                 ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Provider.of<UserProvider>(context, listen: false).deleteUser(user);
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * 0.1),
+                      alignment: Alignment.center,
+                      color: red,
+                      child: const Text("Delete", style: TextStyle(fontSize: 25, color: CupertinoColors.systemGrey5))
+                    ),
+                  ),
+                )
               ],
             ),
             Positioned(

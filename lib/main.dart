@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/app_screens/call/add_call_page.dart';
+import 'package:ios_chatapp/app_screens/call/edit_call_page.dart';
 import 'package:ios_chatapp/app_screens/chat/chat_page.dart';
 import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
 import 'package:ios_chatapp/app_screens/cupertino_call.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
 
               if (pathId == "update") {
                 print("Update!!!");
-                return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "Update")));
+                return CupertinoPageRoute(builder: ((context) => const EditCallPage(callInfo: "Update")));
               }
             }
             return null;

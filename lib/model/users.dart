@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/shared/style.dart';
 
 class User {
-  final String userId;
+  final dynamic userId;
   final String name;
   final dynamic color;
   final dynamic oppositeColor;
@@ -28,7 +28,7 @@ class User {
 
   factory User.fromJson(Map<dynamic, dynamic> json) {
     return User(
-      userId: json['userId'] as String,
+      userId: json['userId'] as dynamic,
       name: json['name'] as String,
       color: json['color'] as dynamic,
       oppositeColor: json['oppositeColor'] as dynamic,
