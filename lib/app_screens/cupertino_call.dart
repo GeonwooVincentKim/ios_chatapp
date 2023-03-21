@@ -39,54 +39,70 @@ class _CupertinoCallState extends State<CupertinoCall> {
         ),
       ),
       child: Center(
-        child: Consumer<UserProvider>(
-          builder: ((context, userElement, child) {
-            final List<User> listUser = userElement.userList;
-            getUserList = listUser.toList();
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Consumer<UserProvider>(
+              //   builder: ((context, personalUser, child) {
 
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: getUserList.length,
-              itemBuilder: (context, index) {
-                final item = getUserList[index];
-
-                return CupertinoListTile(
-                  title: Text(item.name),
-                  subtitle: Text(item.phoneNumber),
-                  leading: CircleAvatar(
-                    backgroundColor: item.color,
-                    radius: 30,
-                    child: ClipOval(
-                      child: Image.asset(
-                        "assets/image/user/sample_user.png",
-                        fit: BoxFit.cover
-                      ),
-                    )
-                  ),
-                  onTap: () {
-                    print("Here?");
-                    Provider.of<UserProvider>(context, listen: false).selectUser(item);
-                    Navigator.pushNamed(context, "/call/detail/${item.userId}");
-                    // UserDetail(user: item);
-                  },
-                  trailing: TextButton(
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                      shape: const RoundedRectangleBorder(
-                        side: BorderSide(color: blue)
-                      )
-                    ),
-                    child: const Text('Call'),
-                    onPressed: () async {
-                      // ignore: deprecated_member_use
-                      launch('tel://${item.phoneNumber}');
-                      await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
+              //   }),
+              // ),
+              // Consumer2(
+              //   builder: (context, value, value2, child) {
+                
+              //   },
+              // ),
+              Consumer<UserProvider>(
+                builder: ((context, userElement, child) {
+                  final List<User> listUser = userElement.userList;
+                  getUserList = listUser.toList();
+                  
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: getUserList.length,
+                    itemBuilder: (context, index) {
+                      final item = getUserList[index];
+                  
+                      return CupertinoListTile(
+                        title: Text(item.name),
+                        subtitle: Text(item.phoneNumber),
+                        leading: CircleAvatar(
+                          backgroundColor: item.color,
+                          radius: 30,
+                          child: ClipOval(
+                            child: Image.asset(
+                              "assets/image/user/sample_user.png",
+                              fit: BoxFit.cover
+                            ),
+                          )
+                        ),
+                        onTap: () {
+                          print("Here?");
+                          Provider.of<UserProvider>(context, listen: false).selectUser(item);
+                          Navigator.pushNamed(context, "/call/detail/${item.userId}");
+                          // UserDetail(user: item);
+                        },
+                        trailing: TextButton(
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                            shape: const RoundedRectangleBorder(
+                              side: BorderSide(color: blue)
+                            )
+                          ),
+                          child: const Text('Call'),
+                          onPressed: () async {
+                            // ignore: deprecated_member_use
+                            launch('tel://${item.phoneNumber}');
+                            await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
+                          },
+                        ),
+                      );
                     },
-                  ),
-                );
-              },
-            );
-          }),
+                  );
+                }),
+              ),
+            ],
+          ),
         )
       ),
     );

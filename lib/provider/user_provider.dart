@@ -7,6 +7,7 @@ import 'package:ios_chatapp/shared/utils.dart';
 
 class UserProvider with ChangeNotifier {
   final List<User> _filteredUsers = DUMMY_USERS.toList();
+  
   final List<User> _userList = [];
   // Color _backgroundColor = CupertinoColors.white;
 

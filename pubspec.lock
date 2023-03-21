@@ -190,6 +190,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      sha256: c224ac897bed083dabf11f238dd11a239809b446740be0c2044608c50029ffdf
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.9"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -208,6 +216,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  get_phone_number:
+    dependency: "direct main"
+    description:
+      name: get_phone_number
+      sha256: "47bec91bbb1ebf5f0b4a13c33f3d6f539a4c4dab1ef68c8108066a8c1434718b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   google_fonts:
     dependency: "direct main"
     description:
@@ -312,6 +328,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
+  mobile_number:
+    dependency: "direct main"
+    description:
+      name: mobile_number
+      sha256: "4c3ef292b198c8607385a75f6afae73b34026a9238931d116b42e2c7120c8eec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
   nested:
     dependency: transitive
     description:
@@ -408,6 +432,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
+  phone_selector:
+    dependency: "direct main"
+    description:
+      name: phone_selector
+      sha256: c88efa66da2ea8f29c4701a08c1c55816ab796048f78d32760c64e4348f12f34
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   platform:
     dependency: transitive
     description:
