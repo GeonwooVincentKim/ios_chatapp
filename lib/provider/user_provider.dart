@@ -17,8 +17,13 @@ class UserProvider with ChangeNotifier {
   // Color get backgroundColor => _backgroundColor;
 
   late User _getSingleUser;
+  // late User _getMyInfo;
+  final User _getMyInfo = User(userId: Utils.getRandomString(2), name: 'You', color: '', oppositeColor: '', phoneNumber: '');
+  
   // ignore: unnecessary_null_comparison
   User? get getSingleUser => _getSingleUser != null ? User.from(_getSingleUser) : null;
+  User get getMyInfo => User.from(_getMyInfo);
+  // User? get getMyInfo => _getMyInfo != null ? User.from(_getMyInfo) : null;
 
   void selectUser(User user) {
     _getSingleUser = user;
