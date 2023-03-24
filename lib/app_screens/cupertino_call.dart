@@ -108,6 +108,53 @@ class _CupertinoCallState extends State<CupertinoCall> {
       child: Stack(
         alignment: Alignment.center,
         children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.2),
+            child: Consumer<UserProvider>(
+              builder: ((context, mainUser, child) {
+                final User user = mainUser.getMyInfo;
+          
+                return ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5),
+                  itemCount: 1,
+                  physics: const ClampingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                
+                    return CupertinoListTile(
+                      title: Text(user.name),
+                      subtitle: Text(_mobileNumber),
+                      leading: CircleAvatar(
+                        backgroundColor: user.color,
+                        radius: 30,
+                        child: ClipOval(
+                          child: Image.asset(
+                            "assets/image/user/sample_user.png",
+                            fit: BoxFit.cover
+                          ),
+                        )
+                      ),
+                      onTap: () {},
+                      trailing: TextButton(
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(color: blue)
+                          )
+                        ),
+                        child: const Text('Call'),
+                        onPressed: () async {
+                          // ignore: deprecated_member_use
+                          launch('tel://$_mobileNumber');
+                          await FlutterPhoneDirectCaller.callNumber(_mobileNumber);
+                        },
+                      ),
+                    );
+                  },
+                );
+              })
+            ),
+          ),
           Container(
             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.35),
             child: Consumer<UserProvider>(
@@ -160,27 +207,6 @@ class _CupertinoCallState extends State<CupertinoCall> {
                   },
                 );
               }),
-            ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.2,
-            child: Column(
-              children: [
-                Text("Value -> $_mobileNumber"),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                    shape: const RoundedRectangleBorder(
-                      side: BorderSide(color: blue)
-                    )
-                  ),
-                  child: Text('Number -> $_mobileNumber'),
-                  onPressed: () async {
-                    // ignore: deprecated_member_use
-                    // _getPhoneNumber(); 
-                  },
-                ),
-              ],
             ),
           ),
         ],

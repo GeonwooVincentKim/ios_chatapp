@@ -18,7 +18,7 @@ class UserProvider with ChangeNotifier {
 
   late User _getSingleUser;
   // late User _getMyInfo;
-  final User _getMyInfo = User(userId: Utils.getRandomString(2), name: 'You', color: '', oppositeColor: '', phoneNumber: '');
+  final User _getMyInfo = User(userId: Utils.getRandomString(2), name: 'You', color: CupertinoColors.activeGreen, oppositeColor: '', phoneNumber: '');
   
   // ignore: unnecessary_null_comparison
   User? get getSingleUser => _getSingleUser != null ? User.from(_getSingleUser) : null;
