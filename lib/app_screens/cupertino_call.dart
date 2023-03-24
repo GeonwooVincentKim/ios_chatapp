@@ -123,42 +123,6 @@ class _CupertinoCallState extends State<CupertinoCall> {
                   // _getPhoneNumber(); 
                 },
               ),
-              // Consumer<UserProvider>(
-              //   builder: ((context, personalUser, child) {
-              //     final User user = personalUser.getMyInfo;
-        
-              //     return ListView.builder(
-              //       shrinkWrap: true,
-              //       itemCount: 1,
-              //       itemBuilder: (context, index) {
-              //         return CupertinoListTile(
-              //           title: Text(user.name),
-              //           subtitle: Text(user.phoneNumber),
-              //           leading: CircleAvatar(
-              //             backgroundColor: user.color,
-              //             radius: 30,
-              //             child: ClipOval(
-              //               child: Image.asset(
-              //                 "assets/image/user/sample_user.png",
-              //                 fit: BoxFit.cover
-              //               ),
-              //             )
-              //           ),
-              //           trailing: TextButton(
-              //             style: TextButton.styleFrom(
-              //               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-              //               shape: const RoundedRectangleBorder(
-              //                 side: BorderSide(color: blue)
-              //               )
-              //             ),
-              //             child: const Text('Call'),
-              //             onPressed: () {},
-              //           ),
-              //         );
-              //       },
-              //     );
-              //   }),
-              // ),
            
               Consumer<UserProvider>(
                 builder: ((context, userElement, child) {
