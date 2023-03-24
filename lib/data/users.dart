@@ -18,4 +18,9 @@ List<User> DUMMY_USERS = [
   User(userId: '13', name: 'Lola', color: lightBlue, phoneNumber: '+821067723434', oppositeColor: lightBlue),
   User(userId: '14', name: 'Halsey', color: deepPurpleAccent, phoneNumber: '+821079292342', oppositeColor: deepPurpleAccent),
   User(userId: '15', name: 'Taylor', color: indigoAccent, phoneNumber: '+821012366932', oppositeColor: indigoAccent),
+  User(userId: '16', name: 'Saint', color: indigoAccent, phoneNumber: '+821012366932', oppositeColor: indigoAccent),
+  User(userId: '17', name: 'Lyria', color: indigoAccent, phoneNumber: '+821012366932', oppositeColor: indigoAccent),
+  User(userId: '18', name: 'Terria', color: indigoAccent, phoneNumber: '+821012366932', oppositeColor: indigoAccent),
+  User(userId: '19', name: 'Grace', color: indigoAccent, phoneNumber: '+821012366932', oppositeColor: indigoAccent),
+  User(userId: '20', name: 'Victor', color: indigoAccent, phoneNumber: '+821012366932', oppositeColor: indigoAccent),
 ];

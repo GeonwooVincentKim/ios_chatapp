@@ -105,77 +105,85 @@ class _CupertinoCallState extends State<CupertinoCall> {
           // onPressed: () => Navigator.pop(context),
         ),
       ),
-      child: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text("Value -> $_mobileNumber"),
-              TextButton(
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                  shape: const RoundedRectangleBorder(
-                    side: BorderSide(color: blue)
-                  )
-                ),
-                child: Text('Number -> $_mobileNumber'),
-                onPressed: () async {
-                  // ignore: deprecated_member_use
-                  // _getPhoneNumber(); 
-                },
-              ),
-           
-              Consumer<UserProvider>(
-                builder: ((context, userElement, child) {
-                  final List<User> listUser = userElement.userList;
-                  getUserList = listUser.toList();
-        
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: getUserList.length,
-                    itemBuilder: (context, index) {
-                      final item = getUserList[index];
-                  
-                      return CupertinoListTile(
-                        title: Text(item.name),
-                        subtitle: Text(item.phoneNumber),
-                        leading: CircleAvatar(
-                          backgroundColor: item.color,
-                          radius: 30,
-                          child: ClipOval(
-                            child: Image.asset(
-                              "assets/image/user/sample_user.png",
-                              fit: BoxFit.cover
-                            ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.35),
+            child: Consumer<UserProvider>(
+              builder: ((context, userElement, child) {
+                final List<User> listUser = userElement.userList;
+                getUserList = listUser.toList();
+              
+                return ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.08),
+                  itemCount: getUserList.length,
+                  physics: const ClampingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final item = getUserList[index];
+                
+                    return CupertinoListTile(
+                      title: Text(item.name),
+                      subtitle: Text(item.phoneNumber),
+                      leading: CircleAvatar(
+                        backgroundColor: item.color,
+                        radius: 30,
+                        child: ClipOval(
+                          child: Image.asset(
+                            "assets/image/user/sample_user.png",
+                            fit: BoxFit.cover
+                          ),
+                        )
+                      ),
+                      onTap: () {
+                        print("Here?");
+                        Provider.of<UserProvider>(context, listen: false).selectUser(item);
+                        Navigator.pushNamed(context, "/call/detail/${item.userId}");
+                        // UserDetail(user: item);
+                      },
+                      trailing: TextButton(
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(color: blue)
                           )
                         ),
-                        onTap: () {
-                          print("Here?");
-                          Provider.of<UserProvider>(context, listen: false).selectUser(item);
-                          Navigator.pushNamed(context, "/call/detail/${item.userId}");
-                          // UserDetail(user: item);
+                        child: const Text('Call'),
+                        onPressed: () async {
+                          // ignore: deprecated_member_use
+                          launch('tel://${item.phoneNumber}');
+                          await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
                         },
-                        trailing: TextButton(
-                          style: TextButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                            shape: const RoundedRectangleBorder(
-                              side: BorderSide(color: blue)
-                            )
-                          ),
-                          child: const Text('Call'),
-                          onPressed: () async {
-                            // ignore: deprecated_member_use
-                            launch('tel://${item.phoneNumber}');
-                            await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
-                          },
-                        ),
-                      );
-                    },
-                  );
-                }),
-              ),
-            ],
+                      ),
+                    );
+                  },
+                );
+              }),
+            ),
           ),
-        )
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.2,
+            child: Column(
+              children: [
+                Text("Value -> $_mobileNumber"),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    shape: const RoundedRectangleBorder(
+                      side: BorderSide(color: blue)
+                    )
+                  ),
+                  child: Text('Number -> $_mobileNumber'),
+                  onPressed: () async {
+                    // ignore: deprecated_member_use
+                    // _getPhoneNumber(); 
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
