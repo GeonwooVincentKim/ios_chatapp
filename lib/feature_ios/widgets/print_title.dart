@@ -12,9 +12,9 @@ class PrintTitle extends StatelessWidget {
     return CupertinoTabView(
       builder: (context) {
         if (index == 0) {
-          return FirstTabPage();
+          return const FirstTabPage();
         } else if (index == 1) {
-          return SecondTabPage();
+          return const SecondTabPage();
         } else {
           return CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(middle: Text(textLocation)),
