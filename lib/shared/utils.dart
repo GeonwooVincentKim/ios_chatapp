@@ -60,7 +60,4 @@ class Utils {
 
     return '';
   }
-
-  List<User> getUserList = List.empty(growable: true);
-  static EdgeInsets customEdgeInsets(BuildContext context, getExtraValue) => EdgeInsets.only(bottom: MediaQuery.of(context).size.height);
 }

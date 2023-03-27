@@ -117,7 +117,6 @@ class _CupertinoCallState extends State<CupertinoCall> {
               builder: ((context, mainUser, child) {
                 final User user = mainUser.getMyInfo;
 
-                // return CustomCupertinoListView(checkIsList: true, getUserList: getUserList, user: user, mobileNumber: _mobileNumber);
                 return ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5),
@@ -136,7 +135,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
               builder: ((context, userElement, child) {
                 final List<User> listUser = userElement.userList;
                 getUserList = listUser.toList();
-                
+
                 return ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.08),
@@ -149,7 +148,6 @@ class _CupertinoCallState extends State<CupertinoCall> {
                     return CustomCupertinoListTile(checkIsList: true, item: item, mobileNumber: '');
                   },
                 );
-                // return CustomCupertinoListView(checkIsList: true, getUserList: getUserList, user: UserProvider().getMyInfo, mobileNumber: '');
               }),
             ),
           ),
@@ -158,52 +156,3 @@ class _CupertinoCallState extends State<CupertinoCall> {
     );
   }
 }
-
-class CustomCupertinoListView extends StatelessWidget {
-  final bool checkIsList;
-  final List<User> getUserList;
-  final User user;
-  final String mobileNumber;
-
-  const CustomCupertinoListView({
-    super.key,
-    required this.checkIsList,
-    required this.getUserList,
-    required this.user,
-    required this.mobileNumber
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // List<User> getUserList = Utils.getUserList;
-    // List<User> getUserList = List.empty(growable: true);
-    
-
-    // final List<User> listUser = UserProvider().userList;
-    // getUserList = listUser.toList();
-
-    return ListView.builder(
-      shrinkWrap: true,
-      padding: checkIsList ? 
-        Utils.customEdgeInsets(context, 0.08) : 
-        Utils.customEdgeInsets(context, 0.5),
-      itemCount: checkIsList ? getUserList.length : 1,
-      physics: const ClampingScrollPhysics(),
-      itemBuilder: (context, index) {
-        final item = getUserList[index];
-
-        checkIsList ?
-          CustomCupertinoListTile(checkIsList: checkIsList, item: item, mobileNumber: '') :
-          CustomCupertinoListTile(checkIsList: checkIsList, item: user, mobileNumber: mobileNumber);
-      },
-      // itemBuilder: checkIsList ? (context, index) {
-      //   final item = getUserList[index];
-
-      //   return CustomCupertinoListTile(item: item);
-      // } : (context, index) {
-
-      // }
-    );
-  }
-}
-
