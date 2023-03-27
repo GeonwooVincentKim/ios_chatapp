@@ -5,6 +5,8 @@ import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:ios_chatapp/shared/utils.dart';
+import 'package:ios_chatapp/widgets/custom/tile/call_list_tile.dart';
 import 'package:ios_chatapp/widgets/custom/tile/user_detail.dart';
 import 'package:mobile_number/mobile_number.dart';
 import 'package:phone_selector/phone_selector.dart';
@@ -25,6 +27,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
   String _phoneNumber = '';
 
   String _mobileNumber = '';
+  bool checkIsList = false;
   List<SimCard> _simCard = <SimCard>[];
 
   final _formKey = GlobalKey<FormState>();
@@ -113,43 +116,15 @@ class _CupertinoCallState extends State<CupertinoCall> {
             child: Consumer<UserProvider>(
               builder: ((context, mainUser, child) {
                 final User user = mainUser.getMyInfo;
-          
+
+                // return CustomCupertinoListView(checkIsList: true, getUserList: getUserList, user: user, mobileNumber: _mobileNumber);
                 return ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5),
                   itemCount: 1,
                   physics: const ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
-                
-                    return CupertinoListTile(
-                      title: Text(user.name),
-                      subtitle: Text(_mobileNumber),
-                      leading: CircleAvatar(
-                        backgroundColor: user.color,
-                        radius: 30,
-                        child: ClipOval(
-                          child: Image.asset(
-                            "assets/image/user/sample_user.png",
-                            fit: BoxFit.cover
-                          ),
-                        )
-                      ),
-                      onTap: () {},
-                      trailing: TextButton(
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                          shape: const RoundedRectangleBorder(
-                            side: BorderSide(color: blue)
-                          )
-                        ),
-                        child: const Text('Call'),
-                        onPressed: () async {
-                          // ignore: deprecated_member_use
-                          launch('tel://$_mobileNumber');
-                          await FlutterPhoneDirectCaller.callNumber(_mobileNumber);
-                        },
-                      ),
-                    );
+                    return CustomCupertinoListTile(checkIsList: false, item: user, mobileNumber: _mobileNumber);
                   },
                 );
               })
@@ -161,51 +136,20 @@ class _CupertinoCallState extends State<CupertinoCall> {
               builder: ((context, userElement, child) {
                 final List<User> listUser = userElement.userList;
                 getUserList = listUser.toList();
-              
+                
                 return ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.08),
+                  // padding: Utils.customEdgeInsets(context, 0.08),
                   itemCount: getUserList.length,
                   physics: const ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
                     final item = getUserList[index];
-                
-                    return CupertinoListTile(
-                      title: Text(item.name),
-                      subtitle: Text(item.phoneNumber),
-                      leading: CircleAvatar(
-                        backgroundColor: item.color,
-                        radius: 30,
-                        child: ClipOval(
-                          child: Image.asset(
-                            "assets/image/user/sample_user.png",
-                            fit: BoxFit.cover
-                          ),
-                        )
-                      ),
-                      onTap: () {
-                        print("Here?");
-                        Provider.of<UserProvider>(context, listen: false).selectUser(item);
-                        Navigator.pushNamed(context, "/call/detail/${item.userId}");
-                        // UserDetail(user: item);
-                      },
-                      trailing: TextButton(
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                          shape: const RoundedRectangleBorder(
-                            side: BorderSide(color: blue)
-                          )
-                        ),
-                        child: const Text('Call'),
-                        onPressed: () async {
-                          // ignore: deprecated_member_use
-                          launch('tel://${item.phoneNumber}');
-                          await FlutterPhoneDirectCaller.callNumber(item.phoneNumber);
-                        },
-                      ),
-                    );
+
+                    return CustomCupertinoListTile(checkIsList: true, item: item, mobileNumber: '');
                   },
                 );
+                // return CustomCupertinoListView(checkIsList: true, getUserList: getUserList, user: UserProvider().getMyInfo, mobileNumber: '');
               }),
             ),
           ),
@@ -214,3 +158,52 @@ class _CupertinoCallState extends State<CupertinoCall> {
     );
   }
 }
+
+class CustomCupertinoListView extends StatelessWidget {
+  final bool checkIsList;
+  final List<User> getUserList;
+  final User user;
+  final String mobileNumber;
+
+  const CustomCupertinoListView({
+    super.key,
+    required this.checkIsList,
+    required this.getUserList,
+    required this.user,
+    required this.mobileNumber
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // List<User> getUserList = Utils.getUserList;
+    // List<User> getUserList = List.empty(growable: true);
+    
+
+    // final List<User> listUser = UserProvider().userList;
+    // getUserList = listUser.toList();
+
+    return ListView.builder(
+      shrinkWrap: true,
+      padding: checkIsList ? 
+        Utils.customEdgeInsets(context, 0.08) : 
+        Utils.customEdgeInsets(context, 0.5),
+      itemCount: checkIsList ? getUserList.length : 1,
+      physics: const ClampingScrollPhysics(),
+      itemBuilder: (context, index) {
+        final item = getUserList[index];
+
+        checkIsList ?
+          CustomCupertinoListTile(checkIsList: checkIsList, item: item, mobileNumber: '') :
+          CustomCupertinoListTile(checkIsList: checkIsList, item: user, mobileNumber: mobileNumber);
+      },
+      // itemBuilder: checkIsList ? (context, index) {
+      //   final item = getUserList[index];
+
+      //   return CustomCupertinoListTile(item: item);
+      // } : (context, index) {
+
+      // }
+    );
+  }
+}
+
