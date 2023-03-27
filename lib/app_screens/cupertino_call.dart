@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:hive/hive.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
@@ -50,6 +51,12 @@ class _CupertinoCallState extends State<CupertinoCall> {
     
     super.initState();
     initMobileNumberState();
+  }
+
+  @override
+  void dispose() {
+    Hive.box('user_db').close();
+    super.dispose();
   }
 
   _getPhoneNumber() async {

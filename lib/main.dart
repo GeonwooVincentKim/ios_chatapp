@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ios_chatapp/app_screens/call/add_call_page.dart';
 import 'package:ios_chatapp/app_screens/call/edit_call_page.dart';
 import 'package:ios_chatapp/app_screens/chat/chat_page.dart';
@@ -6,13 +7,21 @@ import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
 import 'package:ios_chatapp/app_screens/cupertino_call.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
 import 'package:ios_chatapp/body.dart';
+import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/widgets/custom/tile/user_detail.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(HiveUsersAdapter());
+  await Hive.openBox("user_db");
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

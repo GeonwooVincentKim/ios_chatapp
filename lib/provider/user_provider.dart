@@ -1,11 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:hive/hive.dart';
 import 'package:ios_chatapp/data/users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/shared/utils.dart';
 
 class UserProvider with ChangeNotifier {
+  final userBox = Hive.box('user_db');
   final List<User> _filteredUsers = DUMMY_USERS.toList();
   
   final List<User> _userList = [];
@@ -27,6 +29,8 @@ class UserProvider with ChangeNotifier {
 
   void selectUser(User user) {
     _getSingleUser = user;
+    // userBox.get('userId');
+    // userBox.get('name');
     notifyListeners();
   }
 
@@ -38,8 +42,13 @@ class UserProvider with ChangeNotifier {
 
     print("Get UserID -> ${userData['userId']}");
     _userList.add(userSets);
+    userBox.add(userSets);
     notifyListeners();
   }
+
+  // Future<void> addData(Map<dynamic, dynamic> userData) {
+  //   final box = await Hive.openBox()
+  // }
 
   void updateUser(Map<String, dynamic> userData) {
     final User userUpdates = User.fromJson(userData);
@@ -55,6 +64,7 @@ class UserProvider with ChangeNotifier {
     print("Get Index -> $index");
 
     _userList[index] = userUpdates;
+    userBox.put('userId', userUpdates);
 
     notifyListeners();
   }
@@ -70,6 +80,7 @@ class UserProvider with ChangeNotifier {
     print("Get Index -> $index");
 
     _userList.removeAt(index);
+    userBox.delete('user_db');
     notifyListeners();
   }
 
