@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
+import 'package:ios_chatapp/model/users.dart';
 
 import 'package:overlay_support/overlay_support.dart';
 
@@ -59,4 +60,7 @@ class Utils {
 
     return '';
   }
+
+  List<User> getUserList = List.empty(growable: true);
+  static EdgeInsets customEdgeInsets(BuildContext context, getExtraValue) => EdgeInsets.only(bottom: MediaQuery.of(context).size.height);
 }
