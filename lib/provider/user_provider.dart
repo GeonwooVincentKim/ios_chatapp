@@ -60,23 +60,12 @@ class UserProvider with ChangeNotifier {
 
 
     _userList.add(userSets);
-    // userBox.add(hiveUserSets);
     userBox.put(userData['userId'], hiveUserSets);
-
-    // userBox.add(userSets);
-    // userBox.put('userId', userSets.userId);
-    // userBox.put('name', userSets.name);
-    // userBox.put('phoneNumber', userSets.phoneNumber);
-    // userBox.put('color', userSets.color);
-    // userBox.put('oppositeColor', userSets.oppositeColor);
-    // newUserBox.put(userData['userId'], userSets);
-    // userBox.put(userData['userId'], userSets);
 
     print("Get Values -> ${userBox.values.first.toString()}");
     print("Get UserBox contents -> $userBox");
     // print("Get box -> ${userBox.get('user')}");
 
-    // userBox.add(userSets);
     notifyListeners();
   }
 
