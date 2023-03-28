@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ios_chatapp/app_screens/call/add_call_page.dart';
@@ -13,12 +15,30 @@ import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/widgets/custom/tile/user_detail.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
+import 'package:path_provider/path_provider.dart' as path;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(HiveUsersAdapter());
-  await Hive.openBox("user_db");
+
+  // final dir = await path.getApplicationDocumentsDirectory();
+  // Hive.init(dir.path);
+  // Hive.initFlutter('user_db');
+  Directory appDocumentDirectory = await path.getApplicationDocumentsDirectory();
+  // Hive.init(appDocumentDirectory.path);
+  // Hive.registerAdapter(HiveUsersAdapter());
+
+  await Hive.initFlutter(appDocumentDirectory.path);
+  // Hive.registerAdapter(HiveUsersAdapter());
+
+  if (!Hive.isAdapterRegistered(1)) {
+    print("Is not registered");
+    Hive.registerAdapter<HiveUsers>(HiveUsersAdapter());
+  }
+
+  // Box<HiveUsers> listStorage = await Hive.openBox<HiveUsers>("user_db");
+  // await Hive.openBox<HiveUsers>("user_db");
+  await Hive.openBox<HiveUsers>("user_db");
+  // await UserProvider().openBox();
 
   runApp(const MyApp());
 }

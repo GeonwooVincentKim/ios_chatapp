@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/shared/style.dart';
+
 import 'package:hive/hive.dart';
 part 'hive_users.g.dart';
 
@@ -25,4 +28,34 @@ class HiveUsers extends HiveObject {
     required this.oppositeColor,
     required this.phoneNumber
   });
+
+  factory HiveUsers.from(HiveUsers user) {
+    return HiveUsers(
+      userId: user.userId,
+      name: user.name,
+      color: user.color,
+      oppositeColor: user.oppositeColor,
+      phoneNumber: user.phoneNumber
+    );
+  }
+
+  factory HiveUsers.fromJson(Map<dynamic, dynamic> json) {
+    return HiveUsers(
+      userId: json['userId'] as dynamic,
+      name: json['name'] as String,
+      color: json['color'] as dynamic,
+      oppositeColor: json['oppositeColor'] as dynamic,
+      phoneNumber: json['phoneNumber'] as String
+    );
+  }
+
+  factory HiveUsers.initialData() {
+    return HiveUsers(
+      userId: '',
+      name: '',
+      color: const Color(defaultColor),
+      oppositeColor: const Color(defaultColor),
+      phoneNumber: ''
+    );
+  }
 }

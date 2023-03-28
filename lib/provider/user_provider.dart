@@ -3,18 +3,27 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:ios_chatapp/data/users.dart';
+import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/shared/utils.dart';
 
+
+final userBox = Hive.box<HiveUsers>('user_db');
+
 class UserProvider with ChangeNotifier {
-  final userBox = Hive.box('user_db');
+  // final newUserBox = Hive.box('user');
+  
+  // Box<HiveUsers> getUserBox = [] as Box<HiveUsers>; 
   final List<User> _filteredUsers = DUMMY_USERS.toList();
   
   final List<User> _userList = [];
+  final List<HiveUsers> _hiveUserList = [];
   // Color _backgroundColor = CupertinoColors.white;
 
   List<User> get filteredUsers => [..._filteredUsers];
   List<User> get userList => [..._userList];
+  List<HiveUsers> get hiveUserList => [..._hiveUserList];
+
   Utils getUtils = Utils();
   // Color get backgroundColor => _backgroundColor;
 
@@ -33,16 +42,41 @@ class UserProvider with ChangeNotifier {
     // userBox.get('name');
     notifyListeners();
   }
+  
+  // Future openBox() async {
+  //   getUserBox = await Hive.openBox('user_db');
+  // }
 
   void addUser(Map<dynamic, dynamic> userData) {
     userData['userId'] = Utils.getRandomString(2);
     final User userSets = User.fromJson(userData);
+    final HiveUsers hiveUserSets = HiveUsers.fromJson(userData);
 
     // changeColor();
 
     print("Get UserID -> ${userData['userId']}");
+    print("Get users Sets -> ${userSets.userId}");
+    print("Get users Sets (hive) -> ${hiveUserSets.userId}");
+
+
     _userList.add(userSets);
-    userBox.add(userSets);
+    // userBox.add(hiveUserSets);
+    userBox.put(userData['userId'], hiveUserSets);
+
+    // userBox.add(userSets);
+    // userBox.put('userId', userSets.userId);
+    // userBox.put('name', userSets.name);
+    // userBox.put('phoneNumber', userSets.phoneNumber);
+    // userBox.put('color', userSets.color);
+    // userBox.put('oppositeColor', userSets.oppositeColor);
+    // newUserBox.put(userData['userId'], userSets);
+    // userBox.put(userData['userId'], userSets);
+
+    print("Get Values -> ${userBox.values.first.toString()}");
+    print("Get UserBox contents -> $userBox");
+    // print("Get box -> ${userBox.get('user')}");
+
+    // userBox.add(userSets);
     notifyListeners();
   }
 
@@ -52,19 +86,32 @@ class UserProvider with ChangeNotifier {
 
   void updateUser(Map<String, dynamic> userData) {
     final User userUpdates = User.fromJson(userData);
+    final HiveUsers hiveUserSets = HiveUsers.fromJson(userData);
+
     print("Get updates -> $userUpdates");
+    print("Get updates (Hive) -> $hiveUserSets");
+
     print("Get ID (F) -> ${userUpdates.userId}");
+    print("Get ID (F-H) -> ${hiveUserSets.userId}");
+
 
     // final User userUpdates = User.from(_getSingleUser);
     // User userUpdates = User(userId: _getSingleUser.userId, );
     // final int index = _userList.indexWhere((element) => element.userId == userUpdates.userId);
     final int index = _userList.indexWhere((element) => element.userId == userUpdates.userId);
+    final int indexHive = _hiveUserList.indexWhere((element) => element.userId == userUpdates.userId);
 
     print("Get ID (B) -> ${userUpdates.userId}");
+    print("Get ID (B-H) -> ${hiveUserSets.userId}");
+
     print("Get Index -> $index");
+    print("Get Index (Hive) -> $indexHive");
+
 
     _userList[index] = userUpdates;
-    userBox.put('userId', userUpdates);
+    _hiveUserList[index] = hiveUserSets;
+    
+    userBox.put(userData['userId'], hiveUserSets);
 
     notifyListeners();
   }

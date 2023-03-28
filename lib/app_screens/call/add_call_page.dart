@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/utils.dart';
@@ -40,8 +41,13 @@ class _AddCallPageState extends State<AddCallPage> {
     'phoneNumber': '',
   };
   
+  // late Box newUserBox;
+  // final newUserBox = Hive.box('user');
+
   @override
   void initState() {
+    // newUserBox = Hive.box('user');
+
     randomValue = random.nextInt(256);
     color = Color.fromARGB(255, randomValue, randomValue, randomValue);
     
@@ -103,6 +109,8 @@ class _AddCallPageState extends State<AddCallPage> {
                         // Provider.of<UserProvider>(context, listen: false).changeColor();
                         // Provider.of<UserProvider>(context, listen: false).setColor(color);
                         Provider.of<UserProvider>(context, listen: false).addUser(newUser);
+                        // newUserBox.putAll(newUser);
+
                         Navigator.pop(context);
                       },
                     )

@@ -55,7 +55,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
 
   @override
   void dispose() {
-    Hive.box('user_db').close();
+    // Hive.box('user_db').close();
     super.dispose();
   }
 
