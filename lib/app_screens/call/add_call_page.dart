@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/utils.dart';
@@ -16,7 +17,9 @@ class AddCallPage extends StatefulWidget {
 }
 
 class _AddCallPageState extends State<AddCallPage> {
-  late User callUser;
+  // late User callUser;
+  late HiveUsers callUser;
+
   // Color _randomColor = CupertinoColors.black;
   final random = Random();
   

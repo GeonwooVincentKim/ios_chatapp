@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:hive/hive.dart';
+import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
@@ -23,7 +24,8 @@ class CupertinoCall extends StatefulWidget {
 }
 
 class _CupertinoCallState extends State<CupertinoCall> {
-  List<User> getUserList = List.empty(growable: true);
+  // List<User> getUserList = List.empty(growable: true);
+  List<HiveUsers> getUserList = List.empty(growable: true);
   String getNumber = '';
   String _phoneNumber = '';
 
@@ -41,7 +43,9 @@ class _CupertinoCallState extends State<CupertinoCall> {
   
   @override
   void initState() {
-    final User getOneUser = Provider.of<UserProvider>(context, listen: false).getMyInfo;
+    // final User getOneUser = Provider.of<UserProvider>(context, listen: false).getMyInfo;
+    final HiveUsers getOneUser = Provider.of<UserProvider>(context, listen: false).getMyInfoHive;
+    
     // getNumber = PhoneSelector.getPhoneNumber() as String;
     
     newUser['name'] = getOneUser.name;
@@ -122,7 +126,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
             padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.2),
             child: Consumer<UserProvider>(
               builder: ((context, mainUser, child) {
-                final User user = mainUser.getMyInfo;
+                final HiveUsers user = mainUser.getMyInfoHive;
 
                 return ListView.builder(
                   shrinkWrap: true,
@@ -140,7 +144,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.35),
             child: Consumer<UserProvider>(
               builder: ((context, userElement, child) {
-                final List<User> listUser = userElement.userList;
+                final List<HiveUsers> listUser = userElement.hiveUserList;
                 getUserList = listUser.toList();
 
                 return ListView.builder(

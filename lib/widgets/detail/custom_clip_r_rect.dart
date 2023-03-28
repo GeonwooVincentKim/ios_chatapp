@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/shared/style.dart';
 
 class CustomClipRRect extends StatelessWidget {
-  final User user;
+  // final User user;
+  final HiveUsers user;
   final String description;
   final double customHeight;
 

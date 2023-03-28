@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
@@ -9,7 +10,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class CustomCupertinoListTile extends StatelessWidget {
   final bool checkIsList;
-  final User item;
+  // final User item;
+  final HiveUsers item;
   final String mobileNumber;
 
   const CustomCupertinoListTile({
@@ -36,7 +38,7 @@ class CustomCupertinoListTile extends StatelessWidget {
       ),
       onTap: checkIsList ? () {
         print("Here?");
-        Provider.of<UserProvider>(context, listen: false).selectUser(item);
+        Provider.of<UserProvider>(context, listen: false).selectUserHive(item);
         Navigator.pushNamed(context, "/call/detail/${item.userId}");
         // UserDetail(user: item);
       } : () {},

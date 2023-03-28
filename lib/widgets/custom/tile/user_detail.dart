@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
@@ -15,18 +16,21 @@ class UserDetail extends StatefulWidget {
 }
 
 class _UserDetailState extends State<UserDetail> {
-  late User user;
+  late HiveUsers user;
 
   @override
   void initState() {
     setState(() {
-      user = Provider.of<UserProvider>(context, listen: false).getSingleUser!;  
+      // user = Provider.of<UserProvider>(context, listen: false).getSingleUser!;  
+      user = Provider.of<UserProvider>(context, listen: false).getSingleUserHive!;  
     
       print("Get UserID -> ${user.userId}");
     });
 
     if (user == null) {
-      final List<User> userList = Provider.of<UserProvider>(context, listen: false).userList.toList();
+      // final List<User> userList = Provider.of<UserProvider>(context, listen: false).userList.toList();
+      // user = userList.firstWhere((element) => element.userId == widget.pageId);
+      final List<HiveUsers> userList = Provider.of<UserProvider>(context, listen: false).hiveUserList.toList();
       user = userList.firstWhere((element) => element.userId == widget.pageId);
     }
 
@@ -85,7 +89,7 @@ class _UserDetailState extends State<UserDetail> {
                   borderRadius: BorderRadius.circular(10.0),
                   child: GestureDetector(
                     onTap: () {
-                      Provider.of<UserProvider>(context, listen: false).deleteUser(user);
+                      Provider.of<UserProvider>(context, listen: false).deleteHiveUser(user);
                       Navigator.pop(context);
                     },
                     child: Container(
