@@ -42,7 +42,8 @@ class _UserDetailState extends State<UserDetail> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(widget.pageId),
-        backgroundColor: user.color,
+        // backgroundColor: user.color as Color,
+        backgroundColor: blueAccent,
         trailing: CupertinoButton(
           padding: EdgeInsets.zero,
           child: const Icon(CupertinoIcons.create, color: white70),
@@ -106,7 +107,8 @@ class _UserDetailState extends State<UserDetail> {
             Positioned(
               top: MediaQuery.of(context).size.height * 0.2,
               child: CircleAvatar(
-                backgroundColor: user.color, 
+                // backgroundColor: user.color as Color, 
+                backgroundColor: blueAccent,
                 radius: 30,
                 child: ClipOval(
                   child: Image.asset(
@@ -124,13 +126,14 @@ class _UserDetailState extends State<UserDetail> {
 
   Widget _buildProfileBackground(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            user.oppositeColor,
-            user.color
+            // user.oppositeColor as Color,
+            // user.color as Color
+            blueAccent
           ]
         )
       ),

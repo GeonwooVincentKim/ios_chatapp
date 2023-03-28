@@ -19,25 +19,19 @@ class HiveUsersAdapter extends TypeAdapter<HiveUsers> {
     return HiveUsers(
       userId: fields[0] as dynamic,
       name: fields[1] as String,
-      color: fields[2] as dynamic,
-      oppositeColor: fields[3] as dynamic,
-      phoneNumber: fields[4] as String,
+      phoneNumber: fields[2] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, HiveUsers obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.userId)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.color)
-      ..writeByte(3)
-      ..write(obj.oppositeColor)
-      ..writeByte(4)
       ..write(obj.phoneNumber);
   }
 

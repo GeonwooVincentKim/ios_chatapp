@@ -60,4 +60,20 @@ class Utils {
 
     return '';
   }
+
+  // Color convertToColor(int intColor) {
+  //   return Color(intColor);
+  // }
+
+  Color convertToColor(String stringColor) {
+    return Color(int.parse(stringColor));
+  }
+
+  String convertToString(Color color) {
+    return color.value.toString();
+  }
+
+  int convertToInt(Color color) {
+    return color.value;
+  }
 }

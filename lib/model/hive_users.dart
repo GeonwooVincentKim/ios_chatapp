@@ -12,20 +12,20 @@ class HiveUsers extends HiveObject {
   @HiveField(1)
   final String name;
 
+  // @HiveField(2)
+  // final String color;
+
+  // @HiveField(3)
+  // final String oppositeColor;
+
   @HiveField(2)
-  final dynamic color;
-
-  @HiveField(3)
-  final dynamic oppositeColor;
-
-  @HiveField(4)
   final String phoneNumber;
 
   HiveUsers({
     required this.userId,
     required this.name,
-    required this.color,
-    required this.oppositeColor,
+    // required this.color,
+    // required this.oppositeColor,
     required this.phoneNumber
   });
 
@@ -33,8 +33,8 @@ class HiveUsers extends HiveObject {
     return HiveUsers(
       userId: user.userId,
       name: user.name,
-      color: user.color,
-      oppositeColor: user.oppositeColor,
+      // color: user.color,
+      // oppositeColor: user.oppositeColor,
       phoneNumber: user.phoneNumber
     );
   }
@@ -43,8 +43,8 @@ class HiveUsers extends HiveObject {
     return HiveUsers(
       userId: json['userId'] as dynamic,
       name: json['name'] as String,
-      color: json['color'] as dynamic,
-      oppositeColor: json['oppositeColor'] as dynamic,
+      // color: json['color'] as String,
+      // oppositeColor: json['oppositeColor'] as String,
       phoneNumber: json['phoneNumber'] as String
     );
   }
@@ -53,8 +53,8 @@ class HiveUsers extends HiveObject {
     return HiveUsers(
       userId: '',
       name: '',
-      color: const Color(defaultColor),
-      oppositeColor: const Color(defaultColor),
+      // color: const Color(defaultColor) as String,
+      // oppositeColor: const Color(defaultColor) as String,
       phoneNumber: ''
     );
   }

@@ -26,6 +26,8 @@ class CupertinoCall extends StatefulWidget {
 class _CupertinoCallState extends State<CupertinoCall> {
   // List<User> getUserList = List.empty(growable: true);
   List<HiveUsers> getUserList = List.empty(growable: true);
+  // Box<dynamic>? getUserList;
+
   String getNumber = '';
   String _phoneNumber = '';
 
@@ -36,8 +38,8 @@ class _CupertinoCallState extends State<CupertinoCall> {
   final _formKey = GlobalKey<FormState>();
   Map<String, dynamic> newUser = {
     'name': '',
-    'color': '',
-    'oppositeColor': '',
+    // 'color': '',
+    // 'oppositeColor': '',
     'phoneNumber': '',
   };
   
@@ -49,8 +51,8 @@ class _CupertinoCallState extends State<CupertinoCall> {
     // getNumber = PhoneSelector.getPhoneNumber() as String;
     
     newUser['name'] = getOneUser.name;
-    newUser['color'] = getOneUser.color;
-    newUser['oppositeColor'] = getOneUser.oppositeColor;
+    // newUser['color'] = getOneUser.color;
+    // newUser['oppositeColor'] = getOneUser.oppositeColor;
     newUser['phoneNumber'] = getOneUser.phoneNumber;
     
     super.initState();
@@ -145,13 +147,18 @@ class _CupertinoCallState extends State<CupertinoCall> {
             child: Consumer<UserProvider>(
               builder: ((context, userElement, child) {
                 final List<HiveUsers> listUser = userElement.hiveUserList;
+                // final Box<dynamic> listUser = userElement.userBox;
                 getUserList = listUser.toList();
+                // getUserList = listUser;
+
+                // userElement.userBox.values.length;
 
                 return ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.08),
                   // padding: Utils.customEdgeInsets(context, 0.08),
                   itemCount: getUserList.length,
+                  // itemCount: userElement.userBox.values.length,
                   physics: const ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
                     final item = getUserList[index];

@@ -38,8 +38,8 @@ class _AddCallPageState extends State<AddCallPage> {
   final _formKey = GlobalKey<FormState>();
   Map<String, dynamic> newUser = {
     'name': '',
-    'color': '',
-    'oppositeColor': '',
+    // 'color': '',
+    // 'oppositeColor': '',
     'phoneNumber': '',
   };
   
@@ -101,8 +101,9 @@ class _AddCallPageState extends State<AddCallPage> {
                         if (!_formKey.currentState!.validate()) return;
                         _formKey.currentState!.save();
                         
-                        newUser['color'] = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
-                        newUser['oppositeColor'] = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
+                        // newUser['color'] = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
+                        // newUser['oppositeColor'] = Color(Random().nextInt(0xffffffff)).withOpacity(1.0);
+                        
                         // Provider.of<UserProvider>(context, listen: false).changeColor();
                         // Provider.of<UserProvider>(context, listen: false).setColor(color);
                         Provider.of<UserProvider>(context, listen: false).addUser(newUser);

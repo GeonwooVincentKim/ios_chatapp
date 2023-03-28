@@ -40,8 +40,8 @@ class _EditCallPageState extends State<EditCallPage> {
   final _formKey = GlobalKey<FormState>();
   Map<String, dynamic> modifyUser = {
     'name': '',
-    'color': '',
-    'oppositeColor': '',
+    // 'color': '',
+    // 'oppositeColor': '',
     'phoneNumber': '',
   };
   
@@ -56,8 +56,8 @@ class _EditCallPageState extends State<EditCallPage> {
 
       // Make sure to write down all attributes even not use in this page
       // color & oppositeColor
-      modifyUser['color'] = getUser.color;
-      modifyUser['oppositeColor'] = getUser.oppositeColor;
+      // modifyUser['color'] = getUser.color;
+      // modifyUser['oppositeColor'] = getUser.oppositeColor;
       modifyUser['phoneNumber'] = getUser.phoneNumber;
     // }
 

@@ -5,6 +5,7 @@ import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:ios_chatapp/shared/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,7 +28,9 @@ class CustomCupertinoListTile extends StatelessWidget {
       title: Text(item.name),
       subtitle: checkIsList ? Text(item.phoneNumber) : Text(mobileNumber),
       leading: CircleAvatar(
-        backgroundColor: item.color,
+        // backgroundColor: Utils().convertToColor(item.color),
+        backgroundColor: blueAccent,
+        // backgroundColor: Utils().convertToString(item.color) as Color,
         radius: 30,
         child: ClipOval(
           child: Image.asset(

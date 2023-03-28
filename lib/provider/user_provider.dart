@@ -25,7 +25,8 @@ class UserProvider with ChangeNotifier {
   late HiveUsers _getSingleUserHive;
   // late User _getMyInfo;
   final User _getMyInfo = User(userId: Utils.getRandomString(2), name: 'You', color: CupertinoColors.activeGreen, oppositeColor: '', phoneNumber: '');
-  final HiveUsers _getMyInfoHive = HiveUsers(userId: Utils.getRandomString(2), name: 'You', color: CupertinoColors.activeGreen, oppositeColor: '', phoneNumber: '');
+  // final HiveUsers _getMyInfoHive = HiveUsers(userId: Utils.getRandomString(2), name: 'You', color: '', oppositeColor: '', phoneNumber: '');
+  final HiveUsers _getMyInfoHive = HiveUsers(userId: Utils.getRandomString(2), name: 'You', phoneNumber: '');
   
 
   // ignore: unnecessary_null_comparison
@@ -45,7 +46,8 @@ class UserProvider with ChangeNotifier {
   }
 
   void selectUserHive(HiveUsers user) {
-    _getSingleUserHive = user;
+    // _getSingleUserHive = user;
+    userBox.get(user);
     // userBox.get('userId');
     // userBox.get('name');
     notifyListeners();
@@ -60,7 +62,10 @@ class UserProvider with ChangeNotifier {
 
     print("Get UserID -> ${userData['userId']}");
     _userList.add(userSets);
+    // _hiveUserList.add(hiveUsersSets);
     userBox.add(hiveUsersSets);
+    print(userBox.length);
+    
     notifyListeners();
   }
 
