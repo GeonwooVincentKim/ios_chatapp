@@ -162,7 +162,6 @@ class _CupertinoCallState extends State<CupertinoCall> {
                   physics: const ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
                     final item = getUserList[index];
-
                     return CustomCupertinoListTile(checkIsList: true, item: item, mobileNumber: '');
                   },
                 );
