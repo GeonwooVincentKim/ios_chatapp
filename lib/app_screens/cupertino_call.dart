@@ -25,7 +25,8 @@ class CupertinoCall extends StatefulWidget {
 
 class _CupertinoCallState extends State<CupertinoCall> {
   // List<User> getUserList = List.empty(growable: true);
-  List<HiveUsers> getUserList = List.empty(growable: true);
+  // Set the type of 
+  List getUserList = List.empty(growable: true);
   // Box<dynamic>? getUserList;
 
   String getNumber = '';
@@ -146,9 +147,11 @@ class _CupertinoCallState extends State<CupertinoCall> {
             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.35),
             child: Consumer<UserProvider>(
               builder: ((context, userElement, child) {
-                final List<HiveUsers> listUser = userElement.hiveUserList;
-                // final Box<dynamic> listUser = userElement.userBox;
-                getUserList = listUser.toList();
+                // final List<HiveUsers> listUser = userElement.userBox as List<HiveUsers>;
+
+                final Box<dynamic> listBox = userElement.userBox;
+                getUserList = listBox.values.toList();
+                // getUserList = listUser.toList();
                 // getUserList = listUser;
 
                 // userElement.userBox.values.length;
@@ -157,7 +160,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.08),
                   // padding: Utils.customEdgeInsets(context, 0.08),
-                  itemCount: getUserList.length,
+                  itemCount: listBox.length,
                   // itemCount: userElement.userBox.values.length,
                   physics: const ClampingScrollPhysics(),
                   itemBuilder: (context, index) {

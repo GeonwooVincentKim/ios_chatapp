@@ -8,7 +8,7 @@ import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/shared/utils.dart';
 
 class UserProvider with ChangeNotifier {
-  final userBox = Hive.box('user_db');
+  var userBox = Hive.box('user_db');
   final List<User> _filteredUsers = DUMMY_USERS.toList();
   
   final List<User> _userList = [];
@@ -46,7 +46,8 @@ class UserProvider with ChangeNotifier {
   }
 
   void selectUserHive(HiveUsers user) {
-    // _getSingleUserHive = user;
+    _getSingleUserHive = user;
+    // userBox = user;
     userBox.get(user);
     // userBox.get('userId');
     // userBox.get('name');
