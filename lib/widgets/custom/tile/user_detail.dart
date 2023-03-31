@@ -22,7 +22,8 @@ class _UserDetailState extends State<UserDetail> {
   void initState() {
     setState(() {
       // user = Provider.of<UserProvider>(context, listen: false).getSingleUser!;  
-      user = Provider.of<UserProvider>(context, listen: false).getSingleUserHive!;  
+      // user = Provider.of<UserProvider>(context, listen: false).getSingleUserHive!;
+      user = Provider.of<UserProvider>(context, listen: false).getSingleUserHive!;
     
       print("Get UserID -> ${user.userId}");
     });
@@ -133,6 +134,7 @@ class _UserDetailState extends State<UserDetail> {
           colors: [
             // user.oppositeColor as Color,
             // user.color as Color
+            red,
             blueAccent
           ]
         )

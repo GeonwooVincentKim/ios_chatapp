@@ -42,6 +42,9 @@ class CustomCupertinoListTile extends StatelessWidget {
       onTap: checkIsList ? () {
         print("Here?");
         Provider.of<UserProvider>(context, listen: false).selectUserHive(item);
+
+        print("Get Item Id -> ${item.userId}");
+
         Navigator.pushNamed(context, "/call/detail/${item.userId}");
         // UserDetail(user: item);
       } : () {},
