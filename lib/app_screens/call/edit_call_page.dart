@@ -159,8 +159,4 @@ class _EditCallPageState extends State<EditCallPage> {
       ),
     );
   }
-
-  void submit() {
-    
-  }
 }
