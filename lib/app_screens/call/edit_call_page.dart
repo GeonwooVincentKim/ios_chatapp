@@ -81,7 +81,7 @@ class _EditCallPageState extends State<EditCallPage> {
 
   @override
   Widget build(BuildContext context) {
-    final value = MediaQuery.of(context).size.height / 2;
+    // final value = MediaQuery.of(context).size.height / 2;
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(middle: Text(widget.callInfo)),
