@@ -22,6 +22,7 @@ class _ChatPageState extends State<ChatPage> {
   late Message message;
 
   List<Message> messages = [];
+  final messageController = TextEditingController();
 
   @override
   void initState() {
@@ -103,6 +104,7 @@ class _ChatPageState extends State<ChatPage> {
                 child: CupertinoTextField(
                   padding: const EdgeInsets.all(12),
                   placeholder: "Type your message here...",
+                  controller: messageController,
                   onSubmitted: (text) {
                     final message = Message(
                       text: text,
@@ -111,7 +113,7 @@ class _ChatPageState extends State<ChatPage> {
                     );
 
                     setState(() => messages.add(message));
-                    
+                    messageController.clear();
                   },
                 )
               )
