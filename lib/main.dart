@@ -8,6 +8,7 @@ import 'package:ios_chatapp/app_screens/cupertino_call.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
 import 'package:ios_chatapp/body.dart';
 import 'package:ios_chatapp/model/hive_users.dart';
+import 'package:ios_chatapp/provider/message_provider.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/widgets/custom/tile/user_detail.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (ctx) => UserProvider())
+        ChangeNotifierProvider(create: (ctx) => UserProvider()),
+        ChangeNotifierProvider(create: (ctx) => MessageProvider())
       ],
       child: OverlaySupport.global(
         child: CupertinoApp(

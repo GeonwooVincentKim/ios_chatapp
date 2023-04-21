@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:grouped_list/grouped_list.dart';
+import 'package:ios_chatapp/model/message.dart';
 import 'package:ios_chatapp/model/users.dart';
+import 'package:ios_chatapp/provider/message_provider.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:provider/provider.dart';
@@ -14,15 +17,22 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   late User chatUser;
+  late Message message;
+
+  List<Message> messages = [];
 
   @override
   void initState() {
     setState(() => chatUser = Provider.of<UserProvider>(context, listen: false).getSingleUser!);
-
+    
     if (chatUser == null) {
       final List<User> userList = Provider.of<UserProvider>(context, listen: false).filteredUsers;
       chatUser = userList.firstWhere((user) => user.userId == widget.userInfo);
     }
+
+    messages = Provider.of<MessageProvider>(context, listen: false).messageList; 
+
+    print("Is here??????");
 
     super.initState();
   }
@@ -35,11 +45,32 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: white70,
       ),
       child: Container(
-        child: Column(
-          children: [
-            Text('My Info is ${chatUser.name}'),
-            Text('My color is ${chatUser.color}')
-          ],
+        width: MediaQuery.of(context).size.width,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Text('My Info is ${chatUser.name}', style: TextStyle(color: CupertinoColors.black)),
+              // Text('My color is ${chatUser.color}', style: TextStyle(color: CupertinoColors.black))
+              Expanded(
+                child: GroupedListView<Message, DateTime>(
+                  padding: const EdgeInsets.all(8),
+                  elements: messages,
+                  groupBy: (message) => DateTime(2022),
+                  groupHeaderBuilder: (Message message) => const SizedBox(),
+                  itemBuilder: (context, Message message) => Container(),
+                )
+              ),
+              // Expanded(child: Container()),
+              Container(
+                color: CupertinoColors.systemGrey3,
+                child: const CupertinoTextField(
+                  padding: EdgeInsets.all(12),
+                  placeholder: "Type your message here...",
+                )
+              )
+            ],
+          ),
         ),
       )
     );
