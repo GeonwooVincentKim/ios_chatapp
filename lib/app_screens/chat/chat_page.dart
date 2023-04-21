@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:intl/intl.dart';
 import 'package:ios_chatapp/model/message.dart';
 import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/message_provider.dart';
@@ -46,6 +48,7 @@ class _ChatPageState extends State<ChatPage> {
       ),
       child: Container(
         width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -55,18 +58,61 @@ class _ChatPageState extends State<ChatPage> {
               Expanded(
                 child: GroupedListView<Message, DateTime>(
                   padding: const EdgeInsets.all(8),
+                  reverse: true,
+                  order: GroupedListOrder.DESC,
+                  useStickyGroupSeparators: true,
+                  floatingHeader: true,
                   elements: messages,
-                  groupBy: (message) => DateTime(2022),
-                  groupHeaderBuilder: (Message message) => const SizedBox(),
-                  itemBuilder: (context, Message message) => Container(),
+                  groupBy: (message) => DateTime(
+                    message.date.year,
+                    message.date.month,
+                    message.date.day
+                  ),
+                  groupHeaderBuilder: (Message message) => SizedBox(
+                    height: 40,
+                    child: Center(
+                      child: Card(
+                        color: CupertinoTheme.of(context).primaryColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Text(
+                            DateFormat.yMMMd().format(message.date),
+                            style: const TextStyle(color: Colors.white)
+                          )
+                        )
+                      ),
+                    )
+                  ),
+                  itemBuilder: (context, Message message) => Align(
+                    alignment: message.isSendByMe
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                    child: Card(
+                      elevation: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(message.text)
+                      )
+                    ),
+                  )
                 )
               ),
               // Expanded(child: Container()),
               Container(
                 color: CupertinoColors.systemGrey3,
-                child: const CupertinoTextField(
-                  padding: EdgeInsets.all(12),
+                child: CupertinoTextField(
+                  padding: const EdgeInsets.all(12),
                   placeholder: "Type your message here...",
+                  onSubmitted: (text) {
+                    final message = Message(
+                      text: text,
+                      date: DateTime.now(),
+                      isSendByMe: true
+                    );
+
+                    setState(() => messages.add(message));
+                    
+                  },
                 )
               )
             ],
