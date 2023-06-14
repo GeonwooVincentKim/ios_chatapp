@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "704847027256",
+    "project_id": "flutter-login-project-f53ad",
+    "storage_bucket": "flutter-login-project-f53ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704847027256:android:cbfb37f3bd13abad66dacd",
+        "android_client_info": {
+          "package_name": "com.geonwookim.happy_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704847027256-mtpko1l190vkgg3um4e7par31ar9tge3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEWd2ezrjKMeB1nxN1YmWO6u1FeC3w0bM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704847027256-mtpko1l190vkgg3um4e7par31ar9tge3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

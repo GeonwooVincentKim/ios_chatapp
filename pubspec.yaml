@@ -38,7 +38,7 @@ dependencies:
   flutter_hooks: ^0.18.0
   flutter_phone_direct_caller: ^2.1.1
   get_phone_number: ^2.0.1
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.4
   grouped_list: ^5.1.2
   hive: ^2.2.3
   hive_flutter: ^1.1.0
