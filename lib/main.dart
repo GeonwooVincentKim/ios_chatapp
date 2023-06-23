@@ -14,9 +14,12 @@ import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/widgets/custom/tile/user_detail.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await Hive.initFlutter();
   Hive.registerAdapter(HiveUsersAdapter());
   await Hive.openBox("user_db");
@@ -24,6 +27,7 @@ void main() async {
   runApp(const MyApp());
 }
 
+final navigatorKey = GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -36,6 +40,7 @@ class MyApp extends StatelessWidget {
       ],
       child: OverlaySupport.global(
         child: CupertinoApp(
+          navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: const CupertinoThemeData(brightness: Brightness.light),
           initialRoute: "/",

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "978859642615",
+    "project_id": "fir-chatapp-6e17e",
+    "storage_bucket": "fir-chatapp-6e17e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978859642615:android:e57b76d2eaa2c4c49c4df2",
+        "android_client_info": {
+          "package_name": "com.geonwookim.happy_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978859642615-jenfl8b702tpb7cs83am7vlp3df2ops9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT4FlSDAHSB061UUfBovAoDRhiSIT1jWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978859642615-jenfl8b702tpb7cs83am7vlp3df2ops9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

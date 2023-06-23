@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ios_chatapp/model/users.dart';
 
@@ -60,6 +61,8 @@ class Utils {
 
     return '';
   }
+
+  static final messengerKey = GlobalKey<ScaffoldMessengerState>();
 
   // Color convertToColor(int intColor) {
   //   return Color(intColor);
