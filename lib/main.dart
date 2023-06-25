@@ -69,17 +69,17 @@ class MyApp extends StatelessWidget {
               String pathId = pathElements[2];
               
               if (pathId == 'add') {
-                print("Here!!");
+                // print("Here!!");
                 return CupertinoPageRoute(builder: ((context) => const AddCallPage(callInfo: "Add")));
               }
 
               if (pathId == 'detail') {
-                print("Detail!!!");
+                // print("Detail!!!");
                 return CupertinoPageRoute(builder: ((context) => const UserDetail(pageId: "Detail")));
               }
 
               if (pathId == "update") {
-                print("Update!!!");
+                // print("Update!!!");
                 return CupertinoPageRoute(builder: ((context) => const EditCallPage(callInfo: "Update")));
               }
             }
