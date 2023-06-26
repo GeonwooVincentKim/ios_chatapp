@@ -6,6 +6,8 @@ import 'package:ios_chatapp/app_screens/chat/chat_page.dart';
 import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
 import 'package:ios_chatapp/app_screens/cupertino_call.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
+import 'package:ios_chatapp/app_screens/sign/sign_status.dart';
+import 'package:ios_chatapp/app_screens/sign/signin.dart';
 import 'package:ios_chatapp/body.dart';
 import 'package:ios_chatapp/model/hive_users.dart';
 import 'package:ios_chatapp/provider/message_provider.dart';
@@ -42,10 +44,12 @@ class MyApp extends StatelessWidget {
         child: CupertinoApp(
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
+          // theme: const CupertinoThemeData(brightness: Brightness.light, primaryColor: CupertinoColors.white),
           theme: const CupertinoThemeData(brightness: Brightness.light),
           initialRoute: "/",
           routes: {
-            "/": (context) => const Body(),
+            "/": (context) => const SignStatus(),
+            // "/": (context) => const Body(), // Check the User logged-in or not
             "/call": (context) => const CupertinoCall(textLocation: ''),
             "/profile": (context) => const OtherUserProfile(userId: ''),
             "/chat": (context) => const ChatPage(userInfo: ''),

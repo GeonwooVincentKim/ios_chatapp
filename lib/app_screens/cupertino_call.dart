@@ -1,10 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:hive/hive.dart';
+import 'package:ios_chatapp/app_screens/sign/signin.dart';
 import 'package:ios_chatapp/model/hive_users.dart';
-import 'package:ios_chatapp/model/users.dart';
 import 'package:ios_chatapp/provider/user_provider.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/shared/utils.dart';
@@ -172,7 +172,71 @@ class _CupertinoCallState extends State<CupertinoCall> {
             ),
           ),
         ],
-      ),
+      )
+      // child: StreamBuilder<User?>(
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.connectionState == ConnectionState.waiting) {
+      //       return Center(child: CircularProgressIndicator());
+      //     } else if (snapshot.hasError) {
+      //       return Center(child: Text("Something went wrong!!"));
+      //     } else if (snapshot.hasData) {
+      //       return Stack(
+      //         alignment: Alignment.center,
+      //         children: [
+      //           Padding(
+      //             padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.2),
+      //             child: Consumer<UserProvider>(
+      //               builder: ((context, mainUser, child) {
+      //                 final HiveUsers user = mainUser.getMyInfoHive;
+
+      //                 return ListView.builder(
+      //                   shrinkWrap: true,
+      //                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5),
+      //                   itemCount: 1,
+      //                   physics: const ClampingScrollPhysics(),
+      //                   itemBuilder: (context, index) {
+      //                     return CustomCupertinoListTile(checkIsList: false, item: user, mobileNumber: _mobileNumber);
+      //                   },
+      //                 );
+      //               })
+      //             ),
+      //           ),
+      //           Container(
+      //             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.35),
+      //             child: Consumer<UserProvider>(
+      //               builder: ((context, userElement, child) {
+      //                 // final List<HiveUsers> listUser = userElement.userBox as List<HiveUsers>;
+
+      //                 final Box<dynamic> listBox = userElement.userBox;
+      //                 getUserList = listBox.values.toList();
+      //                 // getUserList = listUser.toList();
+      //                 // getUserList = listUser;
+
+      //                 // userElement.userBox.values.length;
+
+      //                 return ListView.builder(
+      //                   shrinkWrap: true,
+      //                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.08),
+      //                   // padding: Utils.customEdgeInsets(context, 0.08),
+      //                   itemCount: listBox.length,
+      //                   // itemCount: userElement.userBox.values.length,
+      //                   physics: const ClampingScrollPhysics(),
+      //                   itemBuilder: (context, index) {
+      //                     final item = getUserList[index];
+      //                     return CustomCupertinoListTile(checkIsList: true, item: item, mobileNumber: '');
+      //                   },
+      //                 );
+      //               }),
+      //             ),
+      //           ),
+      //         ],
+      //       );
+      //     } else {
+      //       return SignIn();
+      //     }
+      //   },
+      // ),
     );
   }
 }
