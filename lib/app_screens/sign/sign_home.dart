@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:animated_check/animated_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:ios_chatapp/app_screens/cupertino_chat.dart';
 
 class SignHome extends StatefulWidget {
   @override
@@ -24,31 +26,46 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOutCirc)
     );
 
-    isAnimationDone = false;
-
     if (!isAnimationDone) {
       timer = Timer.periodic(
         Duration(seconds: 3), 
         (_) => checkAnimationDone()
       );
     }
+
+    // setState(() {
+    //   Navigator.of(context).pushNamed("/call");
+    // });
+    // Get.to(() => const CupertinoChat(textLocation: ''), transition: Transition.zoom);
   }
 
   @override
   void dispose() {
     timer?.cancel();
+    _animationController.dispose();
     super.dispose();
   }
 
   Future checkAnimationDone() async {
-    await FirebaseAuth.instance.currentUser!.reload();
+    // await FirebaseAuth.instance.currentUser!.reload();
+    
+    print("Check Status -> $isAnimationDone");
 
     setState(() {
+      print("Check Status (setState) -> $isAnimationDone");
       isAnimationDone = true;
       // isAnimationDone = FirebaseAuth.instance.currentUser!.emailVerified;
     });
 
-    if (isAnimationDone) timer?.cancel();
+    print("Check Status (setState Out) -> $isAnimationDone");
+
+    if (isAnimationDone) {
+      timer?.cancel();
+
+      setState(() {
+        Navigator.of(context).pushNamed("/call");
+      });
+    }
   }
 
   @override

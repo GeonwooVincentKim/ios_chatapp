@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ios_chatapp/app_screens/call/add_call_page.dart';
@@ -21,6 +23,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
   await Hive.initFlutter();
   Hive.registerAdapter(HiveUsersAdapter());

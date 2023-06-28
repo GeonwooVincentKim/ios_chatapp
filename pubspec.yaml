@@ -39,6 +39,7 @@ dependencies:
     sdk: flutter
   flutter_hooks: ^0.18.0
   flutter_phone_direct_caller: ^2.1.1
+  get: ^4.6.5
   get_phone_number: ^2.0.1
   google_fonts: ^4.0.4
   grouped_list: ^5.1.2
