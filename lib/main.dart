@@ -52,10 +52,13 @@ class MyApp extends StatelessWidget {
           initialRoute: "/",
           routes: {
             "/": (context) => const SignStatus(),
+            "/main": (context) => const Body(),
+            // "/": (context) => const Body(),
+            // "/sign/status": (context) => const SignStatus(),
             // "/": (context) => const Body(), // Check the User logged-in or not
-            "/call": (context) => const CupertinoCall(textLocation: ''),
-            "/profile": (context) => const OtherUserProfile(userId: ''),
-            "/chat": (context) => const ChatPage(userInfo: ''),
+            "/main/call": (context) => const CupertinoCall(textLocation: ''),
+            "/main/profile": (context) => const OtherUserProfile(userId: ''),
+            "/main/chat": (context) => const ChatPage(userInfo: ''),
             // "/call/callInfo": (context) => const AddCallPage(callInfo: '')
           },
           onGenerateRoute: (settings) {
