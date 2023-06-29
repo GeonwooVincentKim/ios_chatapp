@@ -63,7 +63,8 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
       timer?.cancel();
 
       setState(() {
-        Navigator.of(context).pushNamed("/call");
+        Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
+        // Navigator.of(context).pushNamed("/main");
       });
     }
   }
