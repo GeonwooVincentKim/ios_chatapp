@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ios_chatapp/app_screens/cupertino_chat.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SignHome extends StatefulWidget {
   @override
@@ -46,6 +47,19 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
+  Future<bool> checkIfPermissionGranted() async {
+    // Map<Permission, PermissionStatus> status = await [Permission.microphone].request();
+    final status = await Permission.microphone.request();
+    bool permitted = true;
+
+    print("Check Status Granted -> ${!status.isGranted}");
+    if (!status.isGranted) {
+      permitted = false;
+    }
+
+    return permitted;
+  }
+
   Future checkAnimationDone() async {
     // await FirebaseAuth.instance.currentUser!.reload();
     
@@ -61,6 +75,8 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
 
     if (isAnimationDone) {
       timer?.cancel();
+
+      // checkIfPermissionGranted();
 
       setState(() {
         Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);

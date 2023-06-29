@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/shared/style.dart';
 import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/cupertino_scroll_view/cupertino_tabview_printvalue.dart';
+import 'package:permission_handler/permission_handler.dart';
 // import 'package:flutter_application_1_1/cupertino_button/widgets/cupertino_navigation_widget.dart';
 
 class Body extends StatefulWidget {
@@ -28,6 +29,20 @@ class _BodyState extends State<Body> {
     subscription.cancel();
     super.dispose();
   }
+
+  // Future<bool> checkIfPermissionGranted() async {
+    // Map<Permission, PermissionStatus> status = await [Permission.microphone].request();
+    // final requestStatus = await Permission.phone
+    // final status = await Permission.microphone.request();
+    // bool permitted = true;
+
+    // print("Check Status Granted -> ${!status.isGranted}");
+    // if (!status.isGranted) {
+    //   permitted = false;
+    // }
+
+    // return permitted;
+  // }
 
   @override
   Widget build(BuildContext context) {
