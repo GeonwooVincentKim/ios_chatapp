@@ -85,6 +85,8 @@ class _CupertinoCallState extends State<CupertinoCall> {
     }
   }
 
+  // Should have to know how to use SimCard Package
+  // So I can get the Current User phone number automatically
   Future<void> initMobileNumberState() async {
     if (!await MobileNumber.hasPhonePermission) {
       await MobileNumber.requestPhonePermission;
