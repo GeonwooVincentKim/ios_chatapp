@@ -35,26 +35,22 @@ class _PermissionExistState extends State<PermissionExist> {
       //   title: Text("Here!!!"),
       // ),
       child: Container(
-        child: Builder(
-          builder: (context) {
-            return Center(
-              child: CupertinoButton(
-                child: const Text("Request Permission"),
-                onPressed: () async {
-                  if (await checkIfPermissionGranted()) {
-                    // SnackBar snackBar = SnackBar(content: Text("Allowed clear!!!"));
-                    // _key.currentContext.showSnackBar(snackBar);
-                    print("True");
-                    setState(() {
-                      Navigator.pushNamedAndRemoveUntil(context, "/next", (route) => false);
-                    });
-                  } else {
-                    print("False~!!!");
-                  }
-                },
-              )
-            );
-          }
+        child: Center(
+          child: CupertinoButton(
+            child: const Text("Request Permission"),
+            onPressed: () async {
+              if (await checkIfPermissionGranted()) {
+                // SnackBar snackBar = SnackBar(content: Text("Allowed clear!!!"));
+                // _key.currentContext.showSnackBar(snackBar);
+                print("True");
+                setState(() {
+                  Navigator.pushNamedAndRemoveUntil(context, "/next", (route) => false);
+                });
+              } else {
+                print("False~!!!");
+              }
+            },
+          )
         )
       ),
     );
