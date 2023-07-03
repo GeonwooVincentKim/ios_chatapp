@@ -31,17 +31,12 @@ class _PermissionExistState extends State<PermissionExist> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      // appBar: AppBar(
-      //   title: Text("Here!!!"),
-      // ),
       child: Container(
         child: Center(
           child: CupertinoButton(
             child: const Text("Request Permission"),
             onPressed: () async {
               if (await checkIfPermissionGranted()) {
-                // SnackBar snackBar = SnackBar(content: Text("Allowed clear!!!"));
-                // _key.currentContext.showSnackBar(snackBar);
                 print("True");
                 setState(() {
                   Navigator.pushNamedAndRemoveUntil(context, "/next", (route) => false);
