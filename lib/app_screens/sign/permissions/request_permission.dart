@@ -53,39 +53,6 @@ class _PermissionExistState extends State<PermissionExist> {
                   }
                 },
               )
-              // child: Column(
-              //   children: [
-              //     Text("Hrere!!!"),
-              //     ElevatedButton(
-              //       child: const Text("Request Permission"),
-              //       onPressed: () async {
-              //         if (await checkIfPermissionGranted()) {
-                        
-              //           print("Clear");
-              //           SnackBar snackBar = SnackBar(
-              //             content: Text("Allowed clear!!!"),
-              //           );
-              //           ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              //         } else {
-              //           print("Oh no");
-              //           SnackBar snackBar = SnackBar(
-              //             content: Text("Hmm!!!"),
-              //             action: SnackBarAction(
-              //               label: "Go To Settings",
-              //               onPressed: () {
-              //                 openAppSettings();
-              //               },
-              //             ),
-              //           );
-              //           ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              //           // _key.currentState.show
-              //           // _key.currentState.showSnackBar(snackBar);
-
-              //         }
-              //       },
-              //     ),
-              //   ],
-              // ),
             );
           }
         )
@@ -94,7 +61,6 @@ class _PermissionExistState extends State<PermissionExist> {
   }
   
   Future<bool> checkIfPermissionGranted() async {
-    // Map<Permission, PermissionStatus> status = await [Permission.microphone].request();
     final status = await Permission.phone.request();
     bool permitted = true;
 
