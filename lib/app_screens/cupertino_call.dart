@@ -14,6 +14,7 @@ import 'package:mobile_number/mobile_number.dart';
 import 'package:phone_selector/phone_selector.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class CupertinoCall extends StatefulWidget {
   final String textLocation; 
@@ -58,7 +59,8 @@ class _CupertinoCallState extends State<CupertinoCall> {
     newUser['phoneNumber'] = getOneUser.phoneNumber;
     
     super.initState();
-    initMobileNumberState();
+    checkPermissionStatus();
+    // initMobileNumberState();
   }
 
   @override
@@ -83,6 +85,36 @@ class _CupertinoCallState extends State<CupertinoCall> {
         _phoneNumber = phoneNumber!;
       });
     }
+  }
+  
+  Future<void> checkPermissionStatus() async {
+    if (await checkIfPhonePermissionGranted()) {
+      _mobileNumber = (await MobileNumber.mobileNumber)!;
+      newUser['phoneNumber'] = _mobileNumber;
+      print("Mobile -> $_mobileNumber");
+
+      print("True~!!!");
+
+      // Do not delete this part
+      // Update the entire page
+      setState(() {
+        
+      });
+    } else {
+      print("False~!!!");
+    }
+  }
+
+  Future<bool> checkIfPhonePermissionGranted() async {
+    final status = await Permission.phone.request();
+    bool permitted = true;
+
+    print("Check Status Granted -> ${!status.isGranted}");
+    if (!status.isGranted) {
+      permitted = false;
+    }
+
+    return permitted;
   }
 
   // Should have to know how to use SimCard Package
