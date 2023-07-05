@@ -143,17 +143,6 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
                 ),
               ),
             ),
-            // ElevatedButton.icon(
-            //   style: ElevatedButton.styleFrom(
-            //     minimumSize: Size.fromHeight(50)
-            //   ),
-            //   icon: const Icon(Icons.arrow_back, size: 32),
-            //   label: Text(
-            //     'Sign Out',
-            //     style: TextStyle(fontSize: 24),
-            //   ),
-            //   onPressed: () => FirebaseAuth.instance.signOut(),
-            // )
           ],
         )
       ),
