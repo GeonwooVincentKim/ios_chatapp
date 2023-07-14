@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:ios_chatapp/shared/utils.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  final VoidCallback onClickedSignUp;
+
+  const SignIn({super.key, required this.onClickedSignUp});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -132,6 +136,23 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
             ),
+            RichText(
+              text: TextSpan(
+                style: TextStyle(color: Colors.white, fontSize: 20),
+                text: 'No Account?  ',
+                children: [
+                  TextSpan(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = widget.onClickedSignUp,
+                    text: 'Sign Up',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Theme.of(context).colorScheme.secondary
+                    )
+                  )
+                ]
+              )
+            )
             // ClipRRect(
             //   borderRadius: BorderRadius.circular(10.0),
             //   child: GestureDetector(
@@ -177,6 +198,10 @@ class _SignInState extends State<SignIn> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
+      
+      Utils.showSnackBar(e.message);
     }
+
+    
   }
 }
