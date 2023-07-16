@@ -43,6 +43,7 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
   @override
   void dispose() {
     timer?.cancel();
+    
     _animationController.dispose();
     super.dispose();
   }
