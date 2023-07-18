@@ -62,7 +62,6 @@ class FromSectionExample extends StatelessWidget {
                     placeholder: "Enter phone",
                     prefix: "Phone".text.make(),
                   ),
-                  20.heightBox
                   // Material(
                   //   color: context.theme.buttonColor,
                   //   borderRadius: BorderRadius.circular(8),
@@ -110,7 +109,6 @@ class FromSectionExample extends StatelessWidget {
                     ),
                     // prefix: "I Agree".text.make(),
                   ),
-                  20.heightBox,
                 ],
               )
             ],
