@@ -27,7 +27,7 @@ class CupertinoCall extends StatefulWidget {
 class _CupertinoCallState extends State<CupertinoCall> {
   // List<User> getUserList = List.empty(growable: true);
   // Set the type of 
-  final user = FirebaseAuth.instance.currentUser!;
+  // final testUser = FirebaseAuth.instance.currentUser!;
   List getUserList = List.empty(growable: true);
   // Box<dynamic>? getUserList;
 

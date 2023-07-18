@@ -8,6 +8,7 @@ import 'package:ios_chatapp/app_screens/chat/chat_page.dart';
 import 'package:ios_chatapp/app_screens/chat/other_user_profile.dart';
 import 'package:ios_chatapp/app_screens/cupertino_call.dart';
 import 'package:ios_chatapp/app_screens/page_not_found.dart';
+import 'package:ios_chatapp/app_screens/sign/sign_home.dart';
 import 'package:ios_chatapp/app_screens/sign/sign_status.dart';
 import 'package:ios_chatapp/app_screens/sign/signin.dart';
 import 'package:ios_chatapp/body.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
           theme: const CupertinoThemeData(brightness: Brightness.light),
           initialRoute: "/",
           routes: {
-            "/": (context) => const SignStatus(),
+            "/": (context) => SignHome(),
             "/main": (context) => const Body(),
             // "/": (context) => const Body(),
             // "/sign/status": (context) => const SignStatus(),

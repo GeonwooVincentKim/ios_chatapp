@@ -88,7 +88,7 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
+    // final user = FirebaseAuth.instance.currentUser!;
     _animationController.forward();
 
     return CupertinoPageScaffold(
@@ -107,13 +107,15 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
             ),
             const SizedBox(height: 8),
             Text(
-              user.email!,
+              "Hi!!!",
+              // user.email!,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)
             ),
             const SizedBox(height: 40),
             CupertinoButton(
               padding: EdgeInsets.zero,
-              onPressed: () => FirebaseAuth.instance.signOut(),
+              onPressed: () {},
+              // onPressed: () => FirebaseAuth.instance.signOut(),
               child: Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.3,

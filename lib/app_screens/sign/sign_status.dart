@@ -21,14 +21,17 @@ class SignStatus extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return const Center(child: Text("Something went wrong!!"));
-          } else if (snapshot.hasData) {
-            // return Body();
-            // return CupertinoCall(textLocation: '');
-            return SignHome();
-          } else {
-            return AuthPage();
-            // return SignIn();
           }
+
+          return SignHome();
+          // else if (snapshot.hasData) {
+          //   // return Body();
+          //   // return CupertinoCall(textLocation: '');
+          //   return SignHome();
+          // } else {
+          //   return AuthPage();
+          //   // return SignIn();
+          // }
         },
       ),
     );

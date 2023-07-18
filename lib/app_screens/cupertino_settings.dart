@@ -112,8 +112,8 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
                         CupertinoDialogAction(
                           onPressed: () {
                             setState(() {
-                              FirebaseAuth.instance.signOut();
-                              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                              // FirebaseAuth.instance.signOut();
+                              // Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
                             });
                           },
                           child: const Text('Yes'),
