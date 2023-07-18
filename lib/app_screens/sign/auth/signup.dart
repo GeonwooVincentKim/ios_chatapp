@@ -32,93 +32,142 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Form(
-        autovalidateMode: AutovalidateMode.always,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.03,
-                left: MediaQuery.of(context).size.width * 0.05,
+    return SingleChildScrollView(
+      child: SafeArea(
+        child: Form(
+          key: formKey,
+          autovalidateMode: AutovalidateMode.always,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.03,
+                  left: MediaQuery.of(context).size.width * 0.05,
+                ),
+                // padding: const EdgeInsetsDirectional.fromSTEB(30, 0, 10, 0),
+                child: "Sign Up".text.xl5.bold.color(context.theme.primaryColor).make(),
               ),
-              // padding: const EdgeInsetsDirectional.fromSTEB(30, 0, 10, 0),
-              child: "Sign Up".text.xl5.bold.color(context.theme.primaryColor).make(),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.05
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05
+                ),
+                // padding: const EdgeInsetsDirectional.fromSTEB(30, 0, 10, 0),
+                child: "Create your account".text.xl2.make(),
               ),
-              // padding: const EdgeInsetsDirectional.fromSTEB(30, 0, 10, 0),
-              child: "Create your account".text.xl2.make(),
-            ),
-            CupertinoFormSection.insetGrouped(
-              header: "Personal Details".text.make(),
-              backgroundColor: CupertinoColors.lightBackgroundGray,
-              children: [
-                CupertinoFormRow(
-                  prefix: "Email".text.make(),
-                  child: CupertinoTextFormFieldRow(
-                    controller: emailController,
-                    cursorColor: CupertinoColors.white,
-                    textInputAction: TextInputAction.next,
-                    placeholder: "Email",
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    validator: (email) =>
-                      email != null && !EmailValidator.validate(email) 
-                        ? 'Enter a valid email'
-                        : null,
+              CupertinoFormSection.insetGrouped(
+                header: "Personal Details".text.make(),
+                backgroundColor: CupertinoColors.lightBackgroundGray,
+                children: [
+                  CupertinoFormRow(
+                    prefix: "Email".text.make(),
+                    child: CupertinoTextFormFieldRow(
+                      controller: emailController,
+                      cursorColor: CupertinoColors.white,
+                      textInputAction: TextInputAction.next,
+                      placeholder: "Email",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (email) =>
+                        email != null && !EmailValidator.validate(email) 
+                          ? 'Enter a valid email'
+                          : null,
+                    ),
+                    // error: "Enter a valid Email".text.make()
                   ),
-                  // error: "Enter a valid Email".text.make()
-                ),
-                CupertinoFormRow(
-                  prefix: "Password".text.make(),
-                  child: CupertinoTextFormFieldRow(
-                    controller: passwordController,
-                    cursorColor: CupertinoColors.white,
-                    textInputAction: TextInputAction.done,
-                    placeholder: "Password",
-                    obscureText: true,
-                    obscuringCharacter: '*',
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    validator: (password) { 
-                      if (password == null || password.isEmpty) {
-                        return 'Enter a valid password';
-                      } else if (password.length < 6) {
-                        return 'Must be at least 6 characters';
-                      } else {
-                        return null;
+                  CupertinoFormRow(
+                    prefix: "Password".text.make(),
+                    child: CupertinoTextFormFieldRow(
+                      controller: passwordController,
+                      cursorColor: CupertinoColors.white,
+                      textInputAction: TextInputAction.done,
+                      placeholder: "Password",
+                      obscureText: true,
+                      obscuringCharacter: '*',
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (password) { 
+                        if (password == null || password.isEmpty) {
+                          return 'Enter a valid password';
+                        } else if (password.length < 6) {
+                          return 'Must be at least 6 characters';
+                        } else {
+                          return null;
+                        }
                       }
-                    }
+                    )
+                  ),
+                  CupertinoFormRow(
+                    prefix: "Confirm Password".text.make(),
+                    child: CupertinoTextFormFieldRow(
+                      controller: checkPasswordController,
+                      cursorColor: CupertinoColors.white,
+                      textInputAction: TextInputAction.done,
+                      placeholder: "Check your password",
+                      obscureText: true,
+                      obscuringCharacter: '*',
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (password) { 
+                        if (password == null || password.isEmpty) {
+                          return 'Enter a valid password';
+                        } else if (password != passwordController.text) {
+                          return 'Passwords do not match';
+                        } else {
+                          return null;
+                        }
+                      }
+                    )
+                  ),
+                ],
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              Center(
+                child: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: signUp,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.3,
+                      vertical: MediaQuery.of(context).size.height * 0.02
+                    ),
+                    // padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: CupertinoColors.activeBlue,
+                    ),
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: CupertinoColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    style: TextStyle(color: CupertinoColors.inactiveGray, fontSize: 18),
+                    text: 'Already have an account?  ',
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = widget.onClickedSignIn,
+                        text: 'Sign In',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: CupertinoTheme.of(context).primaryColor
+                          // color: CupertinoTheme.of(context).colorScheme.secondary
+                        )
+                      )
+                    ]
                   )
                 ),
-                CupertinoFormRow(
-                  prefix: "Confirm Password".text.make(),
-                  child: CupertinoTextFormFieldRow(
-                    controller: checkPasswordController,
-                    cursorColor: CupertinoColors.white,
-                    textInputAction: TextInputAction.done,
-                    placeholder: "Check your password",
-                    obscureText: true,
-                    obscuringCharacter: '*',
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    validator: (password) { 
-                      if (password == null || password.isEmpty) {
-                        return 'Enter a valid password';
-                      } else if (password != passwordController.text) {
-                        return 'Passwords do not match';
-                      } else {
-                        return null;
-                      }
-                    }
-                  )
-                ),
-              ],
-            ),
-          ],
-        )
+              )
+            ],
+          )
+        ),
       ),
     );
     // return SafeArea(

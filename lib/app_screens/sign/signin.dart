@@ -148,6 +148,7 @@ class _SignInState extends State<SignIn> {
                     text: 'Sign Up',
                     style: TextStyle(
                       decoration: TextDecoration.underline,
+                      // color: CupertinoTheme.of(context).primaryColor
                       color: Theme.of(context).colorScheme.secondary
                     )
                   )
