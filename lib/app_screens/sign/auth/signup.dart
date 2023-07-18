@@ -81,6 +81,7 @@ class _SignUpState extends State<SignUp> {
                     textInputAction: TextInputAction.done,
                     placeholder: "Password",
                     obscureText: true,
+                    obscuringCharacter: '*',
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (password) { 
                       if (password == null || password.isEmpty) {
@@ -96,17 +97,18 @@ class _SignUpState extends State<SignUp> {
                 CupertinoFormRow(
                   prefix: "Confirm Password".text.make(),
                   child: CupertinoTextFormFieldRow(
-                    controller: passwordController,
+                    controller: checkPasswordController,
                     cursorColor: CupertinoColors.white,
                     textInputAction: TextInputAction.done,
                     placeholder: "Check your password",
                     obscureText: true,
+                    obscuringCharacter: '*',
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (password) { 
                       if (password == null || password.isEmpty) {
                         return 'Enter a valid password';
-                      } else if (password.length < 6) {
-                        return 'Must be at least 6 characters';
+                      } else if (password != passwordController.text) {
+                        return 'Passwords do not match';
                       } else {
                         return null;
                       }
