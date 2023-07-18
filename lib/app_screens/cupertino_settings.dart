@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ios_chatapp/shared/utils.dart';
 import 'package:ios_chatapp/widgets/custom/custom_cupertino.dart';
 import 'package:ios_chatapp/widgets/custom/form/button/custom_cupertino_button.dart';
 import 'package:ios_chatapp/widgets/custom/modal_popup/cupertino_dialog.dart';
@@ -107,7 +108,7 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
                   context: context,
                   builder: (BuildContext context) => 
                     CupertinoAlertDialog(
-                      title: const Text('Do yo wish to LogOut?'),
+                      title: const Text('Do you wish to LogOut?'),
                       actions: <Widget>[
                         CupertinoDialogAction(
                           onPressed: () {
@@ -129,14 +130,77 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
                   ),
                 // In this example, the date value is formatted manually. You can use intl package
                 // to format the value based on user's locale settings.
-                child: const Text('Sign Out', style: TextStyle(fontSize: 20.0)),
+                child: const Text('Log Out', style: TextStyle(fontSize: 20.0)),
               ),
             ),
+            Center(
+              child: CupertinoButton(
+                // Display a CupertinoDatePicker in date picker mode.
+                onPressed: () => showCupertinoDialog(
+                  context: context,
+                  builder: (BuildContext context) => 
+                    CupertinoAlertDialog(
+                      title: const Text('Do you wish to Sign Out?'),
+                      actions: <Widget>[
+                        CupertinoDialogAction(
+                          onPressed: () {
+                            deleteUserAccount();
+                            // setState(() {
+                            //   // FirebaseAuth.instance.signOut();
+                            //   // Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                            // });
+                          },
+                          child: const Text('Yes'),
+                        ),
+                        CupertinoDialogAction(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('No'),
+                        ),
+                      ],
+                    )
+                  ),
+                // In this example, the date value is formatted manually. You can use intl package
+                // to format the value based on user's locale settings.
+                child: const Text('Sign Out', style: TextStyle(fontSize: 20.0)),
+              ),
+            )
           ]
         )
       )
     );
     // child: CupertinoSettingsPage(textLocation: titleText,
     // child: Center(child: Text(widget.titleText)));
+  }
+
+  Future deleteUserAccount() async {
+    showCupertinoDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(child: CupertinoActivityIndicator())
+    );
+
+    User user = await FirebaseAuth.instance.currentUser!;
+    print("Get Current info -> $user");
+    
+    try {
+      user.delete();
+
+      setState(() {
+        Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+      });
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      
+      Utils.showSnackBar(e.message);
+    }
+    // AuthCredential credential = EmailAuthProvider.credential(email: user.email!, password: pass);
+
+
+    // print("Get Current info -> ${FirebaseAuth.instance.currentUser!.email}");
+    // try {
+    //   await FirebaseAuth.instance.signout
+    // }
   }
 }
