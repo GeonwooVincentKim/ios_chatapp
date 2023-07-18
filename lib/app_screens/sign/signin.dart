@@ -155,31 +155,6 @@ class _SignInState extends State<SignIn> {
                 ]
               )
             )
-            // ClipRRect(
-            //   borderRadius: BorderRadius.circular(10.0),
-            //   child: GestureDetector(
-            //     onTap: () {
-    
-            //     },
-            //     child: Container(
-            //       height: MediaQuery.of(context).size.height * 0.1,
-            //       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * 0.1),
-            //       alignment: Alignment.center,
-            //       color: CupertinoColors.white,
-            //     ),
-            //   ),
-            // )
-            // ElevatedButton.icon(
-            //   style: ElevatedButton.styleFrom(
-            //     minimumSize: Size.fromHeight(50)
-            //   ),
-            //   icon: Icon(Icons.lock_open, size: MediaQuery.of(context).size.height * 0.35),
-            //   label: Text(
-            //     "Sign In",
-            //     style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.13)
-            //   ),
-            //   onPressed: () {},
-            // )
           ],
         ),
       ),
