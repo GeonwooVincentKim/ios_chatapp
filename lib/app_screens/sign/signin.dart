@@ -28,6 +28,9 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    
     return SafeArea(
       child: Container(
         // padding: EdgeInsets.all(16),
@@ -36,6 +39,8 @@ class _SignInState extends State<SignIn> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("${width}"),
+            Text("${height}"),
             // SizedBox(height: MediaQuery.of(context).size.height * 0.2),
             // CupertinoTextField(
             //   controller: emailController,
@@ -138,7 +143,7 @@ class _SignInState extends State<SignIn> {
             ),
             RichText(
               text: TextSpan(
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                style: TextStyle(color: CupertinoColors.white, fontSize: 20),
                 text: 'No Account?  ',
                 children: [
                   TextSpan(
