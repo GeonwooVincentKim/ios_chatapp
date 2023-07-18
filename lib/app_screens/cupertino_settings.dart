@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ios_chatapp/widgets/custom/custom_cupertino.dart';
 import 'package:ios_chatapp/widgets/custom/form/button/custom_cupertino_button.dart';
+import 'package:ios_chatapp/widgets/custom/modal_popup/cupertino_dialog.dart';
 
 class CupertinoSettingsPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -97,8 +99,39 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
                 ),
               ),
             ),
-            const CustomCupertinoButton(
-                buttonText: "Save", isModal: true, isFilled: false)
+            const CustomCupertinoButton(buttonText: "Save", isModal: true, isFilled: false),
+            Center(
+              child: CupertinoButton(
+                // Display a CupertinoDatePicker in date picker mode.
+                onPressed: () => showCupertinoDialog(
+                  context: context,
+                  builder: (BuildContext context) => 
+                    CupertinoAlertDialog(
+                      title: const Text('Do yo wish to LogOut?'),
+                      actions: <Widget>[
+                        CupertinoDialogAction(
+                          onPressed: () {
+                            setState(() {
+                              FirebaseAuth.instance.signOut();
+                              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                            });
+                          },
+                          child: const Text('Yes'),
+                        ),
+                        CupertinoDialogAction(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('No'),
+                        ),
+                      ],
+                    )
+                  ),
+                // In this example, the date value is formatted manually. You can use intl package
+                // to format the value based on user's locale settings.
+                child: const Text('Sign Out', style: TextStyle(fontSize: 20.0)),
+              ),
+            ),
           ]
         )
       )
