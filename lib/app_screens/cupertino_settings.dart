@@ -107,7 +107,7 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
                   context: context,
                   builder: (BuildContext context) => 
                     CupertinoAlertDialog(
-                      title: const Text('Do yo wish to LogOut?'),
+                      title: const Text('Do yo wish to go?'),
                       actions: <Widget>[
                         CupertinoDialogAction(
                           onPressed: () {
@@ -129,7 +129,8 @@ class _CupertinoNavigationWidgetState extends State<CupertinoSettingsPage> {
                   ),
                 // In this example, the date value is formatted manually. You can use intl package
                 // to format the value based on user's locale settings.
-                child: const Text('Sign Out', style: TextStyle(fontSize: 20.0)),
+                child: const Text('Go out', style: TextStyle(fontSize: 20.0)),
+                // child: const Text('Sign Out', style: TextStyle(fontSize: 20.0)),
               ),
             ),
           ]

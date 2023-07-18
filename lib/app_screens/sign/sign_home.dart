@@ -136,7 +136,8 @@ class _SignHomeState extends State<SignHome> with SingleTickerProviderStateMixin
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                     const Text(
-                      'Sign out',
+                      'Test',
+                      // 'Sign out',
                       style: TextStyle(
                         fontSize: 20,
                         color: CupertinoColors.white,
