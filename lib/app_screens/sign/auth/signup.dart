@@ -189,6 +189,12 @@ class _SignUpState extends State<SignUp> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
+
+      switch (e.code) {
+        case "email-already-in-use":
+          Utils.showSnackBar(e.message);
+          break;
+      }
       
       Utils.showSnackBar(e.message);
     }
