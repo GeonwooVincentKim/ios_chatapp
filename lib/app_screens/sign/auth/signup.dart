@@ -129,7 +129,6 @@ class _SignUpState extends State<SignUp> {
                       horizontal: MediaQuery.of(context).size.width * 0.3,
                       vertical: MediaQuery.of(context).size.height * 0.02
                     ),
-                    // padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: CupertinoColors.activeBlue,
