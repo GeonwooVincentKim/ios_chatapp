@@ -60,31 +60,12 @@ class _CupertinoCallState extends State<CupertinoCall> {
     
     super.initState();
     checkPermissionStatus();
-    // initMobileNumberState();
   }
 
   @override
   void dispose() {
-    Hive.box('user_db').close();
+    // Hive.box('user_db').close();
     super.dispose();
-  }
-
-  _getPhoneNumber() async {
-    String? phoneNumber;
-
-    try {
-      phoneNumber = await PhoneSelector.getPhoneNumber();
-      print("Number -> $phoneNumber");
-    } catch (e) {
-      print(e);
-      phoneNumber = 'Failed to get Phone Number';
-    }
-
-    if (mounted) {
-      setState(() {
-        _phoneNumber = phoneNumber!;
-      });
-    }
   }
   
   Future<void> checkPermissionStatus() async {

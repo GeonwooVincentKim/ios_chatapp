@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_chatapp/app_screens/cupertino_call.dart';
+import 'package:ios_chatapp/app_screens/sign/auth/auth.dart';
 import 'package:ios_chatapp/app_screens/sign/sign_home.dart';
 import 'package:ios_chatapp/app_screens/sign/signin.dart';
 import 'package:ios_chatapp/body.dart';
@@ -25,7 +26,8 @@ class SignStatus extends StatelessWidget {
             // return CupertinoCall(textLocation: '');
             return SignHome();
           } else {
-            return SignIn();
+            return AuthPage();
+            // return SignIn();
           }
         },
       ),

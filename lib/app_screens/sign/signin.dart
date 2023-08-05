@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ios_chatapp/shared/style.dart';
+import 'package:ios_chatapp/shared/utils.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  final VoidCallback onClickedSignUp;
+
+  const SignIn({super.key, required this.onClickedSignUp});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -132,31 +136,25 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
             ),
-            // ClipRRect(
-            //   borderRadius: BorderRadius.circular(10.0),
-            //   child: GestureDetector(
-            //     onTap: () {
-    
-            //     },
-            //     child: Container(
-            //       height: MediaQuery.of(context).size.height * 0.1,
-            //       padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.height * 0.1),
-            //       alignment: Alignment.center,
-            //       color: CupertinoColors.white,
-            //     ),
-            //   ),
-            // )
-            // ElevatedButton.icon(
-            //   style: ElevatedButton.styleFrom(
-            //     minimumSize: Size.fromHeight(50)
-            //   ),
-            //   icon: Icon(Icons.lock_open, size: MediaQuery.of(context).size.height * 0.35),
-            //   label: Text(
-            //     "Sign In",
-            //     style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.13)
-            //   ),
-            //   onPressed: () {},
-            // )
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            RichText(
+              text: TextSpan(
+                style: TextStyle(color: CupertinoColors.inactiveGray, fontSize: 18),
+                text: 'No Account?  ',
+                children: [
+                  TextSpan(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = widget.onClickedSignUp,
+                    text: 'Sign Up',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      // color: CupertinoTheme.of(context).primaryColor
+                      color: Theme.of(context).colorScheme.secondary
+                    )
+                  )
+                ]
+              )
+            )
           ],
         ),
       ),
@@ -177,6 +175,10 @@ class _SignInState extends State<SignIn> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
+      
+      Utils.showSnackBar(e.message);
     }
+
+    
   }
 }
