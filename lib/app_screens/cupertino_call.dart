@@ -105,6 +105,7 @@ class _CupertinoCallState extends State<CupertinoCall> {
       await MobileNumber.requestPhonePermission;
       return;
     }
+    
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       _mobileNumber = (await MobileNumber.mobileNumber)!;
