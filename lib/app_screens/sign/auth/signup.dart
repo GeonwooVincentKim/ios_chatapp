@@ -147,7 +147,7 @@ class _SignUpState extends State<SignUp> {
               Center(
                 child: RichText(
                   text: TextSpan(
-                    style: TextStyle(color: CupertinoColors.inactiveGray, fontSize: 18),
+                    style: const TextStyle(color: CupertinoColors.inactiveGray, fontSize: 18),
                     text: 'Already have an account?  ',
                     children: [
                       TextSpan(
