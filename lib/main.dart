@@ -47,7 +47,6 @@ class MyApp extends StatelessWidget {
         child: CupertinoApp(
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
-          // theme: const CupertinoThemeData(brightness: Brightness.light, primaryColor: CupertinoColors.white),
           theme: const CupertinoThemeData(brightness: Brightness.light),
           initialRoute: "/",
           routes: {
