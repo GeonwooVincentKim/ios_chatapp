@@ -157,7 +157,6 @@ class _SignUpState extends State<SignUp> {
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: CupertinoTheme.of(context).primaryColor
-                          // color: CupertinoTheme.of(context).colorScheme.secondary
                         )
                       )
                     ]
